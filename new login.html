@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            background: #f3f4f6; 
+            padding: 20px; 
+        }
+
+        .form-container { 
+            max-width: 400px; 
+            margin: auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+
+        h1 { 
+            text-align: center; 
+            color: #2c3e50; 
+            margin-bottom: 20px; 
+        }
+
+        .form-group { margin-bottom: 20px; }
+
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: bold; 
+        }
+
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+        }
+
+        .error { 
+            color: red; 
+            font-size: 14px; 
+            margin-top: 5px; 
+        }
+
+        .submit-btn { 
+            width: 100%; 
+            padding: 12px; 
+            background: #27ae60; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            font-size: 16px; 
+        }
+
+        .signup-link { 
+            text-align: center; 
+            margin-top: 20px; 
+            color: #7f8c8d; 
+        }
+
+        .signup-link a { 
+            color: #27ae60; 
+            text-decoration: none; 
+            font-weight: bold; 
+        }
+
+        .password-container { position: relative; }
+
+        .toggle-btn { 
+            position: absolute; 
+            right: 10px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            background: none; 
+            border: none; 
+            color: #3498db; 
+            cursor: pointer; 
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Login</h1>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="abc@email.com" required>
+                <div class="error" id="emailError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label>Password</label>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="i.e password123" required>
+                    <button type="button" class="toggle-btn" id="toggleBtn">Show</button>
+                </div>
+                <div class="error" id="passwordError"></div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+        
+        <div class="signup-link">
+            Don't have an account? <a href="new signup.html">Sign up here</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const passwordInput = document.getElementById('password');
+        
+        // Toggle password visibility
+        toggleBtn.onclick = function() {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = 'Hide';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = 'Show';
+            }
+        };
+        
+        // Simple validation
+        function showError(id, message) {
+            const errorEl = document.getElementById(id + 'Error');
+            if (errorEl) {
+                errorEl.textContent = message;
+                errorEl.style.display = message ? 'block' : 'none';
+            }
+        }
+        
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            let valid = true;
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            if (!email) {
+                showError('email', 'Email is required');
+                valid = false;
+            } else if (!email.includes('@')) {
+                showError('email', 'Invalid email');
+                valid = false;
+            } else {
+                showError('email', '');
+            }
+            
+            if (!password) {
+                showError('password', 'Password is required');
+                valid = false;
+            } else if (password.length < 6) {
+                showError('password', 'Password too short');
+                valid = false;
+            } else {
+                showError('password', '');
+            }
+            
+            if (valid) {
+                alert('Login successful!');
+                form.reset();
+                passwordInput.type = 'password';
+                toggleBtn.textContent = 'Show';
+            }
+        };
+        
+        // Clear errors when typing
+        document.querySelectorAll('input').forEach(input => {
+            input.oninput = function() {
+                showError(this.id, '');
+            };
+        });
+    </script>
+</body>
+</html>
