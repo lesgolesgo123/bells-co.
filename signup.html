@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Form</title>
+    <title>Join The Fam!</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
         
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: url(acc\ bg.jpg) center/cover no-repeat fixed;
+            background-image: url(acc\ bg.jpg);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -16,210 +23,417 @@
             padding: 20px;
         }
         
-        .form-container {
-            width: 650px;
-            max-width: 95%;
-            max-height: 90vh; 
-            background-color: rgb(255, 255, 255);
-            padding: 30px;
+        .container {
+            width: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-15deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        h1 span {
+            background: linear-gradient(45deg, #ff0080, #ff8c00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .input-group label {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
             border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-            overflow: auto;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s;
         }
         
-        h1 { 
-            text-align: center; 
-            color: #152a1c;
-            margin-bottom: 20px; 
-            font-size: 28px;
-            text-shadow: 1px 1px 2px rgba(74, 74, 74, 0.5);
-        }
-
-        .form-group { 
-            margin-bottom: 15px; 
-        }
-
-        label { 
-            display: block; 
-            margin-bottom: 5px; 
-            font-weight: bold; 
-        }
-
-        
-        input, select { 
-            width: 100%; 
-            padding: 8px; 
-            border: 1px solid #ddd; 
-            border-radius: 4px; 
+        .input-group input:focus {
+            outline: none;
+            border-color: #ff0080;
+            box-shadow: 0 0 15px rgba(255,0,128,0.3);
         }
         
-        .error { 
-            color: red; 
-            font-size: 14px; 
-            margin-top: 5px; 
-        }
-
-        .submit-btn { 
-            width: 100%; 
-            padding: 12px; 
-            background: #2b1801; 
-            color: white; 
-            border: none; 
-            border-radius: 4px; 
-            font-size: 16px; 
-            margin-top: 10px; 
+        .input-group input:focus + label,
+        .input-group input:valid + label {
+            top: -10px;
+            left: 10px;
+            font-size: 12px;
+            color: #ff0080;
+            background: rgba(0,0,0,0.8);
+            padding: 2px 8px;
+            border-radius: 5px;
         }
         
-        .row { 
-            display: flex; 
-            gap: 20px; 
+        .row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
         }
-
-        .row > div { 
-            flex: 1; 
+        
+        .phone-group {
+            display: flex;
+            gap: 10px;
         }
-
+        
+        .phone-code {
+            flex: 0.4;
+        }
+        
+        .phone-number {
+            flex: 0.6;
+        }
+        
+        select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        select option {
+            background: #302b63;
+            color: white;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #ff0080;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,0,128,0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
         .login-link {
             text-align: center;
-            margin-top: 20px;
-            color: #7f8c8d;
+            margin-top: 25px;
+            color: rgba(255,255,255,0.7);
         }
-
+        
         .login-link a {
-            color: #2b1801;
+            color: #ff8c00;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 500;
+            transition: all 0.3s;
         }
-        @media (max-width: 600px) { .row { flex-direction: column; } }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+            color: #ff0080;
+        }
+        
+        .error {
+            color: #ff4757;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .terms input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .terms label {
+            font-size: 14px;
+        }
+        
+        .terms a {
+            color: #ff8c00;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+                width: 95%;
+            }
+            
+            .row {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            h1 {
+                font-size: 26px;
+            }
+        }
+        
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(255,0,128,0.4);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(255,140,0,0.6);
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>Create Account</h1>
+    <div class="container">
+        <h1>Join <span>the Club</span></h1>
+        
         <form id="signupForm">
             <div class="row">
-                <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" id="firstName" placeholder="e.g emma" required>
+                <div class="input-group">
+                    <input type="text" id="firstName" required>
+                    <label for="firstName">First Name</label>
                     <div class="error" id="firstNameError"></div>
                 </div>
-                <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" id="lastName" placeholder="e.g johns" required>
+                <div class="input-group">
+                    <input type="text" id="lastName" required>
+                    <label for="lastName">Last Name</label>
                     <div class="error" id="lastNameError"></div>
                 </div>
             </div>
             
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" id="email" placeholder="e.g abc@email.com " required>
+            <div class="input-group">
+                <input type="email" id="email" required>
+                <label for="email">Email Address</label>
                 <div class="error" id="emailError"></div>
             </div>
             
-            <div class="form-group">
-                <label>Date of Birth</label>
+            <div class="input-group">
                 <input type="date" id="dob" required>
+                <label for="dob">Date of Birth</label>
                 <div class="error" id="dobError"></div>
             </div>
             
-            <div class="row">
-                <div class="form-group" style="flex: 0.3;">
-                    <label>Code</label>
+            <div class="phone-group">
+                <div class="input-group phone-code">
                     <select id="countryCode">
-                        <option value="+60">+60 MY</option>
-                        <option value="+966">+966 KSA</option>
-                        <option value="+1">+1 US</option>
-                        <option value="+44">+44 UK</option>
+                        <option value="+60">🇲🇾 +60</option>
+                        <option value="+966">🇸🇦 +966</option>
+                        <option value="+1" selected>🇺🇸 +1</option>
+                        <option value="+44">🇬🇧 +44</option>
                     </select>
                 </div>
-                <div class="form-group" style="flex: 0.7;">
-                    <label>Phone</label>
-                    <input type="tel" id="mobile" placeholder="e.g 0526371926" required>
+                <div class="input-group phone-number">
+                    <input type="tel" id="mobile" required>
+                    <label for="mobile">Phone Number</label>
                     <div class="error" id="mobileError"></div>
                 </div>
             </div>
             
-            <div class="form-group">
-                <label>Address</label>
-                <input type="text" id="address" placeholder="e.g. building number, Street name, City, Country" required>
+            <div class="input-group">
+                <input type="text" id="address" required>
+                <label for="address">Your Address</label>
                 <div class="error" id="addressError"></div>
             </div>
             
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="password" placeholder="e.g abc123" required>
-                <div class="error" id="passwordError"></div>
+            <div class="row">
+                <div class="input-group">
+                    <input type="password" id="password" required>
+                    <label for="password">Create Password</label>
+                    <div class="error" id="passwordError"></div>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="confirmPassword" required>
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="error" id="confirmPasswordError"></div>
+                </div>
             </div>
             
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" id="confirmPassword" required>
-                <div class="error" id="confirmPasswordError"></div>
+            <div class="terms">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms</a> & <a href="#">Privacy</a></label>
+                <div class="error" id="termsError"></div>
             </div>
             
-            <button type="submit" class="submit-btn">Sign Up</button>
+            <button type="submit" class="btn glow">Get Started</button>
         </form>
+        
         <p class="login-link">
-            Already have an account? <a href="login.html">Login here</a>
+            Already have an account? <a href="login.html">Sign In</a>
         </p>
     </div>
 
     <script>
         const form = document.getElementById('signupForm');
+        
+        // Set max DOB to 13 years ago
+        const dobInput = document.getElementById('dob');
+        const today = new Date();
+        const maxDate = new Date(today.getFullYear() - 13, today.getMonth(), today.getDate());
+        dobInput.max = maxDate.toISOString().split('T')[0];
+        dobInput.value = maxDate.toISOString().split('T')[0];
+        
+        // Floating label effect
+        document.querySelectorAll('.input-group input').forEach(input => {
+            input.addEventListener('blur', function() {
+                if(this.value) {
+                    this.classList.add('filled');
+                } else {
+                    this.classList.remove('filled');
+                }
+            });
+        });
+        
+        // Show/hide errors
         function showError(id, message) {
             const errorEl = document.getElementById(id + 'Error');
-            if (errorEl) {
+            if(errorEl) {
                 errorEl.textContent = message;
                 errorEl.style.display = message ? 'block' : 'none';
+                const input = document.getElementById(id);
+                if(input && message) {
+                    input.style.borderColor = '#ff4757';
+                    input.style.boxShadow = '0 0 15px rgba(255,71,87,0.3)';
+                } else if(input) {
+                    input.style.borderColor = 'rgba(255,255,255,0.2)';
+                    input.style.boxShadow = 'none';
+                }
             }
         }
         
+        // Validation
         form.onsubmit = function(e) {
             e.preventDefault();
             let valid = true;
             
+            // Reset errors
+            ['firstName','lastName','email','dob','mobile','address','password','confirmPassword','terms'].forEach(field => {
+                showError(field, '');
+            });
             
-            const fields = ['firstName', 'lastName', 'email', 'dob', 'mobile', 'address', 'password', 'confirmPassword'];
+            // Required fields
+            const fields = ['firstName','lastName','email','dob','mobile','address','password','confirmPassword'];
             fields.forEach(field => {
                 const value = document.getElementById(field).value.trim();
-                if (!value) {
+                if(!value) {
                     showError(field, 'This field is required');
                     valid = false;
-                } else {
-                    showError(field, '');
                 }
             });
             
+            // Email
             const email = document.getElementById('email').value;
-            if (email && !email.includes('@')) {
-                showError('email', 'Invalid email');
+            if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError('email', 'Enter a valid email');
                 valid = false;
             }
             
+            // Password
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-            if (password && confirmPassword && password !== confirmPassword) {
-                showError('confirmPassword', 'Passwords do not match');
+            if(password && password.length < 6) {
+                showError('password', 'Min 6 characters');
+                valid = false;
+            }
+            if(password && confirmPassword && password !== confirmPassword) {
+                showError('confirmPassword', "Passwords don't match");
                 valid = false;
             }
             
-            if (password && password.length < 6) {
-                showError('password', 'Password must be at least 6 characters');
+            // Terms
+            if(!document.getElementById('terms').checked) {
+                showError('terms', 'You must agree to terms');
                 valid = false;
             }
             
-            if (valid) {
-                alert('Registration successful!');
-                setTimeout(function() {
-                    window.location.href = "index.html";
-                }, 500); // 0.5 second delay
+            if(valid) {
+                const btn = document.querySelector('.btn');
+                btn.innerHTML = '🎉 Welcome!';
+                btn.style.background = 'linear-gradient(45deg, #00b09b, #96c93d)';
+                
+                setTimeout(() => {
+                    alert('Welcome to The Crew! 🚀');
+                    window.location.href = 'index.html';
+                }, 1000);
             }
         };
-
+        
+        // Clear errors on input
         document.querySelectorAll('input').forEach(input => {
-            input.oninput = function() {
+            input.addEventListener('input', function() {
                 showError(this.id, '');
-            };
+            });
         });
     </script>
 </body>
