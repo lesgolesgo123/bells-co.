@@ -3,121 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Login</title>
     <style>
-        body { 
-            font-family: Arial, Helvetica, sans-serif; 
-            background: url(acc\ bg.jpg) center fixed;
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat; 
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-image: url(acc\ bg.jpg);
             min-height: 100vh;
             display: flex;
             justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
-
-        .form-container { 
-            max-width: 400px;
-            width: 90%;
-            margin: auto; 
-            background-color: rgb(255, 255, 255);
-            padding: 30px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        
+        .container {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
         }
-
-        h1 { 
-            text-align: center; 
-            color: #152a1c;
-            margin-bottom: 20px; 
-            font-size: 28px;
-            text-shadow: 1px 1px 2px rgba(74, 74, 74, 0.5);
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-15deg);
+            animation: shine 3s infinite;
         }
-
-        .form-group { margin-bottom: 20px; }
-
-        label { 
-            display: block; 
-            margin-bottom: 5px; 
-            font-weight: bold; 
+        
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
         }
-
-        input { 
-            width: 100%; 
-            padding: 10px; 
-            border: 1px solid #ddd; 
-            border-radius: 4px; 
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-
-        .error { 
-            color: red; 
-            font-size: 14px; 
-            margin-top: 5px; 
+        
+        h1 span {
+            background: linear-gradient(45deg, #ff0080, #ff8c00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-
-        .submit-btn { 
-            width: 100%; 
-            padding: 12px; 
-            background: #2b1801; 
-            color: white; 
-            border: none; 
-            border-radius: 4px; 
-            font-size: 16px; 
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
         }
-
-        .signup-link { 
-            text-align: center; 
-            margin-top: 20px; 
-            color: #7f8c8d; 
+        
+        .input-group label {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+            transition: all 0.3s;
+            pointer-events: none;
         }
-
-        .signup-link a { 
-            color: #2b1801; 
-            text-decoration: none; 
-            font-weight: bold; 
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s;
         }
-
-        .password-container { position: relative; }
-
-        .toggle-btn { 
-            position: absolute; 
-            right: 10px; 
-            top: 50%; 
-            transform: translateY(-50%); 
-            background: none; 
-            border: none; 
-            color: #3498db; 
-            cursor: pointer; 
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #ff0080;
+            box-shadow: 0 0 15px rgba(255,0,128,0.3);
         }
-
+        
+        .input-group input:focus + label,
+        .input-group input:valid + label {
+            top: -10px;
+            left: 10px;
+            font-size: 12px;
+            color: #ff0080;
+            background: rgba(0,0,0,0.8);
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .toggle-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            color: #ff0080;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,0,128,0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .signup-link a {
+            color: #ff8c00;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+            color: #ff0080;
+        }
+        
+        .error {
+            color: #ff4757;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .extra-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .remember input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        
+        .forgot-password a {
+            color: #ff8c00;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .forgot-password a:hover {
+            color: #ff0080;
+            text-decoration: underline;
+        }
+        
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(255,0,128,0.4);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(255,140,0,0.6);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+                width: 95%;
+            }
+            
+            h1 {
+                font-size: 26px;
+            }
+            
+            .extra-options {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+        
+        .social-login {
+            margin-top: 25px;
+            text-align: center;
+        }
+        
+        .social-login p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .social-login p::before,
+        .social-login p::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .social-login p::before {
+            left: 0;
+        }
+        
+        .social-login p::after {
+            right: 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .social-icon:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+            border-color: #ff0080;
+        }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>Login</h1>
+    <div class="container">
+        <h1>Welcome <span>Back</span></h1>
         
         <form id="loginForm">
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" id="email" placeholder="abc@email.com" required>
+            <div class="input-group">
+                <input type="email" id="email" required>
+                <label for="email">Email Address</label>
                 <div class="error" id="emailError"></div>
             </div>
             
-            <div class="form-group">
-                <label>Password</label>
+            <div class="input-group">
                 <div class="password-container">
-                    <input type="password" id="password" placeholder="i.e password123" required>
+                    <input type="password" id="password" required>
+                    <label for="password">Your Password</label>
                     <button type="button" class="toggle-btn" id="toggleBtn">Show</button>
                 </div>
                 <div class="error" id="passwordError"></div>
             </div>
             
-            <button type="submit" class="submit-btn">Login</button>
+            <div class="extra-options">
+                <div class="remember">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <div class="forgot-password">
+                    <a href="forgot-password.html">Forgot password?</a>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn glow">Login</button>
+            
+            <div class="social-login">
+                <p>Or continue with</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">G</a>
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">in</a>
+                </div>
+            </div>
         </form>
         
-        <div class="signup-link">
+        <p class="signup-link">
             Don't have an account? <a href="signup.html">Sign up here</a>
-        </div>
+            <a href="index.html">go back to main page</a>
+        </p>
     </div>
 
     <script>
@@ -125,6 +354,7 @@
         const toggleBtn = document.getElementById('toggleBtn');
         const passwordInput = document.getElementById('password');
         
+        // Toggle password visibility
         toggleBtn.onclick = function() {
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
@@ -135,55 +365,81 @@
             }
         };
         
+        // Floating label effect
+        document.querySelectorAll('.input-group input').forEach(input => {
+            input.addEventListener('blur', function() {
+                if(this.value) {
+                    this.classList.add('filled');
+                } else {
+                    this.classList.remove('filled');
+                }
+            });
+        });
+        
+        // Show/hide errors
         function showError(id, message) {
             const errorEl = document.getElementById(id + 'Error');
-            if (errorEl) {
+            if(errorEl) {
                 errorEl.textContent = message;
                 errorEl.style.display = message ? 'block' : 'none';
+                const input = document.getElementById(id);
+                if(input && message) {
+                    input.style.borderColor = '#ff4757';
+                    input.style.boxShadow = '0 0 15px rgba(255,71,87,0.3)';
+                } else if(input) {
+                    input.style.borderColor = 'rgba(255,255,255,0.2)';
+                    input.style.boxShadow = 'none';
+                }
             }
         }
         
+        // Form validation
         form.onsubmit = function(e) {
             e.preventDefault();
             let valid = true;
             
+            // Reset errors
+            ['email','password'].forEach(field => {
+                showError(field, '');
+            });
+            
+            // Email validation
             const email = document.getElementById('email').value.trim();
+            if(!email) {
+                alert('Email is required');
+                valid = false;
+            } else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Enter a valid email');
+                valid = false;
+            }
+            
+            // Password validation
             const password = document.getElementById('password').value.trim();
-            
-            if (!email) {
-                showError('email', 'Email is required');
+            if(!password) {
+                alert('password', 'Password is required');
                 valid = false;
-            } else if (!email.includes('@')) {
-                showError('email', 'Invalid email');
+            } else if(password.length < 6) {
+                alert('password', 'Password must be at least 6 characters');
                 valid = false;
-            } else {
-                showError('email', '');
             }
             
-            if (!password) {
-                showError('password', 'Password is required');
-                valid = false;
-            } else if (password.length < 6) {
-                showError('password', 'Password too short');
-                valid = false;
-            } else {
-                showError('password', '');
-            }
-            
-            if (valid) {
-                alert('Login successful!');
-                setTimeout(function() {
-                    window.location.href = "index.html";
-                }, 500);
-                passwordInput.type = 'password';
-                toggleBtn.textContent = 'Show';
+            if(valid) {
+                const btn = document.querySelector('.btn');
+                btn.innerHTML = '🎉 Welcome Back!';
+                btn.style.background = 'linear-gradient(45deg, #00b09b, #96c93d)';
+                
+                setTimeout(() => {
+                    alert('Login successful! 🎉');
+                    window.location.href = 'index.html';
+                }, 1000);
             }
         };
         
+        // Clear errors on input
         document.querySelectorAll('input').forEach(input => {
-            input.oninput = function() {
+            input.addEventListener('input', function() {
                 showError(this.id, '');
-            };
+            });
         });
     </script>
 </body>
