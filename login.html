@@ -15,7 +15,7 @@
         }
         
         body {
-            background-image: url(acc\ bg.jpg);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,48 +24,24 @@
         }
         
         .container {
-            width: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            width: 420px;
+            background: #ffffff;
+            border-radius: 16px;
             padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: skewX(-15deg);
-            animation: shine 3s infinite;
-        }
-        
-        @keyframes shine {
-            0% { left: -50%; }
-            100% { left: 150%; }
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
         }
         
         h1 {
-            color: white;
+            color: #2c3e50;
             text-align: center;
             margin-bottom: 30px;
-            font-size: 32px;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 28px;
+            font-weight: 600;
         }
         
         h1 span {
-            background: linear-gradient(45deg, #ff0080, #ff8c00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #dc3545;
         }
         
         .input-group {
@@ -78,7 +54,7 @@
             top: 50%;
             left: 15px;
             transform: translateY(-50%);
-            color: rgba(255,255,255,0.7);
+            color: #6c757d;
             font-size: 16px;
             transition: all 0.3s;
             pointer-events: none;
@@ -87,18 +63,18 @@
         .input-group input {
             width: 100%;
             padding: 15px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-            color: white;
+            background: #ffffff;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            color: #495057;
             font-size: 16px;
             transition: all 0.3s;
         }
         
         .input-group input:focus {
             outline: none;
-            border-color: #ff0080;
-            box-shadow: 0 0 15px rgba(255,0,128,0.3);
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
         }
         
         .input-group input:focus + label,
@@ -106,10 +82,9 @@
             top: -10px;
             left: 10px;
             font-size: 12px;
-            color: #ff0080;
-            background: rgba(0,0,0,0.8);
+            color: #dc3545;
+            background: #ffffff;
             padding: 2px 8px;
-            border-radius: 5px;
         }
         
         .password-container {
@@ -123,61 +98,64 @@
             transform: translateY(-50%);
             background: none;
             border: none;
-            color: rgba(255,255,255,0.7);
+            color: #6c757d;
             cursor: pointer;
             font-size: 14px;
             transition: color 0.3s;
+            padding: 5px;
         }
         
         .toggle-btn:hover {
-            color: #ff0080;
+            color: #dc3545;
         }
         
         .btn {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(45deg, #ff0080, #ff8c00);
+            background: #dc3545;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             margin-top: 10px;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255,0,128,0.4);
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
         }
         
         .btn:active {
-            transform: translateY(-1px);
+            transform: translateY(0);
         }
         
         .signup-link {
             text-align: center;
             margin-top: 25px;
-            color: rgba(255,255,255,0.7);
+            color: #6c757d;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
         
         .signup-link a {
-            color: #ff8c00;
+            color: #dc3545;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: color 0.3s;
         }
         
         .signup-link a:hover {
+            color: #c82333;
             text-decoration: underline;
-            color: #ff0080;
         }
         
         .error {
-            color: #ff4757;
+            color: #dc3545;
             font-size: 14px;
             margin-top: 5px;
             display: none;
@@ -188,7 +166,7 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 15px;
-            color: rgba(255,255,255,0.7);
+            color: #6c757d;
             font-size: 14px;
         }
         
@@ -202,30 +180,18 @@
             width: 16px;
             height: 16px;
             cursor: pointer;
+            accent-color: #dc3545;
         }
         
         .forgot-password a {
-            color: #ff8c00;
+            color: #dc3545;
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .forgot-password a:hover {
-            color: #ff0080;
+            color: #c82333;
             text-decoration: underline;
-        }
-        
-        .glow {
-            animation: glow 2s infinite alternate;
-        }
-        
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 20px rgba(255,0,128,0.4);
-            }
-            to {
-                box-shadow: 0 0 30px rgba(255,140,0,0.6);
-            }
         }
         
         @media (max-width: 480px) {
@@ -235,7 +201,7 @@
             }
             
             h1 {
-                font-size: 26px;
+                font-size: 24px;
             }
             
             .extra-options {
@@ -251,7 +217,7 @@
         }
         
         .social-login p {
-            color: rgba(255,255,255,0.7);
+            color: #6c757d;
             margin-bottom: 15px;
             position: relative;
         }
@@ -261,9 +227,9 @@
             content: '';
             position: absolute;
             top: 50%;
-            width: 30%;
+            width: 35%;
             height: 1px;
-            background: rgba(255,255,255,0.2);
+            background: #dee2e6;
         }
         
         .social-login p::before {
@@ -283,21 +249,56 @@
         .social-icon {
             width: 40px;
             height: 40px;
-            border-radius: 50%;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255,255,255,0.1);
-            color: white;
+            background: #f8f9fa;
+            color: #495057;
             text-decoration: none;
             transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid #dee2e6;
+            font-weight: 600;
         }
         
         .social-icon:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-3px);
-            border-color: #ff0080;
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+        
+        /* Success state */
+        .success-btn {
+            background: #28a745 !important;
+        }
+        
+        .success-btn:hover {
+            background: #218838 !important;
+        }
+        
+        /* Loading animation */
+        .loading {
+            position: relative;
+            pointer-events: none;
+            background: #6c757d !important;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        @keyframes spin {
+            to { transform: translateY(-50%) rotate(360deg); }
         }
     </style>
 </head>
@@ -331,7 +332,7 @@
                 </div>
             </div>
             
-            <button type="submit" class="btn glow">Login</button>
+            <button type="submit" class="btn">Login</button>
             
             <div class="social-login">
                 <p>Or continue with</p>
@@ -344,8 +345,8 @@
         </form>
         
         <p class="signup-link">
-            Don't have an account? <a href="signup.html">Sign up here</a>
-            <a href="index.html">go back to main page</a>
+            <span>Don't have an account? <a href="signup.html">Sign up here</a></span>
+            <a href="index.html">Go back to main page</a>
         </p>
     </div>
 
@@ -353,15 +354,18 @@
         const form = document.getElementById('loginForm');
         const toggleBtn = document.getElementById('toggleBtn');
         const passwordInput = document.getElementById('password');
+        const loginBtn = document.querySelector('.btn');
         
         // Toggle password visibility
         toggleBtn.onclick = function() {
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 toggleBtn.textContent = 'Hide';
+                toggleBtn.style.color = '#dc3545';
             } else {
                 passwordInput.type = 'password';
                 toggleBtn.textContent = 'Show';
+                toggleBtn.style.color = '#6c757d';
             }
         };
         
@@ -384,17 +388,17 @@
                 errorEl.style.display = message ? 'block' : 'none';
                 const input = document.getElementById(id);
                 if(input && message) {
-                    input.style.borderColor = '#ff4757';
-                    input.style.boxShadow = '0 0 15px rgba(255,71,87,0.3)';
+                    input.style.borderColor = '#dc3545';
+                    input.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.1)';
                 } else if(input) {
-                    input.style.borderColor = 'rgba(255,255,255,0.2)';
+                    input.style.borderColor = '#dee2e6';
                     input.style.boxShadow = 'none';
                 }
             }
         }
         
         // Form validation
-        form.onsubmit = function(e) {
+        form.onsubmit = async function(e) {
             e.preventDefault();
             let valid = true;
             
@@ -406,32 +410,40 @@
             // Email validation
             const email = document.getElementById('email').value.trim();
             if(!email) {
-                alert('Email is required');
+                showError('email', 'Email is required');
                 valid = false;
             } else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                alert('Enter a valid email');
+                showError('email', 'Enter a valid email address');
                 valid = false;
             }
             
             // Password validation
             const password = document.getElementById('password').value.trim();
             if(!password) {
-                alert('password', 'Password is required');
+                showError('password', 'Password is required');
                 valid = false;
             } else if(password.length < 6) {
-                alert('password', 'Password must be at least 6 characters');
+                showError('password', 'Password must be at least 6 characters');
                 valid = false;
             }
             
             if(valid) {
-                const btn = document.querySelector('.btn');
-                btn.innerHTML = '🎉 Welcome Back!';
-                btn.style.background = 'linear-gradient(45deg, #00b09b, #96c93d)';
+                // Add loading state
+                loginBtn.classList.add('loading');
+                loginBtn.textContent = 'Logging in...';
                 
+                // Simulate API call
                 setTimeout(() => {
-                    alert('Login successful! 🎉');
-                    window.location.href = 'index.html';
-                }, 1000);
+                    loginBtn.classList.remove('loading');
+                    loginBtn.classList.add('success-btn');
+                    loginBtn.textContent = 'Login Successful!';
+                    
+                    // Animate success
+                    setTimeout(() => {
+                        alert('Welcome back! Redirecting to dashboard...');
+                        window.location.href = 'index.html';
+                    }, 1500);
+                }, 2000);
             }
         };
         
@@ -439,6 +451,10 @@
         document.querySelectorAll('input').forEach(input => {
             input.addEventListener('input', function() {
                 showError(this.id, '');
+                if(!document.getElementById(this.id + 'Error').textContent) {
+                    this.style.borderColor = '#dee2e6';
+                    this.style.boxShadow = 'none';
+                }
             });
         });
     </script>
