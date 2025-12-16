@@ -4,36 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart - Bells & Co.</title>
-  <style>
+   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    :root {
-      --primary: #1a1a1a;
-      --secondary: #ffffff;
-      --accent: #00d14d;
-      --accent-hover: #00a83d;
-      --border: #e5e5e5;
-      --text: #1f2937;
-      --text-light: #6b7280;
-      --danger: #dc2626;
-      --danger-hover: #b91c1c;
-      --bg-light: #f9fafb;
+    /* Add this universal font rule to ensure ALL elements use Cormorant Garamond */
+    * {
+      font-family: "Cormorant Garamond", serif !important;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text);
+      font-family: "Cormorant Garamond", serif;
+      background-color: #f9fafb;
+      color: #1f2937;
       line-height: 1.6;
     }
 
+    /* Specifically target form elements which browsers often override */
+    input, button, select, textarea {
+      font-family: "Cormorant Garamond", serif !important;
+    }
+
+    /* Make sure the checkout button specifically uses the correct font */
+    .checkout-btn, input[type="submit"], button[type="submit"] {
+      width: 100%;
+      padding: 1rem;
+      background: #00d14d;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: "Cormorant Garamond", serif !important;
+      margin-top: 1.5rem;
+      transition: background 0.2s;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Rest of your existing CSS... */
     header {
-      background-color: var(--secondary);
-      border-bottom: 1px solid var(--border);
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
       padding: 1.5rem 2rem;
       position: sticky;
       top: 0;
@@ -51,7 +66,7 @@
       max-width: 100%;
       height: 115px;
       object-fit: contain;
-      display:block;
+      display: block;
     }
 
     .button-icons {
@@ -70,8 +85,8 @@
       position: absolute;
       top: -8px;
       right: -8px;
-      background-color: var(--accent);
-      color: var(--secondary);
+      background-color: #00d14d;
+      color: #ffffff;
       border-radius: 50%;
       width: 20px;
       height: 20px;
@@ -91,13 +106,13 @@
       align-items: center;
       gap: 0.5rem;
       font-size: 0.9rem;
-      color: var(--text);
+      color: #1f2937;
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .icon-btn:hover {
-      color: var(--accent);
+      color: #00d14d;
     }
 
     .icon-btn img {
@@ -111,23 +126,21 @@
     }
 
     .nav-bar {
-      display:flex;
-      gap:50px;
+      display: flex;
+      gap: 50px;
       justify-content: center;
       align-items: center;
     }
 
     .nav-link {
       text-decoration: none;
-      color:black;
-      font-family: 'Crimson Text', serif;
+      color: black;
       font-size: 15px;
       padding: 15px 5px;
-      color:black;
     } 
 
     .nav-bar a:hover {
-      color:#520015;
+      color: #520015;
     }
 
     .searchbar {
@@ -140,20 +153,19 @@
     .searchinput {
       border: none;
       outline: none;
-      font-family: "Cormorant Garamond", serif;
       font-size: 1.1rem;
       background: transparent;
       width: 200px;
     }
 
     .accountinfo img {
-        max-width: 100%;
-        height: 30px;
+      max-width: 100%;
+      height: 30px;
     }
 
     .addtocart img {
-        max-width: 100%;
-        height: 50px;
+      max-width: 100%;
+      height: 50px;
     }
 
     .search-button {
@@ -164,20 +176,11 @@
     }
 
     .searchinput::placeholder {
-      color: var(--text-light);
-    }
-
-    .search-button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      color: var(--text-light);
-      transition: color 0.2s;
+      color: #6b7280;
     }
 
     .search-button:hover {
-      color: var(--accent);
+      color: #00d14d;
     }
 
     main {
@@ -199,8 +202,8 @@
     }
 
     .cart-items-wrapper {
-      background-color: var(--secondary);
-      border: 1px solid var(--border);
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
       border-radius: 8px;
       overflow: hidden;
     }
@@ -210,7 +213,7 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 1.5rem;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid #e5e5e5;
       transition: background-color 0.2s;
       gap: 1.5rem;
     }
@@ -220,7 +223,7 @@
     }
 
     .cart-item:hover {
-      background-color: var(--bg-light);
+      background-color: #f9fafb;
     }
 
     .item-details {
@@ -235,7 +238,7 @@
     }
 
     .item-details p {
-      color: var(--text-light);
+      color: #6b7280;
       font-size: 0.85rem;
       margin-bottom: 0.5rem;
     }
@@ -250,8 +253,8 @@
     .qty-btn {
       width: 32px;
       height: 32px;
-      border: 1px solid var(--border);
-      background: var(--secondary);
+      border: 1px solid #e5e5e5;
+      background: #ffffff;
       border-radius: 4px;
       cursor: pointer;
       display: flex;
@@ -262,8 +265,8 @@
     }
 
     .qty-btn:hover {
-      background: var(--bg-light);
-      border-color: var(--accent);
+      background: #f9fafb;
+      border-color: #00d14d;
     }
 
     .quantity-display {
@@ -284,18 +287,18 @@
     .item-price {
       font-size: 1.2rem;
       font-weight: 700;
-      color: var(--accent);
+      color: #00d14d;
     }
 
     .item-unit-price {
       font-size: 0.85rem;
-      color: var(--text-light);
+      color: #6b7280;
     }
 
     .remove-btn {
       background: transparent;
-      color: var(--danger);
-      border: 1px solid var(--danger);
+      color: #dc2626;
+      border: 1px solid #dc2626;
       padding: 0.5rem 1rem;
       border-radius: 4px;
       cursor: pointer;
@@ -306,13 +309,13 @@
     }
 
     .remove-btn:hover {
-      background: var(--danger);
-      color: var(--secondary);
+      background: #dc2626;
+      color: #ffffff;
     }
 
     .cart-summary {
-      background-color: var(--secondary);
-      border: 1px solid var(--border);
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
       border-radius: 8px;
       padding: 2rem;
       height: fit-content;
@@ -324,48 +327,33 @@
       font-size: 1.2rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
-      color: var(--text);
+      color: #1f2937;
     }
 
     .summary-row {
       display: flex;
       justify-content: space-between;
       margin-bottom: 1rem;
-      color: var(--text-light);
+      color: #6b7280;
       font-size: 0.9rem;
     }
 
     .summary-row.total {
-      border-top: 2px solid var(--border);
-      border-bottom: 2px solid var(--border);
+      border-top: 2px solid #e5e5e5;
+      border-bottom: 2px solid #e5e5e5;
       padding: 1rem 0;
-      color: var(--text);
+      color: #1f2937;
       font-weight: 700;
       font-size: 1.1rem;
       margin-top: 1rem;
     }
 
-    .checkout-btn {
-      width: 100%;
-      padding: 1rem;
-      background: var(--accent);
-      color: var(--secondary);
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-top: 1.5rem;
-      transition: background 0.2s;
-      font-size: 0.95rem;
-      letter-spacing: 0.5px;
-    }
-
     .checkout-btn:hover {
-      background: var(--accent-hover);
+      background: #00a83d;
     }
 
     .checkout-btn:disabled {
-      background: var(--text-light);
+      background: #6b7280;
       cursor: not-allowed;
     }
 
@@ -374,8 +362,8 @@
       width: 100%;
       text-align: center;
       background: transparent;
-      color: var(--text);
-      border: 1px solid var(--text);
+      color: #1f2937;
+      border: 1px solid #1f2937;
       padding: 0.75rem;
       border-radius: 4px;
       text-decoration: none;
@@ -386,16 +374,16 @@
     }
 
     .continue-shopping-btn:hover {
-      background: var(--text);
-      color: var(--secondary);
+      background: #1f2937;
+      color: #ffffff;
     }
 
     .empty-cart {
       text-align: center;
       padding: 4rem 2rem;
-      color: var(--text-light);
-      background-color: var(--secondary);
-      border: 1px solid var(--border);
+      color: #6b7280;
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
       border-radius: 8px;
     }
 
@@ -406,13 +394,13 @@
 
     .empty-cart h2 {
       margin-bottom: 0.5rem;
-      color: var(--text);
+      color: #1f2937;
       font-size: 1.5rem;
     }
 
     footer {
-      background-color: var(--primary);
-      color: var(--secondary);
+      background-color: #1a1a1a;
+      color: #ffffff;
       padding: 3rem 2rem;
       margin-top: 4rem;
     }
@@ -441,14 +429,14 @@
     }
 
     .footer-column a {
-      color: var(--secondary);
+      color: #ffffff;
       text-decoration: none;
       font-size: 0.9rem;
       transition: color 0.2s;
     }
 
     .footer-column a:hover {
-      color: var(--accent);
+      color: #00d14d;
     }
 
     .social-icons {
@@ -522,7 +510,7 @@
         gap: 2rem;
       }
     }
-  </style>
+</style>
 </head>
 <body>
   <header>
