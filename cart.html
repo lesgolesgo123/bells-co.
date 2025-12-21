@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +10,9 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    /* Add this universal font rule to ensure ALL elements use Cormorant Garamond */
-    * {
       font-family: "Cormorant Garamond", serif !important;
     }
+    
 
     body {
       font-family: "Cormorant Garamond", serif;
@@ -23,16 +21,10 @@
       line-height: 1.6;
     }
 
-    /* Specifically target form elements which browsers often override */
-    input, button, select, textarea {
-      font-family: "Cormorant Garamond", serif !important;
-    }
-
-    /* Make sure the checkout button specifically uses the correct font */
     .checkout-btn, input[type="submit"], button[type="submit"] {
       width: 100%;
       padding: 1rem;
-      background: #00d14d;
+      background: #000000;
       color: #ffffff;
       border: none;
       border-radius: 4px;
@@ -44,16 +36,14 @@
       font-size: 0.95rem;
       letter-spacing: 0.5px;
     }
-
-    /* Rest of your existing CSS... */
-    header {
+     header {
+      padding: 1.5rem 2rem;
       background-color: #ffffff;
       border-bottom: 1px solid #e5e5e5;
-      padding: 1.5rem 2rem;
       position: sticky;
       top: 0;
       z-index: 100;
-    }
+      }
 
     .brand-heading {
       display: flex;
@@ -112,7 +102,7 @@
     }
 
     .icon-btn:hover {
-      color: #00d14d;
+      color: #9b0909;
     }
 
     .icon-btn img {
@@ -180,7 +170,7 @@
     }
 
     .search-button:hover {
-      color: #00d14d;
+      color: #851818;
     }
 
     main {
@@ -266,7 +256,7 @@
 
     .qty-btn:hover {
       background: #f9fafb;
-      border-color: #00d14d;
+      border-color: #000000;
     }
 
     .quantity-display {
@@ -287,7 +277,7 @@
     .item-price {
       font-size: 1.2rem;
       font-weight: 700;
-      color: #00d14d;
+      color: #000000;
     }
 
     .item-unit-price {
@@ -298,7 +288,7 @@
     .remove-btn {
       background: transparent;
       color: #dc2626;
-      border: 1px solid #dc2626;
+      border: 1px solid #af1212;
       padding: 0.5rem 1rem;
       border-radius: 4px;
       cursor: pointer;
@@ -349,7 +339,7 @@
     }
 
     .checkout-btn:hover {
-      background: #00a83d;
+      background: #6b0f0f;
     }
 
     .checkout-btn:disabled {
@@ -436,7 +426,7 @@
     }
 
     .footer-column a:hover {
-      color: #00d14d;
+      color: #e0a1a1;
     }
 
     .social-icons {
@@ -696,7 +686,7 @@
               <div class="empty-cart-icon">🛒</div>
               <h2>Your cart is empty</h2>
               <p>Start shopping to add items to your cart!</p>
-              <a href="kids.html" class="continue-shopping-btn">Browse Kids Collection</a>
+              <a href="index.html" class="continue-shopping-btn">Return to Home Page</a>
             </div>
           `;
           cartSummary.style.display = 'none';
