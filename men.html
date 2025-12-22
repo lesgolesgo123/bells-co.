@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+    <title>Men's Collection | Bells & Co.</title>
+    <style>
+        body {
+            margin-left: 6%;
+            margin-right: 6%;
+        }
+
+        /*Cart*/
+
+        .cart-badge {
+            position: relative;
+            display:flex;
+            align-items: center;
+            gap:0.1rem;
+        }
+
+        .cart-count {
+            background-color: #520015;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 600;
+            font-family: "Inter", sans-serif;
+        }
+        /*Navigation bar*/
+        
+          header {
+            padding: 1.5rem 2rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        
+        .accountinfo, .addtocart {
+            text-decoration: none;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .accountinfo:hover, .addtocart:hover {
+            transform: scale(1.05);
+        }
+
+        .accountinfo img {
+            width: 2.1rem;
+            height: auto;
+            
+        }
+
+        .addtocart img {
+            width: 2.9rem;
+            height: auto;
+            display: block;
+        }
+
+        .nav-bar {
+            display:flex;
+            gap:50px;
+            justify-content: center;
+            align-items: center;
+        }
+
+         .brand-heading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .brand-heading img {
+            max-width: 100%;
+            height: 115px;
+            object-fit: contain;
+            display:block;
+        }
+
+        .button-icons {
+            position: absolute;
+            right: 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color:black;
+            font-family: 'Crimson Text', serif;
+            font-size: 1rem;
+            padding: 15px 5px;
+            color:black;
+        }
+
+        .nav-bar a:hover {
+            color:#520015;
+        }
+
+        .searchbar {
+            display: flex;
+            align-items: center;
+            padding: 0rem 1.9rem;
+            margin: 1 1rem;
+        }
+
+        .searchinput {
+            border: none;
+            outline: none;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.1rem;
+            background: transparent;
+            width: 12rem;
+        }
+
+        .search-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        /*Category*/
+
+        .collection-header {
+            text-align: left;
+            padding: 3rem 0;
+        }
+
+        .collection-header h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .collection-header h2 {
+            font-size: 3rem;
+            font-family: 'Crimson Text', serif;
+            margin:0;
+        }        
+       .category-container {
+            display:flex;
+            gap:4rem;
+        }
+
+        .category {
+            border:1px solid black;
+            border-radius: 25px;
+            padding:0.2rem 1.4em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category p {
+            font-size: 0.8rem;
+            font-family: 'Inter';
+            font-weight: lighter;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        /* Hover effect - turn black on hover */
+        .category:hover {
+            background-color: black;
+            border-color: black;
+        }
+
+        .category:hover p {
+            color: white;
+        }
+
+        /* Active state */
+        .category.active {
+            background-color: black;
+            border-color: black;
+        }
+
+        .category.active p {
+            color: white;
+        }
+    
+        /*Products*/
+
+        .products-container {
+            display:grid;
+            margin-top: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap:0.2rem;
+        }
+       
+        .product-category p {
+            font-size: 15px;
+        }
+
+        .product-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2.4 / 3;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
+            display: block;
+        }
+
+        .secondversion {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .products:hover .secondversion {
+            opacity: 1;
+        }
+
+        .products:hover .firstversion {
+            opacity: 0;
+        }
+
+
+        .product-info {
+            text-align: left;
+            font-size: 0.8rem;
+            font-family: 'Inter';
+            font-weight: lighter;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem; 
+            
+        }
+
+        .brand {
+            font-size: 0.55rem;
+            letter-spacing: 0.06em;
+        }
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            letter-spacing: 0.5px;
+            margin-top: auto;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #520015;
+        }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.98);
+        }
+
+        
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .collection-header h2 {
+                font-size: 2rem;
+            }
+
+            .category-container {
+                padding: 0 1rem;
+                gap: 2rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-bar {
+                gap: 1.5rem;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand-heading">
+            <img src="bannerlogo.jpeg" alt="banner logo">
+            <div class="button-icons">
+                <a href="signup.html" class="accountinfo">
+                    <img src="profile.png" alt="profile icon">
+                </a>
+                <a href="cart.html" class="addtocart cart-badge">
+                    <img src="bag.png" alt="add to bag icon">
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="women.html" class="nav-link">WOMEN</a>
+            <a href="men.html" class="nav-link">MEN</a>
+            <a href="kids.html" class="nav-link">KIDS</a>
+            <div class="searchbar">
+                <input type="text" placeholder="Search..." name="search" class="searchinput">
+                <button class="search-button">🔍︎</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="collection-header">
+        <h3>MEN</h3>
+        <h2>Men's Collection</h2>
+    </section>
+
+    <div class="category-container">
+        <div class="category active" data-filter="all">
+            <p>All</p>
+        </div>
+        <div class="category" data-filter="shirt">
+            <p>Shirts</p>
+        </div>
+        <div class="category" data-filter="pajamas">
+            <p>Pajamas</p>
+        </div>
+        <div class="category" data-filter="sweater">
+            <p>Sweaters</p>
+        </div>
+    </div>
+
+    <section class="product-section">
+        <div class="products-container" id="productsContainer">
+            </div>
+    </section>
+
+    <script>
+        // --- MEN'S PRODUCT CATALOG ---
+        const menProducts = [
+            // Shirts
+            {
+                id: 'men-1',
+                name: 'Classic White Oxford Button-Down Shirt',
+                category: 'shirt',
+                price: 145.00,
+                brand: 'Bells & Co',
+                images: { first: 'Shirt1a.png', second: 'Shirt1b.png' }
+            },
+            {
+                id: 'men-2',
+                name: 'Dark Gray Formal Shirt',
+                category: 'shirt',
+                price: 165.00,
+                brand: 'Bells & Co',
+                images: { first: 'Shirt2a.png', second: 'Shirt2b.png' }
+            },
+            {
+                id: 'men-3',
+                name: 'Black Casual Shirt',
+                category: 'shirt',
+                price: 155.00,
+                brand: 'Bells & Co',
+                images: { first: 'Shirt3a.png', second: 'Shirt3b.png' }
+            },
+            {
+                id: 'men-4',
+                name: 'Emerald Green Formal Shirt',
+                category: 'shirt',
+                price: 178.00,
+                brand: 'Bells & Co',
+                images: { first: 'Shirt4a.png', second: 'Shirt4b.png' }
+            },
+            {
+                id: 'men-5',
+                name: 'Light Gray Evening Shirt',
+                category: 'shirt',
+                price: 245.00,
+                brand: 'Bells & Co',
+                images: { first: 'Shirt5a.png', second: 'Shirt5b.png' }
+            },
+            {
+                id: 'men-6',
+                name: 'White Casual Shirt with Deer emblem',
+                category: 'shirt',
+                price: 135.00,
+                brand: 'Bells & Co',
+                images: { first: 'Shirt6a.png', second: 'Shirt6b.png' }
+            },
+            // Pajamas
+            {
+                id: 'men-7',
+                name: 'Navy and Red Plaid Pajama Pants',
+                category: 'pajamas',
+                price: 120.00,
+                brand: 'Bells & Co',
+                images: { first: 'Pyjamas1a.avif', second: 'Pyjamas1b.avif' }
+            },
+            {
+                id: 'men-8',
+                name: 'Red Checkered Pajama Set',
+                category: 'pajamas',
+                price: 130.00,
+                brand: 'Bells & Co',
+                images: { first: 'Pyjamas2a.avif', second: 'Pyjamas2b.avif' }
+            },
+            {
+                id: 'men-9',
+                name: 'Navy and White Checkered Pajama Set',
+                category: 'pajamas',
+                price: 185.00,
+                brand: 'Bells & Co',
+                images: { first: 'Pyjamas3a.png', second: 'Pyjamas3b.png' }
+            },
+            {
+                id: 'men-10',
+                name: 'Black Lounge Pajama Set',
+                category: 'pajamas',
+                price: 155.00,
+                brand: 'Bells & Co',
+                images: { first: 'Pyjamas4a.png', second: 'Pyjamas4b.png' }
+            },
+            {
+                id: 'men-11',
+                name: 'Forest Green Pajama Pants with Ornament Pattern',
+                category: 'pajamas',
+                price: 145.00,
+                brand: 'Bells & Co',
+                images: { first: 'Pyjamas5a.png', second: 'Pyjamas5b.png' }
+            },
+            {
+                id: 'men-12',
+                name: 'Greya and Plaid Lounge Pajama Set',
+                category: 'pajamas',
+                price: 210.00,
+                brand: 'Bells & Co',
+                images: { first: 'Pyjamas6a.png', second: 'Pyjamas6b.png' }
+            },
+            // Sweaters
+            {
+                id: 'men-13',
+                name: 'Cable Knit Wool Sweater in Forest Green',
+                category: 'sweater',
+                price: 225.00,
+                brand: 'Bells & Co',
+                images: { first: 'Sweater1a.avif', second: 'Sweater1b.avif' }
+            },
+            {
+                id: 'men-14',
+                name: 'Fair Isle Pattern Cream Wool Sweater',
+                category: 'sweater',
+                price: 245.00,
+                brand: 'Bells & Co',
+                images: { first: 'Sweater2a.png', second: 'Sweater2b.png' }
+            },
+            {
+                id: 'men-15',
+                name: 'Vinatge Wool Sweater in Navy and Green',
+                category: 'sweater',
+                price: 195.00,
+                brand: 'Bells & Co',
+                images: { first: 'Sweater3a.png', second: 'Sweater3b.png' }
+            },
+            {
+                id: 'men-16',
+                name: 'Cashmere Blend Dark Navy Sweater',
+                category: 'sweater',
+                price: 315.00,
+                brand: 'Bells & Co',
+                images: { first: 'Sweater4a.png', second: 'Sweater4b.png' }
+            },
+            {
+                id: 'men-17',
+                name: 'Chunky Knit Cardigan in Sky Gray',
+                category: 'sweater',
+                price: 235.00,
+                brand: 'Bells & Co',
+                images: { first: 'Sweater5a.png', second: 'Sweater5b.png' }
+            },
+            {
+                id: 'men-18',
+                name: 'Striped Sweatshirt in Heather Gray',
+                category: 'sweater',
+                price: 185.00,
+                brand: 'Bells & Co',
+                images: { first: 'Sweater6a.png', second: 'Sweater6b.png' }
+            }
+        ];
+
+        // --- SHOPPING CART SYSTEM ---
+        class ShoppingCart {
+            constructor() {
+                // Using a generic cart key so you can share cart between pages if desired
+                this.cartKey = 'bellsMainCart'; 
+                this.cart = this.loadCart();
+                this.updateCartBadge();
+            }
+
+            loadCart() {
+                try {
+                    const savedCart = localStorage.getItem(this.cartKey);
+                    return savedCart ? JSON.parse(savedCart) : [];
+                } catch (error) {
+                    console.error('Error loading cart:', error);
+                    return [];
+                }
+            }
+
+            saveCart() {
+                try {
+                    localStorage.setItem(this.cartKey, JSON.stringify(this.cart));
+                } catch (error) {
+                    console.error('Error saving cart:', error);
+                }
+            }
+
+            addToCart(productId, productName, price) {
+                const quantity = this.getQuantityFromUser(productName);
+                if (quantity === null || quantity <= 0) return;
+
+                const existingItem = this.cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    this.cart.push({
+                        id: productId,
+                        name: productName,
+                        price: price,
+                        quantity: quantity
+                    });
+                }
+
+                this.saveCart();
+                this.showNotification(productName, quantity);
+                this.updateCartBadge();
+            }
+
+            getQuantityFromUser(productName) {
+                const qty = parseInt(prompt(`How many "${productName}" would you like to add to cart?`, '1'));
+                
+                if (isNaN(qty) || qty <= 0) {
+                    alert("Please enter a valid quantity greater than 0.");
+                    return null;
+                }
+                
+                return qty;
+            }
+
+            showNotification(productName, quantity) {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--accent);
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0, 209, 77, 0.3);
+                    z-index: 1001;
+                    animation: slideInRight 0.3s ease-out;
+                    max-width: 300px;
+                `;
+                
+                notification.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 1.2rem;">✓</span>
+                        <span>${quantity} × ${productName} added to cart!</span>
+                    </div>
+                `;
+
+                if (!document.querySelector('#notification-styles')) {
+                    const styles = document.createElement('style');
+                    styles.id = 'notification-styles';
+                    styles.textContent = `
+                        @keyframes slideInRight {
+                            from { transform: translateX(100%); opacity: 0; }
+                            to { transform: translateX(0); opacity: 1; }
+                        }
+                    `;
+                    document.head.appendChild(styles);
+                }
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        notification.style.animation = 'slideInRight 0.3s ease-out reverse';
+                        setTimeout(() => {
+                            if(document.body.contains(notification)) document.body.removeChild(notification);
+                        }, 300);
+                    }
+                }, 3000);
+            }
+
+            updateCartBadge() {
+                try {
+                    const totalItems = this.cart.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0);
+                    const cartCount = document.getElementById('cartCount');
+                    if (cartCount) {
+                        cartCount.textContent = totalItems;
+                        cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+                    }
+                } catch (error) {
+                    console.error('Error updating cart badge:', error);
+                }
+            }
+        }
+
+        const cart = new ShoppingCart();
+
+        // Global function for onclick events
+        function addToCart(productId, productName, price) {
+            cart.addToCart(productId, productName, price);
+        }
+
+        // --- RENDER & FILTER LOGIC ---
+        let currentFilter = 'all';
+
+        function renderProducts(filterCategory = 'all') {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+
+            const filteredProducts = filterCategory === 'all' 
+                ? menProducts 
+                : menProducts.filter(product => product.category === filterCategory);
+
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'products';
+                productCard.setAttribute('data-category', product.category);
+
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img class="firstversion" src="${product.images.first}" alt="${product.name}">
+                        <img class="secondversion" src="${product.images.second}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">${product.name}</p>
+                        <p class="brand">${product.brand}</p>
+                        <p class="product-price">RM${product.price.toFixed(2)}</p>
+                        <button class="add-to-cart-btn" 
+                                onclick="addToCart('${product.id}', '${product.name.replace(/'/g, "\\'")}', ${product.price})">
+                            Add to Cart
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(productCard);
+            });
+        }
+
+        function setupCategoryFilters() {
+            const categories = document.querySelectorAll('.category');
+            
+            categories.forEach(category => {
+                category.addEventListener('click', function() {
+                    categories.forEach(cat => cat.classList.remove('active'));
+                    this.classList.add('active');
+                    const filterValue = this.getAttribute('data-filter');
+                    currentFilter = filterValue;
+                    renderProducts(filterValue);
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            setupCategoryFilters();
+            cart.updateCartBadge();
+        });
+    </script>
+</body>
+</html>
