@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+    <title>Our Story | Bells & Co.</title>
+    <style>
+        body {
+            margin-left: 6%;
+            margin-right: 6%;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Navigation section*/
+        .brand-heading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .brand-heading img {
+            max-width: 100%;
+            height: 115px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .button-icons {
+            position: absolute;
+            right: 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: black;
+            font-family: 'Crimson Text', serif;
+            font-size: 1rem;
+            padding: 15px 5px;
+        }
+
+        .nav-bar a:hover {
+            color: #520015;
+        }
+
+        .searchbar {
+            display: flex;
+            align-items: center;
+            padding: 0 1.9rem;
+        }
+
+        .searchinput {
+            border: none;
+            outline: none;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.1rem;
+            background: transparent;
+            width: 12rem;
+        }
+
+        .accountinfo img {
+            max-width: 2rem;
+            height: auto;
+        }
+
+        .addtocart img {
+            max-width: 3.5rem;
+            height: auto;
+        }
+
+        .search-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Banner Image */
+        .story-banner {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            margin: 30px 0 50px 0;
+            overflow: hidden;
+        }
+
+        .story-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-text {
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .banner-text h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner-text h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Page Content */
+        .page-header {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .page-header h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .page-header h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .story-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .story-section {
+            margin-bottom: 60px;
+        }
+
+        .story-section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .story-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .founder-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin: 50px 0;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .founder-image {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .founder-info {
+            flex: 2;
+        }
+
+        .founder-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .founder-title {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .founder-bio {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .charity-section {
+            background-color: #f0f7ff;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .charity-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #520015;
+        }
+
+        .charity-percentage {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #520015;
+            margin: 20px 0;
+        }
+
+        .charity-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .values-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #520015;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .value-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Footer */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .column1, .column2, .column3, .column4 {
+            flex: 1;
+        }
+
+        .footer h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer li {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .footer a:hover {
+            color: #520015;
+        }
+
+        .socialmediaicon ul {
+            display: flex;
+            gap: 15px;
+        }
+
+        .socialmediaicon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .column4 p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .founder-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .founder-image {
+                max-width: 200px;
+            }
+            
+            .banner-text h1 {
+                font-size: 2rem;
+            }
+            
+            .banner-text h3 {
+                font-size: 1rem;
+            }
+            
+            .story-banner {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand-heading">
+            <img src="bannerlogo.jpeg" alt="banner logo">
+            <div class="button-icons">
+                <a href="#" class="accountinfo">
+                    <img src="profile.png" alt="profile icon">
+                </a>
+                <a href="#" class="addtocart">
+                    <img src="bag.png" alt="add to bag icon">
+                </a>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="women.html" class="nav-link">WOMEN</a>
+            <a href="men.html" class="nav-link">MEN</a>
+            <a href="#kids" class="nav-link">KIDS</a>
+            <div class="searchbar">
+                <input type="text" placeholder="Search..." name="search" class="searchinput">
+                <button class="search-button">🔍︎</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Banner Section -->
+    <section class="story-banner">
+        <img src="InNeed.jpg" alt="Children in Need">
+        <div class="banner-overlay">
+            <div class="banner-text">
+                <h3>OUR STORY</h3>
+                <h1>More Than Just Clothing</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-container">
+        <div class="story-section">
+            <h2>Our Beginning</h2>
+            <div class="story-content">
+                <p>Bells & Co. began not as a business venture, but as a heartfelt mission. Founded in 2015 by Dr. Javid Iqbal, our company was born from a simple yet powerful vision: to provide high-quality, beautiful clothing while making a meaningful difference in the lives of children in need.</p>
+                <p>What started as a small collection of carefully crafted sweaters has grown into a beloved brand known for its commitment to quality, style, and social responsibility. Today, we continue to honor our founder's original vision with every piece we create.</p>
+            </div>
+        </div>
+
+        <div class="founder-section">
+            <div class="founder-image">
+                <img src="DrJavid.png" alt="Dr. Javid Iqbal">
+            </div>
+            <div class="founder-info">
+                <div class="founder-name">Dr. Javid Iqbal</div>
+                <div class="founder-title">Founder & Visionary</div>
+                <div class="founder-bio">
+                    <p>A humanitarian at heart, Dr. Javid Iqbal has dedicated his life to making a positive impact. With a background in medicine and a passion for social justice, he envisioned a clothing brand that could do more than just sell garments—it could change lives.</p>
+                    <p>"I believe that fashion should have a purpose beyond aesthetics. Every piece of clothing we create represents an opportunity to help a child in need."</p>
+                    <p>Under Dr. Iqbal's leadership, Bells & Co. has remained true to its core mission while expanding our collections to include clothing for the whole family.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="charity-section">
+            <div class="charity-icon">❤️</div>
+            <div class="charity-percentage">25%</div>
+            <div class="charity-text">
+                <p>From the goodness of his heart, Dr. Javid Iqbal established that <strong>25% of all Bells & Co. profits</strong> would be donated to children's charities worldwide. This commitment is at the core of everything we do.</p>
+                <p>Every purchase you make directly contributes to providing education, healthcare, and basic necessities for children in underserved communities. Together, we've helped thousands of children build brighter futures.</p>
+            </div>
+        </div>
+
+        <div class="story-section">
+            <h2>Our Mission & Values</h2>
+            <div class="story-content">
+                <p>At Bells & Co., we believe that fashion should be both beautiful and meaningful. Our commitment extends beyond creating stylish clothing—it's about building a community that cares and making a tangible difference in the world.</p>
+            </div>
+            
+            <div class="values-section">
+                <div class="value-item">
+                    <div class="value-icon">👕</div>
+                    <div class="value-title">Quality Craftsmanship</div>
+                    <div class="value-description">We source only the finest materials and employ skilled artisans to create clothing that lasts season after season.</div>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">❤️</div>
+                    <div class="value-title">Charitable Commitment</div>
+                    <div class="value-description">Our unwavering promise to donate 25% of profits to children's charities remains our guiding principle.</div>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">🌱</div>
+                    <div class="value-title">Sustainable Practices</div>
+                    <div class="value-description">We're committed to ethical production and reducing our environmental impact at every stage of our process.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-section">
+            <h2>Looking Forward</h2>
+            <div class="story-content">
+                <p>As we continue to grow, our commitment to Dr. Javid Iqbal's vision remains stronger than ever. We're expanding our charitable partnerships, developing new sustainable materials, and creating collections that bring joy to both our customers and the children we support.</p>
+                <p>Thank you for being part of our story. When you choose Bells & Co., you're not just buying clothing—you're joining a movement of compassion, quality, and positive change.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <div class="column1">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="FAQs.html" target="_blank">FAQs</a></li>
+                        <li><a href="Termsandcondition.html" target="_blank">Terms and condition</a></li>
+                        <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
+                    </ul>
+                </div>
+                <div class="column2">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="OurStory.html" target="_blank">Our Story</a></li>
+                        <li><a href="Meettheteam.html" target="_blank">Meet the team</a></li>
+                        <li><a href="Joinus.html" target="_blank">Join us!</a></li>
+                    </ul>
+                </div>
+                <div class="column3">
+                    <h4>Follow us</h4>
+                    <div class="socialmediaicon">
+                        <ul>
+                            <li><a href="" target="_blank"><img src="instagram.png" alt="instagram icon"></a></li>
+                            <li><a href="" target="_blank"><img src="facebook.png" alt="facebook icon"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column4">
+                    <h4>Contact us</h4>
+                    <p>+60123456789</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

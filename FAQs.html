@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+    <title>FAQs | Bells & Co.</title>
+    <style>
+        body {
+            margin-left: 6%;
+            margin-right: 6%;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Navigation section*/
+        .brand-heading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .brand-heading img {
+            max-width: 100%;
+            height: 115px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .button-icons {
+            position: absolute;
+            right: 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: black;
+            font-family: 'Crimson Text', serif;
+            font-size: 1rem;
+            padding: 15px 5px;
+        }
+
+        .nav-bar a:hover {
+            color: #520015;
+        }
+
+        .searchbar {
+            display: flex;
+            align-items: center;
+            padding: 0 1.9rem;
+        }
+
+        .searchinput {
+            border: none;
+            outline: none;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.1rem;
+            background: transparent;
+            width: 12rem;
+        }
+
+        .accountinfo img {
+            max-width: 2rem;
+            height: auto;
+        }
+
+        .addtocart img {
+            max-width: 3.5rem;
+            height: auto;
+        }
+
+        .search-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* FAQ Banner */
+        .faq-banner {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            margin: 30px 0 50px 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .faq-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-text {
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .banner-text h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner-text h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* FAQ Section with Hover Effects */
+        .faqs-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Questions in ALL CAPS */
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 10px;
+            text-transform: uppercase; /* Makes text all caps */
+            letter-spacing: 0.05em;
+        }
+
+        .faq-answer {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .column1, .column2, .column3, .column4 {
+            flex: 1;
+        }
+
+        .footer h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer li {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .footer a:hover {
+            color: #520015;
+        }
+
+        .socialmediaicon ul {
+            display: flex;
+            gap: 15px;
+        }
+
+        .socialmediaicon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .column4 p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                margin-left: 3%;
+                margin-right: 3%;
+            }
+            
+            .nav-bar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 0;
+            }
+            
+            .searchbar {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .searchinput {
+                width: 100%;
+            }
+            
+            .faq-banner {
+                height: 200px;
+            }
+            
+            .banner-text h1 {
+                font-size: 2rem;
+            }
+            
+            .banner-text h3 {
+                font-size: 1rem;
+            }
+            
+            .faq-item {
+                padding: 20px;
+            }
+            
+            .footer {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .column1, .column2, .column3, .column4 {
+                width: 100%;
+            }
+            
+            .socialmediaicon ul {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .faq-banner {
+                height: 180px;
+            }
+            
+            .banner-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .brand-heading img {
+                height: 80px;
+            }
+            
+            .button-icons {
+                gap: 5px;
+            }
+            
+            .accountinfo img {
+                max-width: 1.5rem;
+            }
+            
+            .addtocart img {
+                max-width: 2.5rem;
+            }
+            
+            .faq-item {
+                padding: 15px;
+            }
+            
+            .faq-question {
+                font-size: 1rem;
+            }
+        }
+
+        /* Make images responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Improve touch targets */
+        .nav-link, .btn, .apply-button, .category {
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Prevent text from being too small */
+        body {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand-heading">
+            <img src="bannerlogo.jpeg" alt="banner logo">
+            <div class="button-icons">
+                <a href="#" class="accountinfo">
+                    <img src="profile.png" alt="profile icon">
+                </a>
+                <a href="#" class="addtocart">
+                    <img src="bag.png" alt="add to bag icon">
+                </a>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="women.html" class="nav-link">WOMEN</a>
+            <a href="men.html" class="nav-link">MEN</a>
+            <a href="#kids" class="nav-link">KIDS</a>
+            <div class="searchbar">
+                <input type="text" placeholder="Search..." name="search" class="searchinput">
+                <button class="search-button">🔍︎</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FAQ Banner -->
+    <section class="faq-banner">
+        <img src="FaqBanner.avif" alt="FAQs Help Center Banner">
+        <div class="banner-overlay">
+            <div class="banner-text">
+                <h3>HELP CENTER</h3>
+                <h1>Frequently Asked Questions</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="faqs-container">
+        <div class="faq-item">
+            <div class="faq-question">WHAT IS YOUR RETURN POLICY?</div>
+            <div class="faq-answer">We offer a 30-day return policy for all unworn items with original tags attached. Returns are free for orders over RM200. Simply log into your account, generate a return label, and drop off your package at any authorized courier location.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">HOW LONG DOES SHIPPING TAKE?</div>
+            <div class="faq-answer">Standard shipping takes 3-5 business days within Malaysia. Express shipping (RM20) delivers within 1-2 business days. We also offer same-day delivery in Kuala Lumpur for orders placed before 12pm (RM30). International shipping typically takes 7-14 business days.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">DO YOU SHIP INTERNATIONALLY?</div>
+            <div class="faq-answer">Yes, we ship to over 50 countries worldwide. International shipping typically takes 7-14 business days. Please note that additional customs duties and taxes may apply and are the responsibility of the customer. You can check shipping rates at checkout.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">HOW DO I TRACK MY ORDER?</div>
+            <div class="faq-answer">Once your order ships, you'll receive a tracking number via email. You can also track your order by logging into your account and navigating to "My Orders." Click on the order number to view real-time tracking information from our delivery partners.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">WHAT PAYMENT METHODS DO YOU ACCEPT?</div>
+            <div class="faq-answer">We accept credit/debit cards (Visa, MasterCard, American Express), online banking transfers, and e-wallets (Touch 'n Go, GrabPay, Boost). All payments are processed securely through our encrypted payment gateway. Your payment information is never stored on our servers.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">HOW DO I CARE FOR MY BELLS & CO. GARMENTS?</div>
+            <div class="faq-answer">Check the care label on each garment. Most items require gentle cold wash and air drying for best results. For wool sweaters, we recommend hand washing in cold water and laying flat to dry. Avoid using bleach or fabric softeners, as they can damage the fibers and colors.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">WHAT IS YOUR SIZE CHART?</div>
+            <div class="faq-answer">We provide detailed size charts for each product category (Women, Men, Kids). You can find the size chart on each product page. We recommend measuring yourself and comparing with our charts for the best fit. If you're between sizes, we suggest sizing up for a more comfortable fit.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">DO YOU OFFER GIFT WRAPPING?</div>
+            <div class="faq-answer">Yes! We offer complimentary gift wrapping during the holiday season (November-December). For other times of the year, gift wrapping is available for RM15 per item. You can select gift wrapping at checkout and include a personalized message for the recipient.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">HOW CAN I CONTACT CUSTOMER SERVICE?</div>
+            <div class="faq-answer">You can reach our customer service team via email at support@bellsco.com or by phone at +6012-345-6789. Our team is available Monday to Friday, 9am-6pm (Malaysia time). For urgent inquiries, we recommend using our live chat feature available on the website during business hours.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">WHAT IS YOUR CHARITY INITIATIVE?</div>
+            <div class="faq-answer">Following our founder Dr. Javid Iqbal's vision, we donate 25% of all profits to children's charities worldwide. This commitment helps provide education, healthcare, and basic necessities for children in underserved communities. Every purchase you make directly contributes to this cause.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <div class="column1">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="FAQs.html" target="_blank">FAQs</a></li>
+                        <li><a href="Termsandcondition.html" target="_blank">Terms and condition</a></li>
+                        <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
+                    </ul>
+                </div>
+                <div class="column2">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="OurStory.html" target="_blank">Our Story</a></li>
+                        <li><a href="Meettheteam.html" target="_blank">Meet the team</a></li>
+                        <li><a href="Joinus.html" target="_blank">Join us!</a></li>
+                    </ul>
+                </div>
+                <div class="column3">
+                    <h4>Follow us</h4>
+                    <div class="socialmediaicon">
+                        <ul>
+                            <li><a href="" target="_blank"><img src="instagram.png" alt="instagram icon"></a></li>
+                            <li><a href="" target="_blank"><img src="facebook.png" alt="facebook icon"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column4">
+                    <h4>Contact us</h4>
+                    <p>+60123456789</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
