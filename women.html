@@ -252,27 +252,156 @@
             transform: scale(0.98);
         }
 
-        
+         footer {
+            background-image: url('images/footerBG.svg');
+            background-size: auto 60%; 
+            background-position: bottom right; 
+            background-repeat: no-repeat;
+            padding:  5rem 0 8rem 0; 
+            min-height: 350px; 
+            position: relative;
+            font-family: 'Crimson Text', serif; 
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 53px;
+            background-image: url('images/footerPattern.png');
+            background-repeat: repeat-x;
+            background-size: auto 200px;
+            z-index: 1;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: flex-start; 
+            align-items: flex-start;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 1rem 10rem 5rem; 
+            gap: 8rem; 
+            position: relative;
+            z-index: 2;
+        }
+
+        .column1, .column2, .column3, .column4 {
+            flex: 0 1 auto; 
+        }
+
+        .footer ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer h4 {
+            font-family: 'Crimson Text', serif; 
+            font-size: 1.05rem; 
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: black;
+            transition: color 0.3s;
+            font-size: 0.95rem; 
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .footer a:hover {
+            color: #6a1e1e;
+        }
+
+        .column3 img {
+            height: auto;
+            width: 38px;
+            border-radius: 60px;
+            margin-top: 0.3rem;
+        }
+
+        .socialmediaicon ul {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.3rem;
+        }
+
+        .contact-item {
+            display: flex; 
+            white-space: nowrap; 
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .contact-item strong, .contact-item p {
+            font-size: 0.95rem; 
+            color: #000;
+            font-family: 'Crimson Text', serif; 
+        }
+
+        .contact-item strong {
+            font-weight: 600;
+            margin-right: 0.4rem;
+        }
+
+        .contact-item p {
+            margin: 0;
+        }
+
+        @media (max-width: 1100px) {
+            .footer {
+                gap: 4rem;
+                padding-left: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .products-container {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 1.5rem;
-                padding: 0 1rem;
+            footer {
+                background-size: 40%; 
+                background-position: bottom center;
             }
-
-            .collection-header h2 {
-                font-size: 2rem;
+            
+            .footer {
+                flex-direction: column;
+                gap: 2.5rem;
+                padding: 3rem 1rem 4rem 1rem;
+                align-items: center;
+                text-align: center;
             }
-
-            .category-container {
-                padding: 0 1rem;
+            
+            .contact-item {
+                justify-content: center;
+                white-space: normal;
+                flex-wrap: wrap;
             }
+            
+            .contact-item strong {
+                margin-right: 0;
+                margin-bottom: 0.2rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
 
-            .nav-bar {
-                gap: 1.5rem;
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 0.5rem;
+        @media (max-width: 480px) {
+            footer {
+                background-size: auto 40%;
+                padding: 2rem 0 5rem 0;
+                min-height: 250px;
+            }
+            
+            .footer {
+                gap: 2rem;
+                padding: 2rem 1rem 3rem 1rem;
             }
         }
     </style>
@@ -483,15 +612,13 @@
         // --- SHOPPING CART SYSTEM ---
         class ShoppingCart {
             constructor() {
-                // Using a generic cart key so you can share cart between pages if desired
-                this.cartKey = 'bellsMainCart'; 
                 this.cart = this.loadCart();
                 this.updateCartBadge();
             }
 
             loadCart() {
                 try {
-                    const savedCart = localStorage.getItem(this.cartKey);
+                    const savedCart = localStorage.getItem('bellsShoppingCart');
                     return savedCart ? JSON.parse(savedCart) : [];
                 } catch (error) {
                     console.error('Error loading cart:', error);
@@ -501,7 +628,7 @@
 
             saveCart() {
                 try {
-                    localStorage.setItem(this.cartKey, JSON.stringify(this.cart));
+                    localStorage.setItem('bellsShoppingCart', JSON.stringify(this.cart));
                 } catch (error) {
                     console.error('Error saving cart:', error);
                 }
@@ -512,7 +639,7 @@
                 if (quantity === null || quantity <= 0) return;
 
                 const existingItem = this.cart.find(item => item.id === productId);
-                
+               
                 if (existingItem) {
                     existingItem.quantity += quantity;
                 } else {
@@ -528,6 +655,7 @@
                 this.showNotification(productName, quantity);
                 this.updateCartBadge();
             }
+
 
             getQuantityFromUser(productName) {
                 const qty = parseInt(prompt(`How many "${productName}" would you like to add to cart?`, '1'));
@@ -666,4 +794,49 @@
         });
     </script>
 </body>
+<footer>
+    <div class="container">
+        <div class="footer">
+            <div class="column1">
+                <h4>SERVICES</h4>
+                <ul>
+                    <li><a href="FAQs.html" target="_blank">FAQs</a></li>
+                    <li><a href="Termsandcondition.html" target="_blank">Terms and conditions</a></li>
+                    <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
+                </ul>
+            </div><div class="column2">  
+                <h4>ABOUT US</h4>
+                <ul>
+                    <li><a href="OurStory.html" target="_blank">Our Story</a></li>
+                    <li><a href="Meettheteam.html" target="_blank">Meet The Team</a></li>
+                    <li><a href="Joinus.html" target="_blank">Join Us</a></li>
+                </ul>
+            </div><div class="column3">  
+                <h4>FOLLOW US</h4>
+                <div class="socialmediaicon">
+                    <ul>
+                        <li><a href="https://instagram.com" target="_blank"><img src="images/instagram.avif" alt="instagram icon"></a></li>
+                        <li><a href="https://facebook.com" target="_blank"><img src="images/facebook.avif" alt="facebook icon"></a></li>
+                    </ul>
+                </div>
+            </div><div class="column4"> 
+                <h4>CONTACT</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Customer Service Hotline:</strong>
+                        <p>+6012 345 6789</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Business Email:</strong>
+                        <p>help@bellsco.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Business Hours:</strong>
+                        <p>Mon-Fri: 9AM-6PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>
