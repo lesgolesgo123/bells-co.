@@ -15,7 +15,8 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background-image: url(images/lgbg.jpeg);
+            background-size: cover;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -27,7 +28,7 @@
             width: 420px;
             background: #ffffff;
             border-radius: 16px;
-            padding: 10px;
+            padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border: 1px solid #e9ecef;
         }
@@ -39,20 +40,9 @@
             font-size: 28px;
             font-weight: 600;
         }
-        .greetings p {
-            text-align:center ;
-            padding-bottom:1rem ;
-            font-size: 13px;
-        }
+        
         h1 span {
-            color: #8d101d;
-        }
-
-        .logo img {
-            height:auto;
-            width:100%;
-            padding-bottom: 1rem;
-
+            color: #dc3545;
         }
         
         .input-group {
@@ -93,7 +83,7 @@
             top: -10px;
             left: 10px;
             font-size: 12px;
-            color: #88121d;
+            color: #dc3545;
             background: #ffffff;
             padding: 2px 8px;
         }
@@ -117,13 +107,13 @@
         }
         
         .toggle-btn:hover {
-            color: #810a16;
+            color: #dc3545;
         }
         
         .btn {
             width: 100%;
             padding: 15px;
-            background: #000000;
+            background: #dc3545;
             border: none;
             border-radius: 8px;
             color: white;
@@ -135,7 +125,7 @@
         }
         
         .btn:hover {
-            background: #7a0612;
+            background: #c82333;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
         }
@@ -315,12 +305,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            <img src="bannerlogo2.jpeg" alt="banner logo">
-        </div>
-        <div class="greetings">
-            <p>Welcome back! Glad to have you here :)</p>
-        </div>
+        <h1>Welcome <span>Back</span></h1>
+        
         <form id="loginForm">
             <div class="input-group">
                 <input type="email" id="email" required>
