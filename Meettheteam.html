@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="footer.css">
     <title>Meet the Team | Bells & Co.</title>
     <style>
         body {
@@ -87,7 +89,7 @@
             font-size: 1.2rem;
         }
 
-        /* Team Banner */
+        /* Team */
         .team-banner {
             width: 100%;
             height: 250px;
@@ -139,7 +141,6 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        /* Team Section with Hover Effects */
         .team-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -152,12 +153,13 @@
             font-size: 1.1rem;
             line-height: 1.6;
             color: #333;
+            font-family: 'Crimson Text', serif;
         }
 
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
         .team-member {
@@ -193,13 +195,12 @@
             object-fit: cover;
         }
 
-        /* Team member names in ALL CAPS */
         .member-name {
             font-size: 1.3rem;
             font-weight: 600;
             color: #000;
-            margin-bottom: 5px;
-            text-transform: uppercase; /* ALL CAPS */
+            margin-bottom: 15px;
+            text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
@@ -208,93 +209,36 @@
             color: #520015;
             margin-bottom: 15px;
             font-weight: 500;
+            font-family: 'Crimson Text', serif;
         }
 
         .member-bio {
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 1rem;
+            line-height: 1.6;
             color: #333;
             margin-bottom: 20px;
+            font-family: 'Crimson Text', serif;
         }
 
         .portfolio-link {
             display: inline-block;
             background-color: #000;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.9rem;
             cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            font-weight: 600;
+            transition: all 0.2s;
         }
 
         .portfolio-link:hover {
             background-color: #520015;
         }
 
-        /* Footer */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 80px;
-            padding: 40px 0;
-            border-top: 1px solid #eee;
-        }
-
-        .column1, .column2, .column3, .column4 {
-            flex: 1;
-        }
-
-        .footer h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #000;
-        }
-
-        .footer ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer li {
-            margin-bottom: 10px;
-        }
-
-        .footer a {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.9rem;
-        }
-
-        .footer a:hover {
-            color: #520015;
-        }
-
-        .socialmediaicon ul {
-            display: flex;
-            gap: 15px;
-        }
-
-        .socialmediaicon img {
-            width: 24px;
-            height: 24px;
-        }
-
-        .column4 p {
-            font-size: 0.9rem;
-            color: #333;
-        }
-
-        /* Mobile Responsive Styles */
+        /* Mobile Compatibility */
         @media (max-width: 768px) {
             body {
                 margin-left: 3%;
@@ -331,7 +275,7 @@
             
             .team-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 40px;
             }
             
             .team-member {
@@ -342,20 +286,7 @@
                 width: 120px;
                 height: 120px;
             }
-            
-            .footer {
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-            
-            .column1, .column2, .column3, .column4 {
-                width: 100%;
-            }
-            
-            .socialmediaicon ul {
-                justify-content: center;
-            }
+
         }
 
         @media (max-width: 480px) {
@@ -397,13 +328,11 @@
             }
         }
 
-        /* Make images responsive */
         img {
             max-width: 100%;
             height: auto;
         }
 
-        /* Improve touch targets */
         .nav-link, .btn, .apply-button, .category, .portfolio-link {
             min-height: 44px;
             min-width: 44px;
@@ -412,7 +341,6 @@
             justify-content: center;
         }
 
-        /* Prevent text from being too small */
         body {
             font-size: 16px;
             -webkit-text-size-adjust: 100%;
@@ -444,7 +372,6 @@
         </nav>
     </header>
 
-    <!-- Team Banner -->
     <section class="team-banner">
         <img src="Team.jpg" alt="Meet Our Team Banner">
         <div class="banner-overlay">
@@ -464,8 +391,7 @@
             <!-- Chelsea Choo Minshee -->
             <div class="team-member">
                 <div class="member-image">
-                    <!-- Placeholder for Chelsea's photo -->
-                     <img src="chelsea.jpeg" alt="Chelsea Choo Minshe">
+                    <img src="chelsea.jpeg" alt="Chelsea Choo Minshe">
                 </div>
                 <div class="member-name">CHELSEA CHOO MINSHEE</div>
                 <div class="member-position">CHIEF EXECUTIVE OFFICER (CEO)</div>
@@ -478,7 +404,7 @@
             <!-- Fatima Abdullah -->
             <div class="team-member">
                 <div class="member-image">
-                     <img src="fatima.jpeg" alt="Fatima Abdullah">
+                    <img src="fatima.jpeg" alt="Fatima Abdullah">
                 </div>
                 <div class="member-name">FATIMA ABDULLAH</div>
                 <div class="member-position">CHIEF TECHNOLOGY OFFICER (CTO)</div>
@@ -491,7 +417,7 @@
             <!-- Thanesh Sridharan -->
             <div class="team-member">
                 <div class="member-image">
-                  <img src="thanesh.jpeg" alt="thanesh">
+                    <img src="thanesh.jpeg" alt="thanesh">
                 </div>
                 <div class="member-name">THANESH SRIDHARAN</div>
                 <div class="member-position">CHIEF MARKETING OFFICER (CMO)</div>
@@ -503,40 +429,54 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer">
-                <div class="column1">
-                    <h4>Services</h4>
+<!--Footer section-->
+<footer>
+    <div class="container">
+        <div class="footer">
+            <div class="column1">
+                <h4>SERVICES</h4>
+                <ul>
+                    <li><a href="FAQs.html" target="_blank">FAQs</a></li>
+                    <li><a href="Termsandcondition.html" target="_blank">Terms and conditions</a></li>
+                    <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
+                </ul>
+            </div>
+            <div class="column2">
+                <h4>ABOUT US</h4>
+                <ul>
+                    <li><a href="OurStory.html" target="_blank">Our Story</a></li>
+                    <li><a href="Meettheteam.html" target="_blank">Meet The Team</a></li>
+                    <li><a href="Joinus.html" target="_blank">Join Us</a></li>
+                </ul>
+            </div>
+            <div class="column3">
+                <h4>FOLLOW US</h4>
+                <div class="socialmediaicon">
                     <ul>
-                        <li><a href="FAQs.html" target="_blank">FAQs</a></li>
-                        <li><a href="Termsandcondition.html" target="_blank">Terms and condition</a></li>
-                        <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
+                        <li><a href="https://instagram.com" target="_blank"><img src="instagram.avif" alt="instagram icon"></a></li>
+                        <li><a href="https://facebook.com" target="_blank"><img src="facebook.avif" alt="facebook icon"></a></li>
                     </ul>
                 </div>
-                <div class="column2">
-                    <h4>About Us</h4>
-                    <ul>
-                        <li><a href="OurStory.html" target="_blank">Our Story</a></li>
-                        <li><a href="Meettheteam.html" target="_blank">Meet the team</a></li>
-                        <li><a href="Joinus.html" target="_blank">Join us!</a></li>
-                    </ul>
-                </div>
-                <div class="column3">
-                    <h4>Follow us</h4>
-                    <div class="socialmediaicon">
-                        <ul>
-                            <li><a href="" target="_blank"><img src="instagram.png" alt="instagram icon"></a></li>
-                            <li><a href="" target="_blank"><img src="facebook.png" alt="facebook icon"></a></li>
-                        </ul>
+            </div>
+            <div class="column4">
+                <h4>CONTACT</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Customer Service Hotline:</strong>
+                        <p>+6012 345 6789</p>
                     </div>
-                </div>
-                <div class="column4">
-                    <h4>Contact us</h4>
-                    <p>+60123456789</p>
+                    <div class="contact-item">
+                        <strong>Business Email:</strong>
+                        <p>help@bellsco.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Business Hours:</strong>
+                        <p>Mon-Fri: 9AM-6PM</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 </body>
 </html>
