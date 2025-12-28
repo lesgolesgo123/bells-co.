@@ -3,45 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="women_css.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
     <title>Kids Collection | Bells & Co.</title>
     <style>
-        /* Enhanced styles for dynamic products */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1a1a1a;
-            --secondary: #ffffff;
-            --accent: #00d14d;
-            --accent-hover: #00a83d;
-            --border: #e5e5e5;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text);
-            line-height: 1.6;
+            margin-left: 6%;
+            margin-right: 6%;
         }
 
-        header {
-            background-color: var(--secondary);
-            border-bottom: 1px solid var(--border);
+        /*Cart*/
+
+        .cart-badge {
+            position: relative;
+            display:flex;
+            align-items: center;
+            gap:0.1rem;
+        }
+
+        .cart-count {
+            background-color: #520015;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 600;
+            font-family: "Inter", sans-serif;
+        }
+        /*Navigation bar*/
+        
+          header {
             padding: 1.5rem 2rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
             position: sticky;
             top: 0;
             z-index: 100;
         }
+        
+        
+        .accountinfo, .addtocart {
+            text-decoration: none;
+            transition: transform 0.2s;
+            position: relative;
+        }
 
-        .brand-heading {
+        .accountinfo:hover, .addtocart:hover {
+            transform: scale(1.05);
+        }
+
+        .accountinfo img {
+            width: 2.1rem;
+            height: auto;
+            
+        }
+
+        .addtocart img {
+            width: 2.9rem;
+            height: auto;
+            display: block;
+        }
+
+        .nav-bar {
+            display:flex;
+            gap:50px;
+            justify-content: center;
+            align-items: center;
+        }
+
+         .brand-heading {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -56,183 +89,104 @@
         }
 
         .button-icons {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .cart-badge {
-            position: relative;
-        }
-
-        .cart-count {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--accent);
-            color: var(--secondary);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            right: 0;
             display: flex;
+            gap: 10px;
             align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-            min-width: 20px;
         }
-
-        .accountinfo, .addtocart {
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-
-        .accountinfo:hover, .addtocart:hover {
-            transform: scale(1.05);
-        }
-
-        .accountinfo img, .addtocart img {
-            height: 24px;
-            width: 24px;
-        }
-
-        .nav-bar {
-            display: flex;
-            gap: 3rem;
-            justify-content: center;
-            align-items: center;
-            max-width: 1280px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
+        
         .nav-link {
             text-decoration: none;
-            color: var(--text);
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            transition: color 0.2s;
-            letter-spacing: 0.5px;
+            color:black;
+            font-family: 'Crimson Text', serif;
+            font-size: 1rem;
+            padding: 15px 5px;
+            color:black;
         }
 
-        .nav-link:hover {
-            color: var(--accent);
+        .nav-bar a:hover {
+            color:#520015;
         }
 
         .searchbar {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            background-color: var(--secondary);
+            padding: 0rem 1.9rem;
+            margin: 1 1rem;
         }
 
         .searchinput {
             border: none;
             outline: none;
-            font-size: 0.9rem;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.1rem;
             background: transparent;
-            width: 150px;
-            color: var(--text);
+            width: 12rem;
         }
 
         .search-button {
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
-            color: var(--text-light);
-            transition: color 0.2s;
+            font-size: 1.2rem;
         }
-
-        .search-button:hover {
-            color: var(--accent);
-        }
+        /*Category*/
 
         .collection-header {
-            text-align: center;
-            padding: 3rem 2rem 2rem;
-            background: var(--secondary);
-            margin-bottom: 2rem;
+            text-align: left;
+            padding: 3rem 0;
         }
 
         .collection-header h3 {
-            color: var(--text-light);
             font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 0.1em;
+            color: #666;
             margin-bottom: 0.5rem;
         }
 
         .collection-header h2 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .category-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            padding: 0 2rem;
-            flex-wrap: wrap;
+            font-size: 3rem;
+            font-family: 'Crimson Text', serif;
+            margin:0;
+        }        
+       .category-container {
+            display:flex;
+            gap:4rem;
         }
 
         .category {
-            padding: 0.75rem 1.5rem;
-            border: 2px solid var(--border);
+            border:1px solid black;
             border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: var(--secondary);
-        }
-
-        .category:hover, .category.active {
-            border-color: var(--accent);
-            background: var(--accent);
-            color: var(--secondary);
+            padding:0.2rem 1.4em;
         }
 
         .category p {
-            margin: 0;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            font-family: 'Inter';
+            font-weight: lighter;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
-
-        .product-section {
-            padding: 0 2rem 4rem;
-        }
+    
+        /*Products*/
 
         .products-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
+            display:grid;
+            margin-top: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap:0.2rem;
         }
-
-        .products {
-            background: var(--secondary);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .products:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+       
+        .product-category p {
+            font-size: 15px;
         }
 
         .product-image {
             position: relative;
-            height: 300px;
+            width: 100%;
+            aspect-ratio: 2.4 / 3;
             overflow: hidden;
         }
 
@@ -240,10 +194,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease-in-out;
+            display: block;
         }
 
-        .product-image .secondversion {
+        .secondversion {
             position: absolute;
             top: 0;
             left: 0;
@@ -258,38 +213,26 @@
             opacity: 0;
         }
 
-        .product-info {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
 
-        .product-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-            line-height: 1.4;
+        .product-info {
+            text-align: left;
+            font-size: 0.8rem;
+            font-family: 'Inter';
+            font-weight: lighter;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem; 
+            
         }
 
         .brand {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.55rem;
+            letter-spacing: 0.06em;
         }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
         .add-to-cart-btn {
             width: 100%;
             padding: 0.75rem;
-            background-color: var(--primary);
+            background-color: #1a1a1a;
             color: white;
             border: none;
             border-radius: 6px;
@@ -302,168 +245,34 @@
         }
 
         .add-to-cart-btn:hover {
-            background-color: var(--accent);
-            transform: scale(1.02);
+            background-color: #520015;
         }
 
         .add-to-cart-btn:active {
             transform: scale(0.98);
         }
 
-        .hidden {
-            display: none !important;
-        }
-
-         footer {
-            background-image: url('footerBG.svg');
-            background-size: auto 60%; 
-            background-position: bottom right; 
-            background-repeat: no-repeat;
-            padding:  5rem 0 8rem 0; 
-            min-height: 350px; 
-            position: relative;
-            font-family: 'Crimson Text', serif; 
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 53px;
-            background-image: url('footerPattern.png');
-            background-repeat: repeat-x;
-            background-size: auto 200px;
-            z-index: 1;
-        }
-
-        .footer {
-            display: flex;
-            justify-content: flex-start; 
-            align-items: flex-start;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 3rem 1rem 10rem 5rem; 
-            gap: 8rem; 
-            position: relative;
-            z-index: 2;
-        }
-
-        .column1, .column2, .column3, .column4 {
-            flex: 0 1 auto; 
-        }
-
-        .footer ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .footer h4 {
-            font-family: 'Crimson Text', serif; 
-            font-size: 1.05rem; 
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            text-transform: uppercase;
-            color: #000;
-        }
-
-        .footer a {
-            text-decoration: none;
-            color: black;
-            transition: color 0.3s;
-            font-size: 0.95rem; 
-            display: block;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-            font-family: 'Crimson Text', serif;
-        }
-
-        .footer a:hover {
-            color: #6a1e1e;
-        }
-
-        .column3 img {
-            height: auto;
-            width: 38px;
-            border-radius: 60px;
-            margin-top: 0.3rem;
-        }
-
-        .socialmediaicon ul {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.3rem;
-        }
-
-        .contact-item {
-            display: flex; 
-            white-space: nowrap; 
-            margin-bottom: 0.6rem;
-            line-height: 1.3;
-        }
-
-        .contact-item strong, .contact-item p {
-            font-size: 0.95rem; 
-            color: #000;
-            font-family: 'Crimson Text', serif; 
-        }
-
-        .contact-item strong {
-            font-weight: 600;
-            margin-right: 0.4rem;
-        }
-
-        .contact-item p {
-            margin: 0;
-        }
-
-        @media (max-width: 1100px) {
-            .footer {
-                gap: 4rem;
-                padding-left: 2rem;
-            }
-        }
-
+        
         @media (max-width: 768px) {
-            footer {
-                background-size: 40%; 
-                background-position: bottom center;
+            .products-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+                padding: 0 1rem;
             }
-            
-            .footer {
-                flex-direction: column;
-                gap: 2.5rem;
-                padding: 3rem 1rem 4rem 1rem;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .contact-item {
-                justify-content: center;
-                white-space: normal;
-                flex-wrap: wrap;
-            }
-            
-            .contact-item strong {
-                margin-right: 0;
-                margin-bottom: 0.2rem;
-                width: 100%;
-                text-align: center;
-            }
-        }
 
-        @media (max-width: 480px) {
-            footer {
-                background-size: auto 40%;
-                padding: 2rem 0 5rem 0;
-                min-height: 250px;
+            .collection-header h2 {
+                font-size: 2rem;
             }
-            
-            .footer {
-                gap: 2rem;
-                padding: 2rem 1rem 3rem 1rem;
+
+            .category-container {
+                padding: 0 1rem;
+            }
+
+            .nav-bar {
+                gap: 1.5rem;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
             }
         }
     </style>
@@ -516,7 +325,6 @@
 
     <section class="product-section">
         <div class="products-container" id="productsContainer">
-            <!-- Products will be dynamically loaded here -->
         </div>
     </section>
 
@@ -621,7 +429,7 @@
             },
             {
                 id: 'kid-9',
-                name: 'The Santa\'s Workshop Dress in Red Piqué with Appliqué Detailing',
+                name: 'The Santa\'s Workshop Dress in Red Detailing',
                 category: 'dress',
                 price: 175.00,
                 brand: 'Bells & Co',
@@ -690,6 +498,7 @@
                 
                 return qty;
             }
+            
 
             showNotification(productName, quantity) {
                 // Create notification element
@@ -698,11 +507,11 @@
                     position: fixed;
                     top: 20px;
                     right: 20px;
-                    background: var(--accent);
+                    background: #520015;
                     color: white;
                     padding: 1rem 1.5rem;
                     border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(0, 209, 77, 0.3);
+                    box-shadow: 0 4px 12px rgba(82, 0, 21, 0.3);
                     z-index: 1001;
                     animation: slideInRight 0.3s ease-out;
                     max-width: 300px;
@@ -829,48 +638,6 @@
             });
         }
 
-        // Search functionality
-        function setupSearch() {
-            const searchInput = document.querySelector('.searchinput');
-            const searchButton = document.querySelector('.search-button');
-
-            function performSearch() {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-                
-                if (searchTerm) {
-                    const container = document.getElementById('productsContainer');
-                    const products = container.querySelectorAll('.products');
-                    
-                    products.forEach(product => {
-                        const productName = product.querySelector('.product-name').textContent.toLowerCase();
-                        
-                        if (productName.includes(searchTerm)) {
-                            product.style.display = 'block';
-                        } else {
-                            product.style.display = 'none';
-                        }
-                    });
-                } else {
-                    renderProducts(currentFilter);
-                }
-            }
-
-            searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch();
-                }
-            });
-
-            // Clear search when input is empty
-            searchInput.addEventListener('input', function() {
-                if (!this.value.trim()) {
-                    renderProducts(currentFilter);
-                }
-            });
-        }
-
-        // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             renderProducts();
             setupCategoryFilters();
@@ -879,49 +646,4 @@
         });
     </script>
 </body>
-<footer>
-    <div class="container">
-        <div class="footer">
-            <div class="column1">
-                <h4>SERVICES</h4>
-                <ul>
-                    <li><a href="FAQs.html" target="_blank">FAQs</a></li>
-                    <li><a href="Termsandcondition.html" target="_blank">Terms and conditions</a></li>
-                    <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
-                </ul>
-            </div><div class="column2">  
-                <h4>ABOUT US</h4>
-                <ul>
-                    <li><a href="OurStory.html" target="_blank">Our Story</a></li>
-                    <li><a href="Meettheteam.html" target="_blank">Meet The Team</a></li>
-                    <li><a href="Joinus.html" target="_blank">Join Us</a></li>
-                </ul>
-            </div><div class="column3">  
-                <h4>FOLLOW US</h4>
-                <div class="socialmediaicon">
-                    <ul>
-                        <li><a href="https://instagram.com" target="_blank"><img src="images/instagram.avif" alt="instagram icon"></a></li>
-                        <li><a href="https://facebook.com" target="_blank"><img src="images/facebook.avif" alt="facebook icon"></a></li>
-                    </ul>
-                </div>
-            </div><div class="column4"> 
-                <h4>CONTACT</h4>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <strong>Customer Service Hotline:</strong>
-                        <p>+6012 345 6789</p>
-                    </div>
-                    <div class="contact-item">
-                        <strong>Business Email:</strong>
-                        <p>help@bellsco.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <strong>Business Hours:</strong>
-                        <p>Mon-Fri: 9AM-6PM</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
 </html>
