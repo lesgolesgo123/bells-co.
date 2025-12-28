@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="women_css.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+    <title>Women's Collection | Bells & Co.</title>
+    <style>
+        /* Buy Now Button */
+        .buy-now-btn {
+            width: 100%;
+            padding: 12px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .buy-now-btn:hover {
+            background: #c82333;
+        }
+
+        /* Checkout Modal */
+        .checkout-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .checkout-content {
+            background: white;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .close-btn {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #dc3545;
+            background: white;
+            color: #dc3545;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .checkout-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .complete-order-btn, .cancel-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .complete-order-btn {
+            background: #dc3545;
+            color: white;
+        }
+
+        .cancel-btn {
+            background: #6c757d;
+            color: white;
+        }
+
+        /* Confirmation Message */
+        .confirmation-message {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1001;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand-heading">
+            <img src="bannerlogo.jpeg" alt="banner logo">
+            <div class="button-icons">
+                <a href="signup.html" class="accountinfo">
+                    <img src="profile.png" alt="profile icon">
+                </a>
+                <a href="cart.html" class="addtocart">
+                    <img src="bag.png" alt="add to bag icon">
+                </a>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="women.html" class="nav-link">WOMEN</a>
+            <a href="#men" class="nav-link">MEN</a>
+            <a href="kids.html" class="nav-link">KIDS</a>
+            <div class="searchbar">
+                <input type="text" placeholder="Search..." class="searchinput">
+                <button class="search-button">🔍︎</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="collection-header">
+        <h3>Kids</h3>
+        <h2>Children's Collection</h2>
+    </section>
+
+    <!-- Confirmation Message -->
+    <div class="confirmation-message" id="confirmationMessage">
+        ✅ Order placed successfully! Thank you for shopping with Bells & Co.
+    </div>
+
+    <div class="category-container">
+        <div class="category active" data-filter="all">All</div>
+        <div class="category" data-filter="sweater">Sweaters</div>
+        <div class="category" data-filter="pajamas">Pajamas</div>
+        <div class="category" data-filter="dress">Dresses</div>
+    </div>
+
+    <section class="product-section">
+        <div class="products-container">
+            <!-- Product 1 -->
+            <div class="products" data-category="pajamas">
+                <div class="product-image">
+                    <img class="firstversion" src="kid11.jpg" alt="blue pajamas">
+                    <img class="secondversion" src="kid12.jpg" alt="blue pajamas">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">The Midnight Santa Velvet Pajama Set with Embroidery.</p>
+                    <p class="brand">Bells & Co</p>
+                    <p class="product-price">RM95</p>
+                    <button class="buy-now-btn" data-id="kid-1" data-name="Midnight Santa Pajama Set" data-price="95">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="products" data-category="dress">
+                <div class="product-image">
+                    <img class="firstversion" src="kid21.jpg" alt="Winter Wish Dress">
+                    <img class="secondversion" src="kid22.jpg" alt="Winter Wish Dress">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">The Winter Lodge Stripe Dress in Brushed Wool Blend</p>
+                    <p class="brand">Bells & Co</p>
+                    <p class="product-price">RM180</p>
+                    <button class="buy-now-btn" data-id="kid-2" data-name="Winter Lodge Dress" data-price="180">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="products" data-category="pajamas">
+                <div class="product-image">
+                    <img class="firstversion" src="kid31.jpg" alt="Buttercream Dream Romper">
+                    <img class="secondversion" src="kid32.jpg" alt="Buttercream Dream Romper">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">The Buttercream Dream Romper in Cloud-Knit Cotton</p>
+                    <p class="brand">Bells & Co</p>
+                    <p class="product-price">RM80</p>
+                    <button class="buy-now-btn" data-id="kid-3" data-name="Buttercream Romper" data-price="80">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="products" data-category="dress">
+                <div class="product-image">
+                    <img class="firstversion" src="kid41.jpg" alt="snowy dress">
+                    <img class="secondversion" src="kid42.jpg" alt="snowy dress">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">The Frozen Lake Velvet Dress with Faux-Fur Trim</p>
+                    <p class="brand">Bells & Co</p>
+                    <p class="product-price">RM165</p>
+                    <button class="buy-now-btn" data-id="kid-4" data-name="Frozen Lake Dress" data-price="165">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="products" data-category="sweater">
+                <div class="product-image">
+                    <img class="firstversion" src="kid51.jpg" alt="Pine Trail Pullover">
+                    <img class="secondversion" src="kid52.jpg" alt="Pine Trail Pullover">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">The Pine Trail Heirloom Cable-Knit Pullover in Forest Shadow</p>
+                    <p class="brand">Bells & Co</p>
+                    <p class="product-price">RM75</p>
+                    <button class="buy-now-btn" data-id="kid-5" data-name="Pine Trail Pullover" data-price="75">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="products" data-category="pajamas">
+                <div class="product-image">
+                    <img class="firstversion" src="kid61.jpg" alt="Honey Bear Romper">
+                    <img class="secondversion" src="kid62.jpg" alt="Honey Bear Romper">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">The Generational Cable-Knit Romper in Heritage Brown</p>
+                    <p class="brand">Bells & Co</p>
+                    <p class="product-price">RM85</p>
+                    <button class="buy-now-btn" data-id="kid-6" data-name="Cable-Knit Romper" data-price="85">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="products" data-category="sweater">
+                <div class="product-image">
+                    <img class="firstversion" src="kid71.jpg" alt="Navy Nook Pullover">
+                    <img class="secondversion" src="kid72.jpg" alt="Navy Nook Pullover">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">Royal Indigo Wool-Blend Cardigan Sweater</p>
+                    <p class="brand">Bells & Co</p>
+                    <p class="product-price">RM90</p>
+                    <button class="buy-now-btn" data-id="kid-7" data-name="Indigo Cardigan" data-price="90">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="products" data-category="sweater">
+                <div class="product-image">
+                    <img class="firstversion" src="kid81.jpg" alt="reindeer sweater">
+                    <img class="secondversion" src="kid82.jpg" alt="reindeer sweater">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">Pure Cotton reindeer pullover cardigan</p>
+                    <p class="brand">Bells & Co</p>
+                    <p class="product-price">RM130</p>
+                    <button class="buy-now-btn" data-id="kid-8" data-name="Reindeer Cardigan" data-price="130">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="products" data-category="dress">
+                <div class="product-image">
+                    <img class="firstversion" src="kid91.jpg" alt="red flowy dress">
+                    <img class="secondversion" src="kid92.jpg" alt="red flowy dress">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">The Santa's Workshop Dress in Red Piqué with Appliqué Detailing</p>
+                    <p class="brand">Bells & Co</p>
+                    <p class="product-price">RM175</p>
+                    <button class="buy-now-btn" data-id="kid-9" data-name="Santa's Workshop Dress" data-price="175">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        </div> 
+    </section>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="checkout-modal">
+        <div class="checkout-content">
+            <button class="close-btn" onclick="closeCheckout()">&times;</button>
+            <h2>Complete Purchase</h2>
+            
+            <div class="product-summary">
+                <h3 id="checkoutProductName"></h3>
+                <p id="checkoutPrice"></p>
+                
+                <div class="quantity-selector">
+                    <label>Quantity:</label>
+                    <div class="quantity-controls">
+                        <button type="button" class="qty-btn" onclick="updateQuantity(-1)">-</button>
+                        <span id="quantity">1</span>
+                        <button type="button" class="qty-btn" onclick="updateQuantity(1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="total-section">
+                <p>Subtotal: <span id="subtotal">RM0</span></p>
+                <p>Shipping: <span id="shipping">RM15</span></p>
+                <p>Tax (6%): <span id="tax">RM0</span></p>
+                <p><strong>Total: <span id="finalTotal">RM0</span></strong></p>
+            </div>
+
+            <div class="checkout-buttons">
+                <button class="cancel-btn" onclick="closeCheckout()">Cancel</button>
+                <button class="complete-order-btn" onclick="placeOrder()">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State variables
+        let currentProduct = {};
+        let quantity = 1;
+
+        // Buy Now function
+        function buyNow(productId, productName, price) {
+            currentProduct = { id: productId, name: productName, price: price };
+            quantity = 1;
+            updateCheckoutDisplay();
+            showModal();
+        }
+
+        // Update quantity
+        function updateQuantity(change) {
+            const newQty = quantity + change;
+            if (newQty >= 1 && newQty <= 10) {
+                quantity = newQty;
+                document.getElementById('quantity').textContent = quantity;
+                calculateTotal();
+            }
+        }
+
+        // Calculate total
+        function calculateTotal() {
+            const subtotal = currentProduct.price * quantity;
+            const shipping = subtotal >= 200 ? 0 : 15;
+            const tax = subtotal * 0.06;
+            const total = subtotal + shipping + tax;
+
+            document.getElementById('subtotal').textContent = `RM${subtotal}`;
+            document.getElementById('shipping').textContent = `RM${shipping}`;
+            document.getElementById('tax').textContent = `RM${tax.toFixed(2)}`;
+            document.getElementById('finalTotal').textContent = `RM${total.toFixed(2)}`;
+        }
+
+        // Update checkout display
+        function updateCheckoutDisplay() {
+            document.getElementById('checkoutProductName').textContent = currentProduct.name;
+            document.getElementById('checkoutPrice').textContent = `RM${currentProduct.price}`;
+            document.getElementById('quantity').textContent = quantity;
+            calculateTotal();
+        }
+
+        // Show modal
+        function showModal() {
+            document.getElementById('checkoutModal').style.display = 'block';
+        }
+
+        // Close checkout
+        function closeCheckout() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        // Place order
+        function placeOrder() {
+            const subtotal = currentProduct.price * quantity;
+            const shipping = subtotal >= 200 ? 0 : 15;
+            const tax = subtotal * 0.06;
+            const total = subtotal + shipping + tax;
+
+            // Show confirmation message
+            const confirmation = document.getElementById('confirmationMessage');
+            confirmation.style.display = 'block';
+            
+            // Close modal
+            closeCheckout();
+            
+            // Hide confirmation after 5 seconds
+            setTimeout(() => {
+                confirmation.style.display = 'none';
+            }, 5000);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Buy Now buttons
+            document.querySelectorAll('.buy-now-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = this.dataset.id;
+                    const productName = this.dataset.name;
+                    const price = parseInt(this.dataset.price);
+                    buyNow(productId, productName, price);
+                });
+            });
+
+            // Category filter
+            document.querySelectorAll('.category').forEach(cat => {
+                cat.addEventListener('click', function() {
+                    document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    document.querySelectorAll('.products').forEach(product => {
+                        if (filter === 'all' || product.dataset.category === filter) {
+                            product.style.display = 'block';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Search function
+            document.querySelector('.search-button').addEventListener('click', searchProducts);
+            document.querySelector('.searchinput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') searchProducts();
+            });
+        });
+
+        // Search products
+        function searchProducts() {
+            const term = document.querySelector('.searchinput').value.toLowerCase();
+            document.querySelectorAll('.products').forEach(product => {
+                const name = product.querySelector('.product-name').textContent.toLowerCase();
+                product.style.display = name.includes(term) ? 'block' : 'none';
+            });
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('checkoutModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCheckout();
+        });
+    </script>
+
+    <script src="women.js"></script>
+</body>
+</html>
