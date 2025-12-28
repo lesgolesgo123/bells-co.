@@ -1,669 +1,672 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
-    <title>Women's Collection | Bells & Co.</title>
-    <style>
-        body {
-            margin-left: 6%;
-            margin-right: 6%;
-        }
-
-        /*Cart*/
-
-        .cart-badge {
-            position: relative;
-            display:flex;
-            align-items: center;
-            gap:0.1rem;
-        }
-
-        .cart-count {
-            background-color: #520015;
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.65rem;
-            font-weight: 600;
-            font-family: "Inter", sans-serif;
-        }
-        /*Navigation bar*/
-        
-          header {
-            padding: 1.5rem 2rem;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e5e5e5;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        
-        .accountinfo, .addtocart {
-            text-decoration: none;
-            transition: transform 0.2s;
-            position: relative;
-        }
-
-        .accountinfo:hover, .addtocart:hover {
-            transform: scale(1.05);
-        }
-
-        .accountinfo img {
-            width: 2.1rem;
-            height: auto;
-            
-        }
-
-        .addtocart img {
-            width: 2.9rem;
-            height: auto;
-            display: block;
-        }
-
-        .nav-bar {
-            display:flex;
-            gap:50px;
-            justify-content: center;
-            align-items: center;
-        }
-
-         .brand-heading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .brand-heading img {
-            max-width: 100%;
-            height: 115px;
-            object-fit: contain;
-            display:block;
-        }
-
-        .button-icons {
-            position: absolute;
-            right: 0;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        
-        .nav-link {
-            text-decoration: none;
-            color:black;
-            font-family: 'Crimson Text', serif;
-            font-size: 1rem;
-            padding: 15px 5px;
-            color:black;
-        }
-
-        .nav-bar a:hover {
-            color:#520015;
-        }
-
-        .searchbar {
-            display: flex;
-            align-items: center;
-            padding: 0rem 1.9rem;
-            margin: 1 1rem;
-        }
-
-        .searchinput {
-            border: none;
-            outline: none;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 1.1rem;
-            background: transparent;
-            width: 12rem;
-        }
-
-        .search-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-        /*Category*/
-
-        .collection-header {
-            text-align: left;
-            padding: 3rem 0;
-        }
-
-        .collection-header h3 {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .collection-header h2 {
-            font-size: 3rem;
-            font-family: 'Crimson Text', serif;
-            margin:0;
-        }        
-       .category-container {
-            display:flex;
-            gap:4rem;
-        }
-
-        .category {
-            border:1px solid black;
-            border-radius: 25px;
-            padding:0.2rem 1.4em;
-        }
-
-        .category p {
-            font-size: 0.8rem;
-            font-family: 'Inter';
-            font-weight: lighter;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-    
-        /*Products*/
-
-        .products-container {
-            display:grid;
-            margin-top: 2rem;
-            grid-template-columns: repeat(3, 1fr);
-            gap:0.2rem;
-        }
-       
-        .product-category p {
-            font-size: 15px;
-        }
-
-        .product-image {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 2.4 / 3;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.3s ease-in-out;
-            display: block;
-        }
-
-        .secondversion {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-        }
-
-        .products:hover .secondversion {
-            opacity: 1;
-        }
-
-        .products:hover .firstversion {
-            opacity: 0;
-        }
-
-
-        .product-info {
-            text-align: left;
-            font-size: 0.8rem;
-            font-family: 'Inter';
-            font-weight: lighter;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem; 
-            
-        }
-
-        .brand {
-            font-size: 0.55rem;
-            letter-spacing: 0.06em;
-        }
-        .add-to-cart-btn {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #1a1a1a;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            letter-spacing: 0.5px;
-            margin-top: auto;
-        }
-
-        .add-to-cart-btn:hover {
-            background-color: #520015;
-        }
-
-        .add-to-cart-btn:active {
-            transform: scale(0.98);
-        }
-
-        
-        @media (max-width: 768px) {
-            .products-container {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 1.5rem;
-                padding: 0 1rem;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bells & Co.</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+        <style>
+            body {
+                margin:0;
+            }
+            /*Cart*/
+            .cart-badge {
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 0.1rem;
             }
 
-            .collection-header h2 {
-                font-size: 2rem;
+            .cart-count {
+                background-color: #520015;
+                color: white;
+                border-radius: 50%;
+                width: 18px;
+                height: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.65rem;
+                font-weight: 600;
+                font-family: "Inter", sans-serif;
             }
 
-            .category-container {
-                padding: 0 1rem;
+            /* Navigation section*/
+            
+            .brand-heading {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+
+            .brand-heading img {
+                max-width: 100%;
+                height: 115px;
+                object-fit: contain;
+                display:block;
+            }
+
+            .button-icons {
+                position: absolute;
+                right: 0;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .container {
+                max-width: 1280px;
+                margin: 1 auto;
+            
             }
 
             .nav-bar {
-                gap: 1.5rem;
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 0.5rem;
+                display:flex;
+                gap:50px;
+                justify-content: center;
+                align-items: center;
             }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="brand-heading">
-            <img src="bannerlogo.jpeg" alt="banner logo">
-            <div class="button-icons">
+
+            .nav-link {
+                text-decoration: none;
+                color:black;
+                font-family: 'Crimson Text', serif;
+                font-size: 15px;
+                padding: 20px 5px;
+                color:black;
+            }
+
+            .nav-bar a:hover {
+                color:#520015;
+            }
+
+            .searchbar {
+                display: flex;
+                align-items: center;
+                padding: 0rem 1.9rem;
+                margin: 1 1rem;
+            }
+
+
+            .searchinput {
+                border: none;
+                outline: none;
+                font-family: "Cormorant Garamond", serif;
+                font-size: 1.1rem;
+                background: transparent;
+                width: 200px;
+            
+            }
+
+            .accountinfo img {
+                max-width: 100%;
+                height: 30px;
+            }
+
+            .addtocart img {
+                max-width: 100%;
+                height: 50px;
+            }
+
+            .search-button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 1.2rem;
+            }
+
+            /* Video section*/
+
+            .video-section {
+                width: 100%;             
+                min-height: 700px;          
+                position: relative;
+                overflow: hidden;
+            }
+
+            .video-container video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute; 
+                top: 0;
+                left: 0;
+            }
+
+            .salescontainer {
+                position: absolute;    
+                align-items: center;
+                top: 25%;             
+                left: 25%;
+                text-align: center;
+                color: white;
+            }
+
+            .sales h2 {
+                font-size: 90px;
+                margin:0;
+            }
+
+            /* New arrival and best seller section */
+
+            .newarrival-section, .bestseller-section {
+                background-image: url(images/background.avif);
+                background-size: cover;  
+                min-height: 90vh;
+                padding:0 2rem;
+                background-position: center 20%;
+            }
+            .new-arrivals, .bestseller {
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .container p {
+                text-align: center;
+                padding-top: 0;
+            }
+            .new-arrivals img, .bestseller img {
+                width: 100%;              
+                aspect-ratio: 2.4 / 3;         
+                object-fit: cover; 
+                display: block; 
+                cursor: pointer;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                font-weight: 600;
+                text-align: center;
+                padding-top: 3rem;
+            }
+
+            .display1, .display2, .display3, .display4 {
+                width: 250px; 
+                display: flex;
+                flex-direction: column;
+            }
+
+            .productinfo, 
+            .productname, 
+            .productprice, 
+            .gendercategory, .brand {
+                text-align: left !important;
+                width: 100%;
+            }
+
+            .brand {
+                font-size: 0.55rem;
+                letter-spacing: 0.06em;
+            }
+
+            .productinfo {
+                font-size: 0.8rem;
+                font-family: 'Inter';
+                font-weight: lighter;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                
+            }
+
+            .gendercategory {
+                text-align: center;
+                letter-spacing: 0rem;
+                font-weight: 700;
+                font-size: 0.65rem;
+            }
+
+            /* Women, Men , Kids section*/
+
+            .hero-category {
+                display: flex;
+                margin-top: 1rem;
+            }
+
+            .hero-section {
+                position: relative;
+                flex: 1;
+                overflow: hidden;
+                cursor: pointer;
+            }
+
+            .hero-section img {
+                width: 100%;
+                height: 700px;
+                margin:0;
+                object-fit: cover;
+                display: block;
+            }
+
+            .hero-info {
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
+                z-index: 10;
+                color: white;
+            }
+            .hero-info p {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 0.8rem;
+            }
+            .shopnow-button {
+                padding: 10px 20px;
+                background: white;
+                border: none;
+                font-weight: 600;
+                cursor: pointer;
+                transition: 0.3s ease;
+                text-decoration: none;
+                color:black;
+            }
+            .shopnow-button:hover {
+                background: black;
+                color: white;
+            }
+
+
+            /*Footer*/
+
+            .footer {
+                display:flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 2.5rem 1rem;
+                gap: 3rem;
+            }
+
+
+            .column1, .column2, .column3, .column4 {
+                flex:1;
+                justify-content: space-between;
+            }
+
+            .footer ul {
+                list-style-type: none;
+                margin:0;
+                padding:0;
+            }
+
+            .footer a {
+                text-decoration: none;
+                color: black;
+            }
+            .footer li {
+                margin: 10px 0;
+                padding:0;
+            }
+
+            .column3 img{
+                height:auto;
+                width:35px;
+                align-items:flex-start;
+                border-radius: 60px;
+            }
+
+            .column3 {
+                flex-direction: row;
+            }
+
+            .socialmediaicon ul {
+                display:flex;
+                gap:0.3rem;
+            }
+            footer {
+    background-image: url('images/footerBG.svg');
+    background-size: auto 60%; 
+    background-position: bottom right; 
+    background-repeat: no-repeat;
+    padding:  5rem 0 8rem 0; 
+    min-height: 350px; 
+    position: relative;
+    font-family: 'Crimson Text', serif; 
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 53px;
+    background-image: url('images/footerPattern.png');
+    background-repeat: repeat-x;
+    background-size: auto 200px;
+    z-index: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 1rem 10rem 5rem; 
+    gap: 8rem; 
+    position: relative;
+    z-index: 2;
+}
+
+.column1, .column2, .column3, .column4 {
+    flex: 0 1 auto; 
+}
+
+.footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer h4 {
+    font-family: 'Crimson Text', serif; 
+    font-size: 1.05rem; 
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.footer a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s;
+    font-size: 0.95rem; 
+    display: block;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    font-family: 'Crimson Text', serif;
+}
+
+.footer a:hover {
+    color: #6a1e1e;
+}
+
+.column3 img {
+    height: auto;
+    width: 38px;
+    border-radius: 60px;
+    margin-top: 0.3rem;
+}
+
+.socialmediaicon ul {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+.contact-item {
+    display: flex; 
+    white-space: nowrap; 
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+}
+
+.contact-item strong, .contact-item p {
+    font-size: 0.95rem; 
+    color: #000;
+    font-family: 'Crimson Text', serif; 
+}
+
+.contact-item strong {
+    font-weight: 600;
+    margin-right: 0.4rem;
+}
+
+.contact-item p {
+    margin: 0;
+}
+
+@media (max-width: 1100px) {
+    .footer {
+        gap: 4rem;
+        padding-left: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        background-size: 40%; 
+        background-position: bottom center;
+    }
+    
+    .footer {
+        flex-direction: column;
+        gap: 2.5rem;
+        padding: 3rem 1rem 4rem 1rem;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .contact-item {
+        justify-content: center;
+        white-space: normal;
+        flex-wrap: wrap;
+    }
+    
+    .contact-item strong {
+        margin-right: 0;
+        margin-bottom: 0.2rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        background-size: auto 40%;
+        padding: 2rem 0 5rem 0;
+        min-height: 250px;
+    }
+    
+    .footer {
+        gap: 2rem;
+        padding: 2rem 1rem 3rem 1rem;
+    }
+}
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="brand-heading">
+                <img src="images/bannerlogo.jpeg" alt="banner logo">
+                <div class="button-icons">
                 <a href="signup.html" class="accountinfo">
-                    <img src="profile.png" alt="profile icon">
+                    <img src="images/profile.png" alt="profile icon">
                 </a>
-                <a href="cart.html" class="addtocart cart-badge">
-                    <img src="bag.png" alt="add to bag icon">
-                    <span class="cart-count" id="cartCount">0</span>
+                <a href="cart.html" class="addtocart">
+                    <img src="images/bag.png" alt="add to bag icon">
                 </a>
+                </div>
+            </div>
+            <nav class="nav-bar">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="women.html" class="nav-link">WOMEN</a>
+                <a href="#men" class="nav-link">MEN</a>
+                <a href="kids.html" class="nav-link">KIDS</a>
+                <div class="searchbar">
+                    <input type="text" placeholder="Search..." name="search" class="searchinput">
+                    <button class="search-button">🔍︎</button>
+                </div>
+            </nav>
+        </header>
+    
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <div class="video-container">
+                <video autoplay muted loop>
+                    <source src="images/christmas_ad.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="salescontainer">
+                <div class="sales">
+                    <h2>Christmas Sale</h2>
+                    <h3>20% off for new users</h3>
+                    <p>Discover timeless elegance in our curated collection</p>
+                </div>
             </div>
         </div>
-        <nav class="nav-bar">
-            <a href="index.html" class="nav-link">HOME</a>
-            <a href="women.html" class="nav-link">WOMEN</a>
-            <a href="#men" class="nav-link">MEN</a>
-            <a href="kids.html" class="nav-link">KIDS</a>
-            <div class="searchbar">
-                <input type="text" placeholder="Search..." name="search" class="searchinput">
-                <button class="search-button">🔍︎</button>
-            </div>
-        </nav>
-    </header>
-
-    <section class="collection-header">
-        <h3>WOMEN</h3>
-        <h2>Women's Collection</h2>
     </section>
 
-    <div class="category-container">
-        <div class="category active" data-filter="all">
-            <p>All</p>
+    <!--New Arrivals-->
+    <section class="newarrival-section">
+        <div class="container">
+            <h3 class="section-title">New arrivals</h3>
+            <p>Discover fresh drops, styled for every moment</p>
+            <div class="new-arrivals">
+                <div class="display1">
+                    <img src="images/dress-2(1).avif" alt="red dress">
+                <div class="productinfo">
+                    <p class="gendercategory">WOMEN</p>
+                    <h4 class="productname">Embellished Halterneck Bubble Hem Mini Dress in Wine Red</h4>
+                    <p class="brand">Bells & Co.</p>
+                    <p class="productprice">RM315</p>
+                </div>
+                </div>
+                <div class="display2">
+                    <img src="images/newarrival_pj.jpeg" alt="women christmas pajamas">
+                <div class="productinfo">
+                    <p class="gendercategory">WOMEN</p>
+                    <h4 class="productname">Christmas Teddy Henley And Trouser Pyjama Set</h4>
+                    <p class="brand">Bells & Co.</p>
+                    <p class="productprice">RM165</p>
+                </div>
+                </div>
+                <div class="display3">
+                    <img src="images/newarrival_pj(men).avif" alt="men christmas pajamas">
+                <div class="productinfo">
+                    <p class="gendercategory">MEN</p>
+                    <h4 class="productname">Christmas candycane santa print pajamas set</h4>
+                    <p class="brand">Bells & Co.</p>
+                    <p class="productprice">RM155</p>
+                </div>
+                </div>
+                <div class="display4">
+                    <img src="images/newarrival_sweater(men).avif" alt="men christmas sweater">
+                <div class="productinfo">
+                    <p class="gendercategory">MEN</p>
+                    <h4 class="productname">Zip fairisle print jumper in taupe</h4>
+                    <p class="brand">Bells & Co.</p>
+                    <p class="productprice">RM205</p>
+                </div>
+                </div>
+            </div>
         </div>
-        <div class="category" data-filter="sweater">
-            <p>Sweaters</p>
-        </div>
-        <div class="category" data-filter="pajamas">
-            <p>Pajamas</p>
-        </div>
-        <div class="category" data-filter="dress">
-            <p>Dresses</p>
+    </section>
+    <!--Best seller section-->
+    <section>
+        <div class="bestseller-section">
+            <div class="container">
+                <h3 class="section-title">Best Sellers</h3>
+                <p>Explore seasonal collections of our most in-demand styles</p>
+                <div class="bestseller">
+                    <div class="display1">
+                    <img src="images/dress-3.avif" alt="gold dress">
+                <div class="productinfo">
+                    <p class="gendercategory">WOMEN</p>
+                    <h4 class="productname">Embellished Asymmetric Bodycon Mini Dress in Gold</h4>
+                    <p class="brand">Bells & Co.</p>
+                    <p class="productprice">RM254</p>
+                </div>
+                </div>
+                <div class="display2">
+                    <img src="images/dress-5.webp" alt="silver dress">
+                <div class="productinfo">
+                    <p class="gendercategory">WOMEN</p>
+                    <h4 class="productname">Lavigne Silver Sequin Halter Backless Mini Dress</h4>
+                    <p class="brand">Bells & Co.</p>
+                    <p class="productprice">RM356</p>
+                </div>
+                </div>
+                <div class="display3">
+                    <img src="images/bestseller-womensweater.png" alt="women pink sweater">
+                <div class="productinfo">
+                    <p class="gendercategory">WOMEN</p>
+                    <h4 class="productname">Edine Blush Fair Isle Off-the-Shoulder Sweater Top</h4>
+                    <p class="brand">Bells & Co.</p>
+                    <p class="productprice">RM125</p>
+                </div>
+                </div>
+                <div class="display4">
+                    <img src="images/bestseller-mensweater.png" alt="men sweater">
+                <div class="productinfo">
+                    <p class="gendercategory">MEN</p>
+                    <h4 class="productname">Brown Relaxed Fit Argyle Pattern Crew Jumper</h4>
+                    <p class="brand">Bells & Co.</p>
+                    <p class="productprice">RM207</p>
+                </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <section class="product-section">
-        <div class="products-container" id="productsContainer">
-            </div>
     </section>
-
-    <script>
-        // --- WOMEN'S PRODUCT CATALOG ---
-        const womenProducts = [
-            // Sweaters
-            {
-                id: 'woman-1',
-                name: 'Maeven Light Pink Fair Isle Pullover Sweater',
-                category: 'sweater',
-                price: 130.00,
-                brand: 'Bells & Co',
-                images: { first: 'sweater-1.png', second: 'sweater-1(2).png' }
-            },
-            {
-                id: 'woman-2',
-                name: 'Edine Blush Fair Isle Off-the-Shoulder Sweater Top',
-                category: 'sweater',
-                price: 222.00,
-                brand: 'Bells & Co',
-                images: { first: 'bestseller-womensweater.png', second: 'bestseller-womensweater(2).png' }
-            },
-            {
-                id: 'woman-3',
-                name: 'Boucle Fair Isle Relaxed Jumper With Wool',
-                category: 'sweater',
-                price: 211.00,
-                brand: 'Bells & Co',
-                images: { first: 'sweater-2.avif', second: 'sweater-2(2).avif' }
-            },
-            {
-                id: 'woman-4',
-                name: 'Bow Pattern Yoke Fair Isle Red Sweater',
-                category: 'sweater',
-                price: 178.00,
-                brand: 'Bells & Co',
-                images: { first: 'sweater-3.avif', second: 'sweater-3(2).avif' }
-            },
-            {
-                id: 'woman-5',
-                name: 'Morey Brown Fair Isle Collared Sweater',
-                category: 'sweater',
-                price: 256.00,
-                brand: 'Bells & Co',
-                images: { first: 'sweater-4.avif', second: 'sweater-4(2).avif' }
-            },
-            {
-                id: 'woman-6',
-                name: 'Ashby Dark Green Braided Eyelash Knit Cardigan Sweater',
-                category: 'sweater',
-                price: 233.00,
-                brand: 'Bells & Co',
-                images: { first: 'sweater-5.avif', second: 'sweater-5(2).avif' }
-            },
-            // Pajamas
-            {
-                id: 'woman-7',
-                name: 'Pure Cotton Family Christmas Ivory Mix Checked Pyjama Set',
-                category: 'pajamas',
-                price: 130.00,
-                brand: 'Bells & Co',
-                images: { first: 'pj-1.avif', second: 'pj-1(2).avif' }
-            },
-            {
-                id: 'woman-8',
-                name: 'Pure Cotton Family Christmas Red Mix Checked Pyjama Set',
-                category: 'pajamas',
-                price: 130.00,
-                brand: 'Bells & Co',
-                images: { first: 'pj-2.avif', second: 'pj-2(2).avif' }
-            },
-            {
-                id: 'woman-9',
-                name: 'Christmas Candy Print Poly Long Sleeve Revere Pyjama Set',
-                category: 'pajamas',
-                price: 205.00,
-                brand: 'Bells & Co',
-                images: { first: 'pj-3.avif', second: 'pj-3(2).avif' }
-            },
-            {
-                id: 'woman-10',
-                name: 'Christmas Teddy Fairisle Henley And Trouser Pyjama Set',
-                category: 'pajamas',
-                price: 235.00,
-                brand: 'Bells & Co',
-                images: { first: 'newarrival_pj.jpeg', second: 'pj-4(2).avif' }
-            },
-            {
-                id: 'woman-11',
-                name: 'Teddy Bear Pajamas Set',
-                category: 'pajamas',
-                price: 178.00,
-                brand: 'Bells & Co',
-                images: { first: 'pj-5.avif', second: 'pj-5(2).avif' }
-            },
-            {
-                id: 'woman-12',
-                name: 'Satin Long Sleeve Revere Pyjama Set In Letter To Santa Print',
-                category: 'pajamas',
-                price: 212.00,
-                brand: 'Bells & Co',
-                images: { first: 'pj-6.avif', second: 'pj-6(2).webp' }
-            },
-            // Dresses
-            {
-                id: 'woman-13',
-                name: 'Bow-Detail Low-Rise Mini Skirt in Wine Red',
-                category: 'dress',
-                price: 289.00,
-                brand: 'Bells & Co',
-                images: { first: 'dress-1.avif', second: 'dress-1(2).avif' }
-            },
-            {
-                id: 'woman-14',
-                name: 'Embellished Halterneck Bubble Hem Mini Dress in Wine Red',
-                category: 'dress',
-                price: 315.00,
-                brand: 'Bells & Co',
-                images: { first: 'dress-2(1).avif', second: 'dress-2(2).avif' }
-            },
-            {
-                id: 'woman-15',
-                name: 'Embellished Asymmetric Bodycon Mini Dress in Gold',
-                category: 'dress',
-                price: 254.00,
-                brand: 'Bells & Co',
-                images: { first: 'dress-3.avif', second: 'dress-3(2).avif' }
-            },
-            {
-                id: 'woman-16',
-                name: 'Bow-Detail Ruched Maxi Dress in Emerald Green',
-                category: 'dress',
-                price: 245.00,
-                brand: 'Bells & Co',
-                images: { first: 'dress-4.avif', second: 'dress-4(2).avif' }
-            },
-            {
-                id: 'woman-17',
-                name: 'Lavigne Silver Sequin Halter Backless Mini Dress',
-                category: 'dress',
-                price: 356.00,
-                brand: 'Bells & Co',
-                images: { first: 'dress-5.webp', second: 'dress-5(2).webp' }
-            },
-            {
-                id: 'woman-18',
-                name: 'Exceptional Moments Light Pink Swiss Dot One-Shoulder Mini Dress',
-                category: 'dress',
-                price: 310.00,
-                brand: 'Bells & Co',
-                images: { first: 'dress-6.webp', second: 'dress-6(2).webp' }
-            }
-        ];
-
-        // --- SHOPPING CART SYSTEM ---
-        class ShoppingCart {
-            constructor() {
-                // Using a generic cart key so you can share cart between pages if desired
-                this.cartKey = 'bellsMainCart'; 
-                this.cart = this.loadCart();
-                this.updateCartBadge();
-            }
-
-            loadCart() {
-                try {
-                    const savedCart = localStorage.getItem(this.cartKey);
-                    return savedCart ? JSON.parse(savedCart) : [];
-                } catch (error) {
-                    console.error('Error loading cart:', error);
-                    return [];
-                }
-            }
-
-            saveCart() {
-                try {
-                    localStorage.setItem(this.cartKey, JSON.stringify(this.cart));
-                } catch (error) {
-                    console.error('Error saving cart:', error);
-                }
-            }
-
-            addToCart(productId, productName, price) {
-                const quantity = this.getQuantityFromUser(productName);
-                if (quantity === null || quantity <= 0) return;
-
-                const existingItem = this.cart.find(item => item.id === productId);
-                
-                if (existingItem) {
-                    existingItem.quantity += quantity;
-                } else {
-                    this.cart.push({
-                        id: productId,
-                        name: productName,
-                        price: price,
-                        quantity: quantity
-                    });
-                }
-
-                this.saveCart();
-                this.showNotification(productName, quantity);
-                this.updateCartBadge();
-            }
-
-            getQuantityFromUser(productName) {
-                const qty = parseInt(prompt(`How many "${productName}" would you like to add to cart?`, '1'));
-                
-                if (isNaN(qty) || qty <= 0) {
-                    alert("Please enter a valid quantity greater than 0.");
-                    return null;
-                }
-                
-                return qty;
-            }
-
-            showNotification(productName, quantity) {
-                const notification = document.createElement('div');
-                notification.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: var(--accent);
-                    color: white;
-                    padding: 1rem 1.5rem;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(0, 209, 77, 0.3);
-                    z-index: 1001;
-                    animation: slideInRight 0.3s ease-out;
-                    max-width: 300px;
-                `;
-                
-                notification.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 1.2rem;">✓</span>
-                        <span>${quantity} × ${productName} added to cart!</span>
-                    </div>
-                `;
-
-                if (!document.querySelector('#notification-styles')) {
-                    const styles = document.createElement('style');
-                    styles.id = 'notification-styles';
-                    styles.textContent = `
-                        @keyframes slideInRight {
-                            from { transform: translateX(100%); opacity: 0; }
-                            to { transform: translateX(0); opacity: 1; }
-                        }
-                    `;
-                    document.head.appendChild(styles);
-                }
-
-                document.body.appendChild(notification);
-
-                setTimeout(() => {
-                    if (document.body.contains(notification)) {
-                        notification.style.animation = 'slideInRight 0.3s ease-out reverse';
-                        setTimeout(() => {
-                            if(document.body.contains(notification)) document.body.removeChild(notification);
-                        }, 300);
-                    }
-                }, 3000);
-            }
-
-            updateCartBadge() {
-                try {
-                    const totalItems = this.cart.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0);
-                    const cartCount = document.getElementById('cartCount');
-                    if (cartCount) {
-                        cartCount.textContent = totalItems;
-                        cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
-                    }
-                } catch (error) {
-                    console.error('Error updating cart badge:', error);
-                }
-            }
-        }
-
-        const cart = new ShoppingCart();
-
-        // Global function for onclick events
-        function addToCart(productId, productName, price) {
-            cart.addToCart(productId, productName, price);
-        }
-
-        // --- RENDER & FILTER LOGIC ---
-        let currentFilter = 'all';
-
-        function renderProducts(filterCategory = 'all') {
-            const container = document.getElementById('productsContainer');
-            container.innerHTML = '';
-
-            const filteredProducts = filterCategory === 'all' 
-                ? womenProducts 
-                : womenProducts.filter(product => product.category === filterCategory);
-
-            filteredProducts.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'products';
-                productCard.setAttribute('data-category', product.category);
-
-                productCard.innerHTML = `
-                    <div class="product-image">
-                        <img class="firstversion" src="${product.images.first}" alt="${product.name}">
-                        <img class="secondversion" src="${product.images.second}" alt="${product.name}">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-name">${product.name}</p>
-                        <p class="brand">${product.brand}</p>
-                        <p class="product-price">RM${product.price.toFixed(2)}</p>
-                        <button class="add-to-cart-btn" 
-                                onclick="addToCart('${product.id}', '${product.name.replace(/'/g, "\\'")}', ${product.price})">
-                            Add to Cart
-                        </button>
-                    </div>
-                `;
-
-                container.appendChild(productCard);
-            });
-        }
-
-        function setupCategoryFilters() {
-            const categories = document.querySelectorAll('.category');
-            
-            categories.forEach(category => {
-                category.addEventListener('click', function() {
-                    categories.forEach(cat => cat.classList.remove('active'));
-                    this.classList.add('active');
-                    const filterValue = this.getAttribute('data-filter');
-                    currentFilter = filterValue;
-                    renderProducts(filterValue);
-                });
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            renderProducts();
-            setupCategoryFilters();
-            setupSearch();
-            cart.updateCartBadge();
-        });
-    </script>
-</body>
+    <!--Women, men , kids category-->
+    <section class="hero-category">
+        <div class="hero-section">
+            <img src="images/womensection.jpg" alt="women section">
+            <div class="hero-info">
+                <p>WOMEN</p>
+                <a href="women.html" class="shopnow-button">SHOP NOW</a>
+            </div>
+        </div>
+        <div class="hero-section">
+            <img src="images/mensection.jpg" alt="men section">
+            <div class="hero-info">
+                <p>MEN</p>
+                <a href="men.html" class="shopnow-button">SHOP NOW</a>
+            </div>
+        </div>
+        <div class="hero-section">
+            <img src="images/kidssection.webp" alt="kids section">
+            <div class="hero-info">
+                <p>KIDS</p>
+                <a href="kids.html" class="shopnow-button">SHOP NOW</a>
+            </div>
+        </div>
+    </section>
+        
+<footer>
+    <div class="container">
+        <div class="footer">
+            <div class="column1">
+                <h4>SERVICES</h4>
+                <ul>
+                    <li><a href="FAQs.html" target="_blank">FAQs</a></li>
+                    <li><a href="Termsandcondition.html" target="_blank">Terms and conditions</a></li>
+                    <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
+                </ul>
+            </div><div class="column2">  
+                <h4>ABOUT US</h4>
+                <ul>
+                    <li><a href="OurStory.html" target="_blank">Our Story</a></li>
+                    <li><a href="Meettheteam.html" target="_blank">Meet The Team</a></li>
+                    <li><a href="Joinus.html" target="_blank">Join Us</a></li>
+                </ul>
+            </div><div class="column3">  
+                <h4>FOLLOW US</h4>
+                <div class="socialmediaicon">
+                    <ul>
+                        <li><a href="https://instagram.com" target="_blank"><img src="instagram.avif" alt="instagram icon"></a></li>
+                        <li><a href="https://facebook.com" target="_blank"><img src="facebook.avif" alt="facebook icon"></a></li>
+                    </ul>
+                </div>
+            </div><div class="column4"> 
+                <h4>CONTACT</h4>
+                <ul>
+                    <li><a href="contact.html" target="_blank">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+    </body>
 </html>
