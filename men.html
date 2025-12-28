@@ -544,7 +544,7 @@
                 category: 'shirt',
                 price: 178.00,
                 brand: 'Bells & Co',
-                images: { first: 'images/Shirt4a.png', second: 'images/men_pics/Shirt4b.png' },
+                images: { first: 'images/Shirt4a.png', second: 'images/Shirt4b.png' },
                 description: 'Emerald green formal shirt'
             },
             {
@@ -686,7 +686,7 @@
 
             loadCart() {
                 try {
-                    const savedCart = localStorage.getItem('bellsMensCart');
+                    const savedCart = localStorage.getItem('bellsShoppingCart');
                     return savedCart ? JSON.parse(savedCart) : [];
                 } catch (error) {
                     console.error('Error loading cart:', error);
@@ -696,7 +696,7 @@
 
             saveCart() {
                 try {
-                    localStorage.setItem('bellsMensCart', JSON.stringify(this.cart));
+                    localStorage.setItem('bellsShoppingCart', JSON.stringify(this.cart));
                 } catch (error) {
                     console.error('Error saving cart:', error);
                 }
