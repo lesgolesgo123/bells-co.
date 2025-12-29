@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <title>Kids Collection | Bells & Co.</title>
     <style>
         body {
@@ -169,6 +170,14 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
+
+        .category:hover {
+            background-color: black;
+        }
+
+        .category:hover p {
+            color: white;
+        }
     
         /*Products*/
 
@@ -252,28 +261,25 @@
             transform: scale(0.98);
         }
 
+        /*footer*/
         footer {
-            background-image: url('images/footerBG.svg');
-            background-size: auto 60%; 
-            background-position: bottom right; 
-            background-repeat: no-repeat;
-            padding:  5rem 0 8rem 0; 
-            min-height: 350px; 
+            padding: 8rem 0;
+            min-height: 500px;
             position: relative;
-            font-family: 'Crimson Text', serif; 
-        }
+            font-family: 'Crimson Text', serif;
 
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 53px;
-            background-image: url('images/footerPattern.png');
-            background-repeat: repeat-x;
-            background-size: auto 200px;
-            z-index: 1;
+            background-image: 
+            url('images/footerPattern.png'),
+            url('images/footerBG.svg');
+            background-position: 
+            top,
+            right;
+            background-size: 
+            auto 53px,
+            auto 50%;
+            background-repeat: 
+            repeat-x,
+            no-repeat;
         }
 
         .footer {
@@ -281,7 +287,7 @@
             justify-content: flex-start; 
             align-items: flex-start;
             max-width: 1280px;
-            margin: 0 auto;
+            margin: 12 auto;
             padding: 3rem 1rem 10rem 5rem; 
             gap: 8rem; 
             position: relative;
@@ -290,6 +296,8 @@
 
         .column1, .column2, .column3, .column4 {
             flex: 0 1 auto; 
+            font-size: 50px;
+
         }
 
         .footer ul {
@@ -355,6 +363,16 @@
 
         .contact-item p {
             margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                background-image: url('images/footerPattern.png');
+                background-position: top;
+                background-size: auto 53px;
+                background-repeat: repeat-x;
+                padding-top: calc(53px + 3rem); 
+            }
         }
 
         @media (max-width: 1100px) {
@@ -775,50 +793,40 @@
             cart.updateCartBadge();
         });
     </script>
-</body>
-<footer>
-    <div class="container">
-        <div class="footer">
-            <div class="column1">
-                <h4>SERVICES</h4>
-                <ul>
-                    <li><a href="FAQs.html" target="_blank">FAQs</a></li>
-                    <li><a href="Termsandcondition.html" target="_blank">Terms and conditions</a></li>
-                    <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
-                </ul>
-            </div><div class="column2">  
-                <h4>ABOUT US</h4>
-                <ul>
-                    <li><a href="OurStory.html" target="_blank">Our Story</a></li>
-                    <li><a href="Meettheteam.html" target="_blank">Meet The Team</a></li>
-                    <li><a href="Joinus.html" target="_blank">Join Us</a></li>
-                </ul>
-            </div><div class="column3">  
-                <h4>FOLLOW US</h4>
-                <div class="socialmediaicon">
+    <!--Footer section-->
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <div class="column1">
+                    <h4>SERVICES</h4>
                     <ul>
-                        <li><a href="https://instagram.com" target="_blank"><img src="images/instagram.avif" alt="instagram icon"></a></li>
-                        <li><a href="https://facebook.com" target="_blank"><img src="images/facebook.avif" alt="facebook icon"></a></li>
+                        <li><a href="FAQs.html" target="_blank">FAQs</a></li>
+                        <li><a href="Termsandcondition.html" target="_blank">Terms and conditions</a></li>
+                        <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
                     </ul>
-                </div>
-            </div><div class="column4"> 
-                <h4>CONTACT</h4>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <strong>Customer Service Hotline:</strong>
-                        <p>+6012 345 6789</p>
+                </div><div class="column2">  
+                    <h4>ABOUT US</h4>
+                    <ul>
+                        <li><a href="OurStory.html" target="_blank">Our Story</a></li>
+                        <li><a href="Meettheteam.html" target="_blank">Meet The Team</a></li>
+                        <li><a href="Joinus.html" target="_blank">Join Us</a></li>
+                    </ul>
+                </div><div class="column3">  
+                    <h4>FOLLOW US</h4>
+                    <div class="socialmediaicon">
+                        <ul>
+                            <li><a href="https://instagram.com" target="_blank"><img src="images/instagram.avif" alt="instagram icon"></a></li>
+                            <li><a href="https://facebook.com" target="_blank"><img src="images/facebook.avif" alt="facebook icon"></a></li>
+                        </ul>
                     </div>
-                    <div class="contact-item">
-                        <strong>Business Email:</strong>
-                        <p>help@bellsco.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <strong>Business Hours:</strong>
-                        <p>Mon-Fri: 9AM-6PM</p>
-                    </div>
+                </div><div class="column4"> 
+                    <h4>CONTACT</h4>
+                    <ul>
+                        <li><a href="contact.html" target="_blank">Contact Us</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+</body>
 </html>
