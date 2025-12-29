@@ -373,61 +373,242 @@
             .contact-item p {
                 margin: 0;
             }
-
-           @media (max-width: 768px) {
-        footer {
-            background-image: none; 
-            padding-top: 3rem; 
+        /*Responsive CSS*/
+        @media (max-width: 1024px) {
+            .brand-heading img {
+                height: 80px;
+            }
+            
+            .nav-bar {
+                gap: 25px;
+                flex-wrap: wrap;
+                padding: 0 1rem;
+            }
+            
+            .searchbar {
+                padding: 0 1rem;
+            }
+            
+            .new-arrivals, .bestseller {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .display1, .display2, .display3, .display4 {
+                width: 200px;
+            }
+            
+            .sales h2 {
+                font-size: 60px;
+            }
+            
+            .hero-section img {
+                height: 500px;
+            }
         }
-    }
 
-            @media (max-width: 1100px) {
-                .footer {
-                    gap: 4rem;
-                    padding-left: 2rem;
-                }
+        /* Mobile Styles (max-width: 767px) */
+        @media (max-width: 767px) {
+            /* Header */
+            .brand-heading {
+                flex-direction: column;
+                padding: 1rem;
             }
-
-            @media (max-width: 768px) {
-                footer {
-                    background-size: 40%; 
-                    background-position: bottom center;
-                }
-                
-                .footer {
-                    flex-direction: column;
-                    gap: 2.5rem;
-                    padding: 3rem 1rem 4rem 1rem;
-                    align-items: center;
-                    text-align: center;
-                }
-                
-                .contact-item {
-                    justify-content: center;
-                    white-space: normal;
-                    flex-wrap: wrap;
-                }
-                
-                .contact-item strong {
-                    margin-right: 0;
-                    margin-bottom: 0.2rem;
-                    width: 100%;
-                    text-align: center;
-                }
+            
+            .brand-heading img {
+                height: 60px;
             }
+            
+            .button-icons {
+                position: static;
+                margin-top: 0.5rem;
+            }
+            
+            /* Navigation */
+            .nav-bar {
+                flex-direction: column;
+                gap: 0;
+                padding: 0;
+            }
+            
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .searchbar {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .searchinput {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            /* Video Section */
+            .video-section {
+                min-height: 400px;
+            }
+            
+            .salescontainer {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                top: 30%;
+            }
+            
+            .sales h2 {
+                font-size: 40px;
+            }
+            
+            .sales h3 {
+                font-size: 18px;
+            }
+            
+            .sales p {
+                font-size: 14px;
+            }
+            
+            /* Product Sections */
+            .newarrival-section, .bestseller-section {
+                padding: 0 1rem;
+                min-height: auto;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                padding-top: 2rem;
+            }
+            
+            .new-arrivals, .bestseller {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+            
+            .display1, .display2, .display3, .display4 {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            /* Hero Category Section */
+            .hero-category {
+                flex-direction: column;
+            }
+            
+            .hero-section img {
+                height: 400px;
+            }
+            
+            .hero-info p {
+                font-size: 1.2rem;
+            }
+        }
 
-            @media (max-width: 480px) {
-                footer {
-                    background-size: auto 40%;
-                    padding: 2rem 0 5rem 0;
-                    min-height: 250px;
-                }
-                
-                .footer {
-                    gap: 2rem;
-                    padding: 2rem 1rem 3rem 1rem;
-                }
-            }   
+        /* Small Mobile (max-width: 480px) */
+        @media (max-width: 480px) {
+            .brand-heading img {
+                height: 50px;
+            }
+            
+            .accountinfo img {
+                height: 25px;
+            }
+            
+            .addtocart img {
+                height: 40px;
+            }
+            
+            .sales h2 {
+                font-size: 32px;
+            }
+            
+            .sales h3 {
+                font-size: 16px;
+            }
+            
+            .video-section {
+                min-height: 300px;
+            }
+            
+            .hero-section img {
+                height: 300px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .display1, .display2, .display3, .display4 {
+                max-width: 250px;
+            }
+        }
+    /*Footer*/      
+
+        @media (max-width: 768px) {
+            footer {
+                background-image: url('images/footerPattern.png');
+                background-position: top;
+                background-size: auto 53px;
+                background-repeat: repeat-x;
+                padding-top: calc(53px + 3rem); 
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .footer {
+                gap: 4rem;
+                padding-left: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                background-size: 40%; 
+                background-position: bottom center;
+            }
+            
+            .footer {
+                flex-direction: column;
+                gap: 2.5rem;
+                padding: 3rem 1rem 4rem 1rem;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .contact-item {
+                justify-content: center;
+                white-space: normal;
+                flex-wrap: wrap;
+            }
+            
+            .contact-item strong {
+                margin-right: 0;
+                margin-bottom: 0.2rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                background-size: auto 40%;
+                padding: 2rem 0 5rem 0;
+                min-height: 250px;
+            }
+            
+            .footer {
+                gap: 2rem;
+                padding: 2rem 1rem 3rem 1rem;
+            }
+        }   
         </style>
     </head>
     <body>
@@ -627,5 +808,4 @@
 </footer>
     </body>
 </html>
-
 
