@@ -261,11 +261,37 @@
       border-radius: 12px;
       border-left: 5px solid #ffd1dc;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
     }
 
     .project:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-image {
+      width: 200px;
+      height: 150px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #ffd1dc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-content {
+      flex: 1;
     }
 
     .project h3 {
@@ -445,6 +471,39 @@
       font-size: 18px;
     }
 
+    .skill-icon-container {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .skill-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      background: #fff5f8;
+      border: 2px solid #ffd1dc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .skill-icon:hover {
+      transform: translateY(-3px);
+      border-color: #ff6b9d;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -477,29 +536,13 @@
         text-align: center;
       }
 
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: white;
+      .project {
         flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       }
 
-      .nav-links.active {
-        display: flex;
-      }
-
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .nav-links a {
-        padding: 12px 20px;
-        border-radius: 10px;
+      .project-image {
+        width: 100%;
+        height: 200px;
       }
     }
 
@@ -621,18 +664,28 @@
       
       <div class="skill-category">
         <h3><i class="fas fa-laptop-code"></i> Programming Languages</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">Java</span>
+        <div class="skill-icon-container">
+          <div class="skill-icon">
+            <img src="images/python.png" alt="Python">
+          </div>
+          <div class="skill-icon">
+            <img src="images/java.png" alt="Java">
+          </div>
         </div>
       </div>
 
       <div class="skill-category">
         <h3><i class="fas fa-file-alt"></i> Microsoft Office</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Excel</span>
-          <span class="skill-tag">Word</span>
-          <span class="skill-tag">Access</span>
+        <div class="skill-icon-container">
+          <div class="skill-icon">
+            <img src="images/excel.png" alt="Excel">
+          </div>
+          <div class="skill-icon">
+            <img src="images/words.png" alt="Word">
+          </div>
+          <div class="skill-icon">
+            <img src="images/access.png" alt="Access">
+          </div>
         </div>
       </div>
 
@@ -685,37 +738,102 @@
         <h2>Projects</h2>
 
         <div class="project">
-          <h3><i class="fas fa-user-check"></i> Student Registration System (Python)</h3>
-          <ul>
-            <li>Developed a registration management system with emphasis on input validation and user-friendly interaction.</li>
-            <li>Applied modular programming practices to ensure clarity and maintainability.</li>
-            <li>Implemented error handling and data validation for robust user experience.</li>
-          </ul>
+          <div class="project-content">
+            <h3><i class="fas fa-user-check"></i> Student Registration System (Python)</h3>
+            <ul>
+              <li>Developed a registration management system with emphasis on input validation and user-friendly interaction.</li>
+              <li>Applied modular programming practices to ensure clarity and maintainability.</li>
+              <li>Implemented error handling and data validation for robust user experience.</li>
+            </ul>
+          </div>
         </div>
 
         <div class="project">
-          <h3><i class="fas fa-gamepad"></i> Pokémon GA Ole Game (Java)</h3>
-          <ul>
-            <li>Created a role-playing game utilizing object-oriented programming principles.</li>
-            <li>Implemented inheritance and encapsulation to structure character classes and gameplay mechanics.</li>
-            <li>Designed engaging game mechanics with turn-based combat and character progression.</li>
-          </ul>
+          <div class="project-content">
+            <h3><i class="fas fa-gamepad"></i> Pokémon GA Ole Game (Java)</h3>
+            <ul>
+              <li>Created a role-playing game utilizing object-oriented programming principles.</li>
+              <li>Implemented inheritance and encapsulation to structure character classes and gameplay mechanics.</li>
+              <li>Designed engaging game mechanics with turn-based combat and character progression.</li>
+            </ul>
           
-          <a href="https://github.com/ShareefahB/OOPF" target="_blank" class="github-card">
-            <div class="github-icon-box">
-              <i class="fab fa-github"></i>
-            </div>
-            <div class="github-info">
-              <h3>OOPF Repository</h3>
-              <p>Object-Oriented Programming Fundamentals - Pokémon Game Project</p>
-              <div class="github-meta">
-                <div class="github-meta-item">
-                  <i class="fas fa-external-link-alt"></i>
-                  <span>Visit GitHub</span>
+            <a href="https://github.com/ShareefahB/OOPF" target="_blank" class="github-card">
+              <div class="github-icon-box">
+                <i class="fab fa-github"></i>
+              </div>
+              <div class="github-info">
+                <h3>OOPF Repository</h3>
+                <p>Object-Oriented Programming Fundamentals - Pokémon Game Project</p>
+                <div class="github-meta">
+                  <div class="github-meta-item">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Visit GitHub</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-image">
+            <a href="https://www.youtube.com/watch?v=3Qh4ZVbAepI"><img src="images/Fdb.png" alt="Conference Database System"></a>
+          </div>
+          <div class="project-content">
+            <h3><i class="fas fa-database"></i> Conference Database System</h3>
+            <ul>
+              <li>Designed and implemented a comprehensive database system for managing conference registrations and schedules.</li>
+              <li>Created normalized database schemas with proper relationships between attendees, sessions, and speakers.</li>
+              <li>Developed SQL queries for data retrieval, updates, and reporting functionality.</li>
+              <li>Implemented data integrity constraints and validation rules to ensure accurate information management.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-image">
+            <img src="images/FNP.png" alt="Virtual Network System">
+          </div>
+          <div class="project-content">
+            <h3><i class="fas fa-network-wired"></i> Virtual Network System</h3>
+            <ul>
+              <li>Built a virtual network simulation to demonstrate networking concepts and protocols.</li>
+              <li>Implemented node communication, packet routing, and network topology visualization.</li>
+              <li>Designed algorithms for efficient data transmission and network path optimization.</li>
+              <li>Created an interactive interface for monitoring network traffic and performance metrics.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-image">
+            <img src="images/Fwb.jpg" alt="Clothing Website">
+          </div>
+          <div class="project-content">
+            <h3><i class="fas fa-shopping-bag"></i> Clothing Website</h3>
+            <ul>
+              <li>Developed a fully functional e-commerce website for browsing and purchasing clothing items.</li>
+              <li>Implemented shopping cart functionality with add, remove, and quantity management features.</li>
+              <li>Created responsive product pages with filtering by category, size, and price range.</li>
+              <li>Designed an intuitive user interface with smooth navigation and modern styling.</li>
+            </ul>
+
+             <a href="https://github.com/lesgolesgo123/bells-co." target="_blank" class="github-card">
+              <div class="github-icon-box">
+                <i class="fab fa-github"></i>
+              </div>
+              <div class="github-info">
+                <h3>Website Repository</h3>
+                <p>A Clothing Website Brand</p>
+                <div class="github-meta">
+                  <div class="github-meta-item">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Visit GitHub</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
     </section>
