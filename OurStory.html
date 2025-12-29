@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,29 +87,6 @@
             border: none;
             cursor: pointer;
             font-size: 1.2rem;
-        }
-
-        /* Cart Badge - ADDED THIS */
-        .cart-badge {
-            position: relative;
-            display: inline-block;
-        }
-
-        .cart-count {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: #520015;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 600;
-            font-family: "Inter", sans-serif;
         }
 
         /* Story */
@@ -553,8 +531,11 @@
 
         @media (max-width: 768px) {
             footer {
-                background-image: none; 
-                padding-top: 3rem; 
+                background-image: url('images/footerPattern.png');
+                background-position: top;
+                background-size: auto 53px;
+                background-repeat: repeat-x;
+                padding-top: calc(53px + 3rem); 
             }
         }
 
@@ -618,7 +599,7 @@
                 </a>
                 <a href="cart.html" class="addtocart cart-badge">
                     <img src="images/bag.png" alt="add to bag icon">
-                    <span class="cart-count" id="cartCount">0</span>
+                    <span class="cart-count" id="cartCount"></span>
                 </a>
             </div>
         </div>
@@ -756,5 +737,3 @@
         </div>
     </div>
 </footer>
-</body>
-</html>
