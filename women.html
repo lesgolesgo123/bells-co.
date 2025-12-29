@@ -669,16 +669,17 @@
             }
 
             showNotification(productName, quantity) {
+                // Create notification element
                 const notification = document.createElement('div');
                 notification.style.cssText = `
                     position: fixed;
                     top: 20px;
                     right: 20px;
-                    background: var(--accent);
+                    background: #520015;
                     color: white;
                     padding: 1rem 1.5rem;
                     border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(0, 209, 77, 0.3);
+                    box-shadow: 0 4px 12px rgba(82, 0, 21, 0.3);
                     z-index: 1001;
                     animation: slideInRight 0.3s ease-out;
                     max-width: 300px;
