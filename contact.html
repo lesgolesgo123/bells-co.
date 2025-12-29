@@ -93,40 +93,6 @@
             display: block;
         }
 
-        /* Banner */
-        .success-banner {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #771515;
-            color: white;
-            padding: 1.5rem 3rem;
-            border-radius: 8px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            z-index: 10000;
-            text-align: center;
-            font-size: 1.1rem;
-            display: none;
-            animation: slideDown 0.5s ease-out;
-            max-width: 85%;
-        }
-
-        .success-banner.show {
-            display: block;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translate(-50%, -100px);
-                opacity: 0;
-            }
-            to {
-                transform: translate(-50%, 0);
-                opacity: 1;
-            }
-        }
-
         .submit-btn {
             background: #520015;
             color: white;
@@ -151,18 +117,11 @@
             .header h1 {
                 font-size: 2rem;
             }
-
-            .success-banner {
-                font-size: 1rem;
-                padding: 1rem 1.5rem;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Success Banner -->
-    <div class="success-banner" id="successBanner"></div>
 
     <header class="header">
         <h1>Contact Us</h1>
@@ -221,7 +180,6 @@
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
-            const successBanner = document.getElementById('successBanner');
             const fullName = document.getElementById('fullName');
             const email = document.getElementById('email');
             const phone = document.getElementById('phone');
@@ -238,11 +196,10 @@
                 document.getElementById(id + 'Error').classList.remove('show');
             }
 
-            /* Validation without regex */
             function validateForm() {
                 let valid = true;
 
-                // Full Name validation (minimum 2 characters)
+                //name validation (min 2 char)
                 if (fullName.value.trim().length < 2) {
                     showError('fullName');
                     valid = false;
@@ -250,7 +207,7 @@
                     clearError('fullName');
                 }
 
-                // Email validation without regex (simple check)
+                // email validation
                 const emailValue = email.value.trim();
                 if (!emailValue || 
                     emailValue.indexOf('@') === -1 || 
@@ -264,50 +221,50 @@
                     clearError('email');
                 }
 
-                // Phone validation without regex
+                // phone no validation
                 const phoneValue = phone.value.trim();
-                if (phoneValue) {
-                    let hasInvalidChars = false;
-                    let isTooLong = false;
-                    
-                    // Check if all characters are digits
-                    for (let i = 0; i < phoneValue.length; i++) {
-                        const char = phoneValue.charAt(i);
-                        if (char < '0' || char > '9') {
-                            hasInvalidChars = true;
-                            break;
-                        }
+            if (phoneValue) {
+                let hasInvalidChars = false;
+                let isTooLong = false;
+                
+                // must be didgit
+                for (let i = 0; i < phoneValue.length; i++) {
+                    const char = phoneValue.charAt(i);
+                    if (char < '0' || char > '9') {
+                        hasInvalidChars = true;
+                        break;
                     }
-                    
-                    // Check if length exceeds 15 digits
-                    if (phoneValue.length > 15) {
-                        isTooLong = true;
-                    }
-                    
-                    // Clear any previous error
-                    clearError('phone');
-                    
-                    if (hasInvalidChars || isTooLong) {
-                        showError('phone');
-                        valid = false;
-                        
-                        // Update error message based on the specific issues
-                        const phoneErrorElement = document.getElementById('phoneError');
-                        
-                        if (hasInvalidChars && isTooLong) {
-                            phoneErrorElement.textContent = 'Phone number must contain only digits and be 15 digits or less';
-                        } else if (hasInvalidChars) {
-                            phoneErrorElement.textContent = 'Phone number must contain only digits';
-                        } else if (isTooLong) {
-                            phoneErrorElement.textContent = 'Phone number must be 15 digits or less';
-                        }
-                    }
-                } else {
-                    // Phone is optional, so clear error if empty
-                    clearError('phone');
                 }
+                
+                // must be less than 15 digits
+                if (phoneValue.length > 15) {
+                    isTooLong = true;
+                }
+                
+                // clear
+                clearError('phone');
+                
+                if (hasInvalidChars || isTooLong) {
+                    showError('phone');
+                    valid = false;
+                    
+                    // phone error messages
+                    const phoneErrorElement = document.getElementById('phoneError');
+                    
+                    if (hasInvalidChars && isTooLong) {
+                        phoneErrorElement.textContent = 'Phone number must contain only digits and be 15 digits or less';
+                    } else if (hasInvalidChars) {
+                        phoneErrorElement.textContent = 'Phone number must contain only digits';
+                    } else if (isTooLong) {
+                        phoneErrorElement.textContent = 'Phone number must be 15 digits or less';
+                    }
+                }
+            } else {
+                // phone no is optional, so clear error if empty
+                clearError('phone');
+            }
 
-                // Subject validation
+                // subject validation
                 if (!subject.value) {
                     showError('subject');
                     valid = false;
@@ -315,7 +272,7 @@
                     clearError('subject');
                 }
 
-                // Message validation (minimum 10 characters)
+                // message validation (min 10 char)
                 if (message.value.trim().length < 10) {
                     showError('message');
                     valid = false;
@@ -326,19 +283,6 @@
                 return valid;
             }
 
-            // Removed the phone input formatting so users can type freely
-            // (they'll see the error when they submit instead)
-
-            function showSuccessBanner(messageText) {
-                successBanner.textContent = messageText;
-                successBanner.style.display = 'block';
-                successBanner.classList.add('show');
-
-                setTimeout(() => {
-                    successBanner.classList.remove('show');
-                    setTimeout(() => successBanner.style.display = 'none', 500);
-                }, 5000);
-            }
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
@@ -348,10 +292,9 @@
                     submitBtn.textContent = 'Sending...';
 
                     setTimeout(() => {
-                        showSuccessBanner(
-                            'Your email has been sent to the Bells & Co. team. We will reach out via the email you provided.'
-                        );
-
+                       
+                        alert('Your email has been sent to the Bells & Co. team. We will reach out via the email you provided.');
+                        
                         form.reset();
                         submitBtn.disabled = false;
                         submitBtn.textContent = 'Send Message';
@@ -365,5 +308,7 @@
         });
     </script>
 
+</body>
+</html>
 </body>
 </html>
