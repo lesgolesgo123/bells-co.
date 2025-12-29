@@ -365,12 +365,15 @@
             margin: 0;
         }
 
-       @media (max-width: 768px) {
-    footer {
-        background-image: none; 
-        padding-top: 3rem; 
-    }
-}
+        @media (max-width: 768px) {
+            footer {
+                background-image: url('images/footerPattern.png');
+                background-position: top;
+                background-size: auto 53px;
+                background-repeat: repeat-x;
+                padding-top: calc(53px + 3rem); 
+            }
+        }
 
         @media (max-width: 1100px) {
             .footer {
@@ -453,7 +456,7 @@
     </section>
 
     <div class="category-container">
-        <div class="category active" data-filter="all">
+        <div class="category" data-filter="all">
             <p>All</p>
         </div>
         <div class="category" data-filter="sweater">
@@ -846,4 +849,3 @@
     </footer>
 </body>
 </html>
-
