@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanesh Sridharan - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(129, 174, 74, 0.95);
+            z-index: 1000;
+            padding: 12px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #cover {
+            background-image: url('images/cover.svg');
+            background-color: #000;
+        }
+
+        #about {
+            background-image: url('images/about.svg');
+            background-color: #e8e8e8;
+        }
+
+        #intro {
+            background-image: url('images/intro.svg');
+            background-color: #f0f0f0;
+        }
+
+        .about-content {
+            position: relative;
+            width: 90%;
+            max-width: 1600px;
+            padding: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .about-content:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-content p {
+            font-size: 1.7rem;
+            line-height: 2.0;
+            margin-bottom: 0;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        #education {
+            background-image: url('images/education.svg');
+            background-color: #f5f5f5;
+        }
+
+        .education-content {
+            font-size: 1.7rem;
+            line-height: 2.0;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .education-content p {
+            margin: 0 auto;
+            position: relative;
+            width: 90%;
+            max-width: 4000px;
+            padding: 70px;
+            margin-top: 20vh;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .education-content p:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        #skills {
+            background-image: url('images/skills.svg');
+            background-color: #f8f8f8;
+        }
+
+        .skills-container {
+            width: 80%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+            margin-top: 70vh;
+        }
+
+        .skill {
+            margin-bottom: 35px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .skill:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #81AE4A;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .skill-bar {
+            height: 16px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #81AE4A, #6B9440);
+            border-radius: 8px;
+        }
+
+        #work {
+            background-image: url('images/work.svg');
+            background-color: #f0f0f0;
+        }
+
+        #work1 {
+            background-image: url('images/work1.svg');
+            background-color: #e8e8e8;
+        }
+
+        #work2 {
+            background-image: url('images/work2.svg');
+            background-color: #f5f5f5;
+        }
+
+        .work-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            width: 90%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .work-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 480px;
+        }
+
+        .work-item:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .work-image a {
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-decoration: none;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.03);
+        }
+
+        .work-item h3 {
+            color: #81AE4A;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .work-item p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #contact {
+            background-image: url('images/contact.svg');
+            background-color: #f8f8f8;
+        }
+
+        #form {
+            background-image: url('images/form.svg');
+            background-color: #ffffff;
+            padding: 100px 0;
+            min-height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 80px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .contact-form:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 35px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.2rem;
+            text-align: left;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 18px 25px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #81AE4A;
+            box-shadow: 0 0 0 4px rgba(129, 174, 74, 0.1);
+        }
+
+        .btn {
+            background: #81AE4A;
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.3rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 50px auto 0;
+            font-weight: 600;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .btn:hover {
+            background: #6B9440;
+            box-shadow: 0 8px 20px rgba(129, 174, 74, 0.3);
+        }
+
+        .footer {
+            background: #81AE4A;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .footer p {
+            font-size: 1.2rem;
+            margin: 0;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1200px) {
+            .work-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 1200px;
+            }
+            
+            .work-item {
+                height: 460px;
+            }
+            
+            .contact-form {
+                padding: 60px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .nav-links a {
+                font-size: 0.95rem;
+                padding: 7px 15px;
+            }
+            
+            .skills-container {
+                width: 85%;
+                margin-top: 25vh;
+            }
+            
+            .work-gallery {
+                grid-template-columns: 1fr;
+                max-width: 800px;
+            }
+            
+            .work-item {
+                height: auto;
+                min-height: 450px;
+            }
+            
+            .contact-form {
+                padding: 50px;
+            }
+            
+            .about-content p,
+            .education-content p {
+                font-size: 1.5rem;
+                padding: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 25px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .about-content {
+                width: 95%;
+                padding: 40px;
+            }
+
+            .about-content p {
+                font-size: 1.3rem;
+            }
+
+            .education-content p {
+                width: 95%;
+                padding: 40px;
+                font-size: 1.3rem;
+            }
+
+            .skills-container {
+                margin-top: 20vh;
+                width: 90%;
+            }
+
+            .skill {
+                padding: 25px 30px;
+            }
+
+            .work-gallery {
+                width: 95%;
+                padding: 30px;
+                gap: 30px;
+            }
+
+            .contact-form {
+                padding: 40px;
+                width: 95%;
+            }
+
+            .form-container {
+                padding: 0 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 5px 10px;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .about-content {
+                padding: 30px;
+            }
+
+            .about-content p {
+                font-size: 1.1rem;
+            }
+
+            .skills-container {
+                margin-top: 15vh;
+            }
+
+            .skill {
+                padding: 20px 25px;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+            
+            .work-item {
+                padding: 25px;
+            }
+            
+            .work-image {
+                height: 180px;
+            }
+            
+            .work-item h3 {
+                font-size: 1.3rem;
+            }
+            
+            .work-item p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 16px 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/tlogo.png" alt="Thanesh Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#cover">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#form">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="cover" class="section">
+    </section>
+
+    <section id="about" class="section">
+    </section>
+
+    <section id="intro" class="section">
+        <div class="about-content">
+            <p>I am Thanesh Sridharan, a dedicated and passionate individual who loves incorporating creativity into technicality to make visually appealing products. With a strong foundation in both design and development, I strive to create seamless user experiences that combine aesthetic appeal with functional excellence.</p>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="education-content">
+            <p>Currently pursuing my BSc (Hons) in Computer Science at Sunway University, I have developed a comprehensive understanding of both theoretical concepts and practical applications in the field of computing. My academic journey has equipped me with knowledge in software development, data structures, algorithms, and web technologies, while also fostering critical thinking and problem-solving skills essential for real-world challenges.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="skills-container">
+            <div class="skill">
+                <div class="skill-name">
+                    <span>HTML/CSS</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">
+                    <span>Java</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">
+                    <span>Python</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">
+                    <span>SQL</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">
+                    <span>Canva</span>
+                    <span>100%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="section">
+    </section>
+
+    <section id="work1" class="section">
+        <div class="work-gallery">
+            <div class="work-item">
+                <div class="work-image">
+                    <a href="https://youtu.be/KrSrGXo77MI" target="_blank">
+                        <img src="images/pokemon.png" alt="Java Pokemon Game" class="project-image">
+                    </a>
+                </div>
+                <h3>Pokemon Game</h3>
+                <p>Java Eclipse project featuring interactive gameplay with Pokemon characters and battle mechanics.</p>
+            </div>
+            <div class="work-item">
+                <div class="work-image">
+                    <a href="https://www.youtube.com/watch?v=wEg4mLSbCt4" target="_blank">
+                        <img src="images/principles.png" alt="Admin Student Management System" class="project-image">
+                    </a>
+                </div>
+                <h3>Admin Student Management</h3>
+                <p>Python project for managing student records, grades, and administrative tasks efficiently.</p>
+            </div>
+            <div class="work-item">
+                <div class="work-image">
+                    <a href="https://www.youtube.com/watch?v=3Qh4ZVbAepI " target="_blank">
+                        <img src="images/database.png" alt="Conference Database Management System" class="project-image">
+                    </a>
+                </div>
+                <h3>Conference Database Management</h3>
+                <p>Database system for managing conference registrations, schedules, and participant information.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="work2" class="section">
+        <div class="work-gallery">
+            <div class="work-item">
+                <div class="work-image">
+                    <a href="https://lesgolesgo123.github.io/bells-co./" target="_blank">
+                        <img src="images/bellsmain.png" alt="Clothing Website Project" class="project-image">
+                    </a>
+                </div>
+                <h3>Clothing Website</h3>
+                <p>Responsive website built with HTML, CSS, and JavaScript for a fashion brand called Bells & Co. I built the entire footer and everything in it.</p>
+            </div>
+            <div class="work-item">
+                <div class="work-image">
+                    <a href="https://www.canva.com/design/DAGebc0rn-Q/D9s_PeUFfwfmzoTxmsT_Vw/edit?utm_content=DAGebc0rn-Q&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">
+                        <img src="images/creative.png" alt="Creative Portfolio" class="project-image">
+                    </a>
+                </div>
+                <h3>Creative Portfolio</h3>
+                <p>Visually stunning portfolio design created using Canva with modern layouts and graphics.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+    </section>
+
+    <section id="form" class="section">
+        <div class="form-container">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Type your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>&copy; 2025 Thanesh Sridharan. All Rights Reserved.</p>
+            </div>
+            <div class="footer-right">
+                <p>Email: <a href="mailto:22000798@imail.sunway.edu.my">22000798@imail.sunway.edu.my</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
