@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join The Fam!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+            font-family: 'Inter', sans-serif;}
         
         body {
             background-image: url(images/lgbg.jpeg);
@@ -34,6 +34,7 @@
         }
         
         h1 {
+            font-family: 'Playfair Display', serif;
             color: #2c3e50;
             text-align: center;
             margin-bottom: 30px;
@@ -42,7 +43,8 @@
         }
         
         h1 span {
-            color: #dc3545;
+            color: #72121b;
+            font-family: 'Playfair Display', serif;
         }
         
         .input-group {
@@ -52,13 +54,11 @@
         
         .input-group label {
             position: absolute;
-            top: 50%;
+            top: 30%;
             left: 15px;
-            transform: translateY(-50%);
             color: #6c757d;
             font-size: 16px;
-            transition: all 0.3s;
-            pointer-events: none;
+            pointer-events: none
         }
         
         .input-group input {
@@ -69,7 +69,6 @@
             border-radius: 8px;
             color: #495057;
             font-size: 16px;
-            transition: all 0.3s;
         }
         
         .input-group input:focus {
@@ -117,7 +116,6 @@
             color: #495057;
             font-size: 16px;
             cursor: pointer;
-            transition: all 0.3s;
         }
         
         select option {
@@ -141,20 +139,14 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
             margin-top: 10px;
         }
-        
         .btn:hover {
             background: #c82333;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
         }
-        
-        .btn:active {
-            transform: translateY(0);
-        }
-        
+       
         .login-link {
             text-align: center;
             margin-top: 25px;
@@ -165,7 +157,6 @@
             color: #dc3545;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
         }
         
         .login-link a:hover {
@@ -202,11 +193,9 @@
         .terms a {
             color: #dc3545;
             text-decoration: none;
-            transition: color 0.3s;
         }
         
         .terms a:hover {
-            color: #c82333;
             text-decoration: underline;
         }
         
@@ -230,7 +219,7 @@
             }
         }
         
-        /* Success state */
+        /* Success */
         .success-btn {
             background: #28a745 !important;
         }
@@ -273,10 +262,10 @@
             <div class="phone-group">
                 <div class="input-group phone-code">
                     <select id="countryCode">
-                        <option value="+60">🇲🇾 +60</option>
-                        <option value="+966">🇸🇦 +966</option>
-                        <option value="+1" selected>🇺🇸 +1</option>
-                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+60">MY +60</option>
+                        <option value="+966">SG +65</option>
+                        <option value="+1" selected>IDN +62</option>
+                        <option value="+44">TH +66</option>
                     </select>
                 </div>
                 <div class="input-group phone-number">
@@ -311,11 +300,11 @@
                 <div class="error" id="termsError"></div>
             </div>
             
-            <button type="submit" class="btn">Get Started</button>
+            <button type="submit" class="btn">Sign up</button>
         </form>
         
         <p class="login-link">
-            Already have an account? <a href="login.html">Sign In</a>
+            Already have an account? <a href="login.html">Login</a>
         </p>
     </div>
 
@@ -383,6 +372,14 @@
                 showError('email', 'Enter a valid email');
                 valid = false;
             }
+            // Phone Number
+            const phoneInput = document.getElementById('mobile');
+            const Number = phoneInput.value.replace(/\D/g, ''); 
+
+            if (Number.length < 6 || Number.length > 15) {
+                showError('mobile', 'Phone number must be between 6 and 15 digits');
+                valid = false;
+            }
             
             // Password
             const password = document.getElementById('password').value;
@@ -408,7 +405,7 @@
                 btn.classList.add('success-btn');
                 
                 setTimeout(() => {
-                    alert('Welcome to The Club! 🚀');
+                    alert('Welcome to The Club!');
                     window.location.href = 'index.html';
                 }, 1000);
             }
@@ -427,5 +424,4 @@
     </script>
 </body>
 </html>
-
 
