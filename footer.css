@@ -10,7 +10,7 @@ footer {
         url('footerBG.svg');
     background-position: 
         top,
-         right;
+        right;
     background-size: 
         auto 53px,
         auto 50%;
@@ -160,4 +160,5 @@ footer {
         padding: 2rem 1rem 3rem 1rem;
     }
 }
+
 
