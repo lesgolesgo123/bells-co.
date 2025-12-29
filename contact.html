@@ -14,7 +14,7 @@
 
         body {
         font-family: 'Georgia', serif;
-        background: url("lgbg.jpeg") no-repeat center center fixed;
+        background: url("images/lgbg.jpeg") no-repeat center center fixed;
         background-size: cover;
         color: #333;
         line-height: 1.6;
@@ -176,7 +176,7 @@
                 <div class="form-group">
                     <label for="fullName" class="required">Full Name</label>
                     <input type="text" id="fullName" placeholder="Enter your full name">
-                    <div class="error-message" id="fullNameError">Name must be at least 2 characters long</div>
+                    <div class="error-message" id="fullNameError">Please enter your full name in its entirety</div>
                 </div>
 
                 <div class="form-group">
@@ -187,8 +187,8 @@
 
                 <div class="form-group">
                     <label for="phone">Phone Number (Optional)</label>
-                    <input type="tel" id="phone" placeholder="Digits only (e.g., 1234567890)">
-                    <div class="error-message" id="phoneError">Phone number must contain only digits</div>
+                    <input type="tel" id="phone" placeholder="Digits only (example: 60123456789)">
+                    <div class="error-message" id="phoneError">Phone number must contain only digits and be 15 digits or less</div>
                 </div>
 
                 <div class="form-group">
@@ -206,7 +206,7 @@
                 <div class="form-group">
                     <label for="message" class="required">Message</label>
                     <textarea id="message" rows="5" placeholder="Type your message here..."></textarea>
-                    <div class="error-message" id="messageError">Message must be at least 10 characters long</div>
+                    <div class="error-message" id="messageError">Please write more so we can assist you accordingly (minimum 10 characters)</div>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
@@ -219,10 +219,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-
             const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
             const successBanner = document.getElementById('successBanner');
+            const fullName = document.getElementById('fullName');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
 
             function showError(id) {
                 document.getElementById(id).classList.add('error');
@@ -234,22 +238,96 @@
                 document.getElementById(id + 'Error').classList.remove('show');
             }
 
-            /*Validation*/
+            /* Validation without regex */
             function validateForm() {
                 let valid = true;
 
-                if (fullName.value.trim().length < 2) { showError('fullName'); valid = false; } else clearError('fullName');
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { showError('email'); valid = false; } else clearError('email');
-                if (phone.value && !/^\d+$/.test(phone.value)) { showError('phone'); valid = false; } else clearError('phone');
-                if (!subject.value) { showError('subject'); valid = false; } else clearError('subject');
-                if (message.value.trim().length < 10) { showError('message'); valid = false; } else clearError('message');
+                // Full Name validation (minimum 2 characters)
+                if (fullName.value.trim().length < 2) {
+                    showError('fullName');
+                    valid = false;
+                } else {
+                    clearError('fullName');
+                }
+
+                // Email validation without regex (simple check)
+                const emailValue = email.value.trim();
+                if (!emailValue || 
+                    emailValue.indexOf('@') === -1 || 
+                    emailValue.indexOf('.') === -1 ||
+                    emailValue.indexOf('@') === 0 ||
+                    emailValue.lastIndexOf('.') <= emailValue.indexOf('@') + 1 ||
+                    emailValue.length - emailValue.lastIndexOf('.') < 2) {
+                    showError('email');
+                    valid = false;
+                } else {
+                    clearError('email');
+                }
+
+                // Phone validation without regex
+                const phoneValue = phone.value.trim();
+                if (phoneValue) {
+                    let hasInvalidChars = false;
+                    let isTooLong = false;
+                    
+                    // Check if all characters are digits
+                    for (let i = 0; i < phoneValue.length; i++) {
+                        const char = phoneValue.charAt(i);
+                        if (char < '0' || char > '9') {
+                            hasInvalidChars = true;
+                            break;
+                        }
+                    }
+                    
+                    // Check if length exceeds 15 digits
+                    if (phoneValue.length > 15) {
+                        isTooLong = true;
+                    }
+                    
+                    // Clear any previous error
+                    clearError('phone');
+                    
+                    if (hasInvalidChars || isTooLong) {
+                        showError('phone');
+                        valid = false;
+                        
+                        // Update error message based on the specific issues
+                        const phoneErrorElement = document.getElementById('phoneError');
+                        
+                        if (hasInvalidChars && isTooLong) {
+                            phoneErrorElement.textContent = 'Phone number must contain only digits and be 15 digits or less';
+                        } else if (hasInvalidChars) {
+                            phoneErrorElement.textContent = 'Phone number must contain only digits';
+                        } else if (isTooLong) {
+                            phoneErrorElement.textContent = 'Phone number must be 15 digits or less';
+                        }
+                    }
+                } else {
+                    // Phone is optional, so clear error if empty
+                    clearError('phone');
+                }
+
+                // Subject validation
+                if (!subject.value) {
+                    showError('subject');
+                    valid = false;
+                } else {
+                    clearError('subject');
+                }
+
+                // Message validation (minimum 10 characters)
+                if (message.value.trim().length < 10) {
+                    showError('message');
+                    valid = false;
+                } else {
+                    clearError('message');
+                }
 
                 return valid;
             }
 
-            phone.addEventListener('input', () => {
-                phone.value = phone.value.replace(/\D/g, '');
-            });
+            // Removed the phone input formatting so users can type freely
+            // (they'll see the error when they submit instead)
 
             function showSuccessBanner(messageText) {
                 successBanner.textContent = messageText;
@@ -280,7 +358,6 @@
                     }, 2000);
                 }
             });
-        
 
             form.querySelectorAll('input, select, textarea').forEach(el => {
                 el.addEventListener('input', () => clearError(el.id));
