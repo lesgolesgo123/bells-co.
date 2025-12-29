@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -147,6 +146,11 @@
             padding: 40px 0;
         }
 
+        /* ADDED: Padding space between team boxes and footer */
+        .team-container {
+            padding-bottom: 100px !important; /* Added padding below team boxes */
+        }
+
         .team-intro {
             text-align: center;
             margin-bottom: 50px;
@@ -156,9 +160,10 @@
             font-family: 'Crimson Text', serif;
         }
 
+        /* UPDATED TEAM GRID - All 3 boxes same line, button at bottom */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* Force 3 equal columns */
             gap: 40px;
         }
 
@@ -168,6 +173,10 @@
             border-radius: 8px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
+            display: flex; /* Make the card a flex container */
+            flex-direction: column; /* Stack children vertically */
+            height: 100%; /* Make all cards equal height */
+            min-height: 450px; /* Set a minimum height */
         }
 
         .team-member:hover {
@@ -186,6 +195,7 @@
             justify-content: center;
             font-size: 3rem;
             color: #520015;
+            flex-shrink: 0; /* Prevent image from shrinking */
         }
 
         .member-image img {
@@ -201,6 +211,7 @@
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            flex-shrink: 0; /* Prevent name from shrinking */
         }
 
         .member-position {
@@ -209,6 +220,7 @@
             margin-bottom: 15px;
             font-weight: 500;
             font-family: 'Crimson Text', serif;
+            flex-shrink: 0; /* Prevent position from shrinking */
         }
 
         .member-bio {
@@ -217,6 +229,7 @@
             color: #333;
             margin-bottom: 20px;
             font-family: 'Crimson Text', serif;
+            flex-grow: 1; /* Allow bio to expand and fill space */
         }
 
         .portfolio-link {
@@ -231,6 +244,8 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.2s;
+            margin-top: auto; /* Push button to bottom */
+            align-self: center; /* Center horizontally */
         }
 
         .portfolio-link:hover {
@@ -272,13 +287,22 @@
                 font-size: 1rem;
             }
             
+            /* ADDED: Reduced padding on mobile */
+            .team-container {
+                padding-bottom: 60px !important; /* Less padding on mobile */
+            }
+            
+            /* UPDATED FOR MOBILE */
             .team-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
+                max-width: 500px;
+                margin: 0 auto;
             }
             
             .team-member {
-                padding: 25px;
+                min-height: auto; /* Remove fixed height on mobile */
+                height: auto;
             }
             
             .member-image {
@@ -286,6 +310,23 @@
                 height: 120px;
             }
 
+        }
+
+        @media (max-width: 1024px) {
+            /* Tablet adjustments */
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+            
+            .team-member {
+                min-height: 420px;
+            }
+            
+            /* ADDED: Adjusted padding for tablet */
+            .team-container {
+                padding-bottom: 80px !important;
+            }
         }
 
         @media (max-width: 480px) {
@@ -325,6 +366,11 @@
             .member-name {
                 font-size: 1.1rem;
             }
+            
+            /* ADDED: Further reduced padding on very small screens */
+            .team-container {
+                padding-bottom: 40px !important;
+            }
         }
 
         img {
@@ -344,7 +390,8 @@
             font-size: 16px;
             -webkit-text-size-adjust: 100%;
         }
-         /*footer*/
+        
+        /* ADDED: Space above footer */
         footer {
             padding: 8rem 0;
             min-height: 500px;
@@ -363,8 +410,10 @@
             background-repeat: 
             repeat-x,
             no-repeat;
+            
+            /* ADDED: Clear space above footer */
+            margin-top: 0; /* Ensure no margin collapse issues */
         }
-
 
         .footer {
             display: flex;
@@ -449,15 +498,12 @@
             margin: 0;
         }
 
-        @media (max-width: 768px) {
-            footer {
-                background-image: url('images/footerPattern.png');
-                background-position: top;
-                background-size: auto 53px;
-                background-repeat: repeat-x;
-                padding-top: calc(53px + 3rem); 
-            }
+           @media (max-width: 768px) {
+        footer {
+            background-image: none; 
+            padding-top: 3rem; 
         }
+    }
 
         @media (max-width: 1100px) {
             .footer {
@@ -508,6 +554,8 @@
         }
 
     </style>
+</head>
+<body>
     <header>
         <div class="brand-heading">
             <img src="images/bannerlogo.jpeg" alt="banner logo">
@@ -517,7 +565,7 @@
                 </a>
                 <a href="cart.html" class="addtocart cart-badge">
                     <img src="images/bag.png" alt="add to bag icon">
-                    <span class="cart-count" id="cartCount"></span>
+                    <span class="cart-count" id="cartCount">0</span>
                 </a>
             </div>
         </div>
@@ -552,7 +600,7 @@
             <!-- Chelsea Choo Minshee -->
             <div class="team-member">
                 <div class="member-image">
-                    <img src="chelsea.jpeg" alt="Chelsea Choo Minshe">
+                    <img src="images/che.ping" alt="Chelsea Choo Minshe">
                 </div>
                 <div class="member-name">CHELSEA CHOO MINSHEE</div>
                 <div class="member-position">CHIEF EXECUTIVE OFFICER (CEO)</div>
@@ -565,20 +613,20 @@
             <!-- Fatima Abdullah -->
             <div class="team-member">
                 <div class="member-image">
-                    <img src="fatima.jpeg" alt="Fatima Abdullah">
+                    <img src="images/Fatima.jpeg" alt="Fatima Abdullah">
                 </div>
                 <div class="member-name">FATIMA ABDULLAH</div>
                 <div class="member-position">CHIEF TECHNOLOGY OFFICER (CTO)</div>
                 <div class="member-bio">
                     Fatima oversees all technology operations at Bells & Co., from our e-commerce platform to inventory systems. Her background in software engineering ensures our digital presence is seamless, secure, and user-friendly for customers worldwide.
                 </div>
-                <a href="fatima-portfolio.html" class="portfolio-link" target="_blank">View Portfolio</a>
+                <a href="atima-portfolio.html" class="portfolio-link" target="_blank">View Portfolio</a>
             </div>
             
             <!-- Thanesh Sridharan -->
             <div class="team-member">
                 <div class="member-image">
-                    <img src="thanesh.jpeg" alt="thanesh">
+                    <img src="images/thanesh.png" alt="thanesh">
                 </div>
                 <div class="member-name">THANESH SRIDHARAN</div>
                 <div class="member-position">CHIEF MARKETING OFFICER (CMO)</div>
@@ -625,3 +673,5 @@
         </div>
     </div>
 </footer>
+</body>
+</html>
