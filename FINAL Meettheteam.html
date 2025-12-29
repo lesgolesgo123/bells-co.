@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -448,12 +449,15 @@
             margin: 0;
         }
 
-           @media (max-width: 768px) {
-        footer {
-            background-image: none; 
-            padding-top: 3rem; 
+        @media (max-width: 768px) {
+            footer {
+                background-image: url('images/footerPattern.png');
+                background-position: top;
+                background-size: auto 53px;
+                background-repeat: repeat-x;
+                padding-top: calc(53px + 3rem); 
+            }
         }
-    }
 
         @media (max-width: 1100px) {
             .footer {
@@ -513,7 +517,7 @@
                 </a>
                 <a href="cart.html" class="addtocart cart-badge">
                     <img src="images/bag.png" alt="add to bag icon">
-                    <span class="cart-count" id="cartCount">0</span>
+                    <span class="cart-count" id="cartCount"></span>
                 </a>
             </div>
         </div>
@@ -548,9 +552,9 @@
             <!-- Chelsea Choo Minshee -->
             <div class="team-member">
                 <div class="member-image">
-                    <img src="images/me4.png" alt="Chelsea Choo Minshe">
+                    <img src="chelsea.jpeg" alt="Chelsea Choo Minshe">
                 </div>
-                <div class="member-name">CHELSEA CHOO MINSHE</div>
+                <div class="member-name">CHELSEA CHOO MINSHEE</div>
                 <div class="member-position">CHIEF EXECUTIVE OFFICER (CEO)</div>
                 <div class="member-bio">
                     Chelsea leads Bells & Co. with a vision for fashion that makes a difference. She combines business acumen with a passion for social impact, ensuring every collection reflects our commitment to quality and charity.
@@ -561,7 +565,7 @@
             <!-- Fatima Abdullah -->
             <div class="team-member">
                 <div class="member-image">
-                    <img src="images/Fatima.jpeg" alt="Fatima Abdullah">
+                    <img src="fatima.jpeg" alt="Fatima Abdullah">
                 </div>
                 <div class="member-name">FATIMA ABDULLAH</div>
                 <div class="member-position">CHIEF TECHNOLOGY OFFICER (CTO)</div>
@@ -574,7 +578,7 @@
             <!-- Thanesh Sridharan -->
             <div class="team-member">
                 <div class="member-image">
-                    <img src="images/thanesh.png" alt="thanesh">
+                    <img src="thanesh.jpeg" alt="thanesh">
                 </div>
                 <div class="member-name">THANESH SRIDHARAN</div>
                 <div class="member-position">CHIEF MARKETING OFFICER (CMO)</div>
