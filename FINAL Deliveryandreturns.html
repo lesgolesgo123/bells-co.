@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -409,8 +408,11 @@
 
         @media (max-width: 768px) {
             footer {
-                background-image: none; 
-                padding-top: 3rem; 
+                background-image: url('images/footerPattern.png');
+                background-position: top;
+                background-size: auto 53px;
+                background-repeat: repeat-x;
+                padding-top: calc(53px + 3rem); 
             }
         }
 
@@ -473,7 +475,7 @@
                 </a>
                 <a href="cart.html" class="addtocart cart-badge">
                     <img src="images/bag.png" alt="add to bag icon">
-                    <span class="cart-count" id="cartCount"></span>
+                    <span class="cart-count" id="cartCount">0</span>
                 </a>
             </div>
         </div>
