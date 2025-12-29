@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;700;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Portfolio</title>
+        <style>  
+            .menu {
+                margin-top: 10px;
+                background-image: url(images/background.jpg);
+                padding: 60px 20px;
+                font-family: "Poppins", sans-serif;
+                color:#6c5e58; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .homepage-container {
+                display: flex;
+                max-width: 1200px;
+                width: 100%;
+                background: #fff5f9;
+                border-radius: 25px;
+                box-shadow: 0 15px 50px rgba(235, 111, 158, 0.25);
+            }
+
+            .image-container {
+                flex: 1;
+
+            }
+
+            .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 25px 0 0 25px;
+            object-fit: cover;
+            }
+
+            .text-container span {
+                font-family: 'Great Vibes', cursive;
+                font-weight: 300;
+                margin-left: 70px;
+                font-size: 112px;
+                color: #eb6f9e;
+                line-height: 1.2px;
+            }
+
+            .text-container {
+            flex: 1;
+            padding:70px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            }
+
+            .text-container h1 {
+            font-family: 'Playfair Display', serif; 
+            font-weight: 700;
+            font-size: 100px;
+            margin:0;
+            line-height: 1.1;
+            color: #4a3c3a;
+            }
+
+            .homepage-container .text-container p {
+                margin-top: 40px;
+                margin-bottom: 10px; 
+                line-height: 2.0;
+                color: #6c5e58;
+                font-family: "Poppins", sans-serif;
+                font-weight: 400;
+
+            }
+
+            header {
+                max-width: 1200px;
+                width:90%;
+                display:flex;
+                justify-content: space-between;
+                background-color: #fff5f9;
+                border-radius: 15px;
+                border-style: outset;
+                padding: 10px 30px;
+                margin-left: auto;
+                margin-right: auto;
+                box-shadow: 0 8px 25px rgba(235, 111, 158, 0.15);
+            }
+
+            header img {
+                width:auto;
+                height:60px;
+                position:static;
+            }
+            .navmenu {
+                display:flex;
+                list-style: none;
+            }
+
+            .navmenu li {
+                margin-left: 35px;
+                font-weight: 500;
+                font-family: "Poppins", sans-serif;
+            }
+
+            .navmenu a {
+                color: #4a3c3a;
+                text-decoration: none;
+            }
+
+            .navmenu a:hover{
+                color: #eb6f9e;
+            }
+
+
+            body {
+                font-family: "Poppins", sans-serif;
+                display:block;
+                background: linear-gradient(to bottom, #fffbfc 0%, #ffe8f3 100%);
+                margin:0;
+                padding:0;
+            }
+
+
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+
+            .aboutme {  
+                display: flex;
+                flex-direction: column;
+                background-color: #fff5f9;
+                padding: 30px;
+                width: 60%;
+                height:auto;
+                margin-right: auto;
+                margin-left: auto;
+                border-style: outset;
+                border-radius: 15px;
+                box-shadow: 0 15px 45px rgba(235, 111, 158, 0.2);
+            }
+            .aboutme p {
+                line-height: 1.6;
+                color: #6c5e58;
+                font-family: "Poppins", sans-serif;
+                font-weight: 400;
+            }
+            .aboutme h1 {
+                text-align: right;
+                font-family: "Playfair Display", serif;
+                color: #eb6f9e;                     
+                font-size: 50px; 
+            }
+
+            .aboutmesection {
+                display: flex;             
+                align-items: center;       
+                flex-direction: row;
+                gap: 40px;                
+                padding: 50px 0;
+                margin:15px;
+            }
+            .aboutmesection img {
+                width: 35%;             
+                height: auto;
+                border-radius: 20px;  
+                box-shadow: 0 15px 50px rgba(235, 111, 158, 0.3);
+            }
+
+            .skills h1 {
+                text-align: center;
+                font-size:48px;
+                color: #4a3c3a;
+                font-family: "Playfair Display", serif;
+                font-weight: 700;
+            }
+
+            .skillcontainer {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 60px; 
+                padding: 20px;
+                margin-left: 10px;
+            }
+
+            .skillssection1, .skillssection2, .skillssection3, .skillssection4 {
+                border-radius: 20px;
+                box-shadow: 0 10px 35px rgba(235, 111, 158, 0.15);
+                background: #fff5f9;
+                padding: 30px;
+                display: flex;     
+                flex-direction: column; 
+            }
+
+            .skillssection1 img,
+            .skillssection2 img,
+            .skillssection3 img,
+            .skillssection4 img {
+                width: 80px; 
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+            .skillname {
+                text-align:center;
+                font-size:15px;
+                color: #6c5e58;
+                font-family: "Poppins", sans-serif;
+            }
+
+            .skillsitem {
+                display: flex;      
+                gap: 30px;         
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .skillssection1 h3, .skillssection2 h3, .skillssection3 h3, .skillssection4 h3 {
+                text-align: center;
+                margin-top: 10px;
+                margin-bottom: 25px;
+                color: #eb6f9e;
+                font-weight: 600;
+                font-family: "Poppins", sans-serif;
+            }
+
+            hr {
+                border: 1.4px solid #eb6f9e,;
+                opacity: 0.5;
+            }
+
+            .projects h1 {
+                font-size: 40px;
+                text-align: center;
+                margin-bottom: 10px;
+                color: #4a3c3a;
+                font-family: "Playfair Display", serif;
+            }
+
+            .projectcontainer {
+                display:flex;
+                margin-top: 10px 15px;
+                gap:15px;
+            }
+            .projectcontent {
+                display: flex;
+                flex-direction: column; 
+                box-shadow: 0 10px 35px rgba(235, 111, 158, 0.15);
+                border-radius: 15px;
+                max-width: 340px;
+                height:550px;
+                overflow: hidden;
+                gap: 10px;
+                width: 100%;
+                margin:10px 15px;
+                background-color: #fff5f9;
+            }
+
+            .projectimage img {
+                width: 100%;
+                height: auto;
+            }
+
+            .projectdesc p {
+                font-size: 20px;
+                font-family:Georgia, 'Times New Roman', Times, serif;
+                font-weight:550;
+                padding:0 20px;
+
+            }
+
+            .projectdesc h3 {
+                font-size: 13px;
+                font-family: "Poppins", sans-serif;
+                font-weight: 400;
+                line-height: 1.24;
+                color:#565353;
+                padding:0 20px;
+                letter-spacing: 0.3px;
+            }
+
+            .projectdesc a {
+                display:flex;
+                border: 2px solid #eb6f9e;
+                border-radius: 5px;
+                width:20%;
+                color: #eb6f9e;
+                text-decoration: none;
+                padding:6px 25px;
+                justify-content: center;
+                white-space: nowrap;
+                margin: 20px 20px;
+                font-weight: 600;
+            }
+
+            .projectdesc a:hover {
+                background-color: #eb6f9e;
+                color: #ffffff;
+            }
+
+            .category {
+                display:flex;
+                border-radius: 25px;
+                width:auto;
+                max-width: 60px;
+                height:auto;
+                max-height: 20px;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                margin: 10px 20px;
+                background-color:#f4cac8;
+            }
+
+            .categorycontainer {
+                display: flex;
+                flex-wrap: wrap;
+                margin:12px;
+            }
+
+            .HTML .category {
+                margin: 0px 5px;
+            }
+
+            .category p {
+                font-size: 12px;
+                color: #ffffff;
+                font-weight: 600;
+                font-family: "Poppins", sans-serif;
+            }
+
+            .contactdesc span {
+                font-family:"Dancing Script", cursive;
+                color:#d14585;
+                font-size: 70px;
+                font-weight: 600;
+            }
+
+            .contactdesc p {
+                font-family: "Playfair Display", serif;
+                color: #eb6f9e;
+                font-size: 50px ;
+                font-weight: 700;
+
+            }
+
+            .contactme {
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                flex-direction: column;
+                margin-top: 60px;
+            }
+
+            .contactdesc {
+                text-align: center;
+                flex-direction: column;
+            }
+
+            .decoration {
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                padding-left: 45px;
+            }
+
+            .decoration img {
+                width: 150px; 
+                height: auto;
+            }
+
+            .contactdesc p {
+                margin-bottom:70px;
+            }
+
+            .contactdetails strong {
+                flex-direction: column;
+                text-align: justify;
+                color:#eb6f9e;
+                font-weight: 600;
+            }
+
+            .contactcontents {
+                display: flex;
+                flex-direction: row;
+                gap:33%;
+                margin: 10px 20px; 
+                color: #6c5e58;
+                flex-wrap: wrap;
+            }
+            .contactdetails img{
+                height:auto;
+                width:40px;
+                align-items:flex-start;
+                border-radius: 60px;
+            }
+
+            .contactdetails a {
+                text-decoration: none;
+            }
+
+            .contactdetails img:hover {
+                box-shadow: 0px 5px 20px rgba(235, 111, 158, 0.4);
+            }
+
+            .footer-copyright {
+                color: #ffffff;
+                font-size: 15px;
+                text-align: center;
+                font-weight: 300;
+                margin-top: 10px;
+                padding: 12px;
+                border-top: 1.5px solid rgba(255, 255, 255, 0.3);
+            }
+
+            footer {
+                background-color: #eb6f9e;
+                padding:0;
+                font-family: "Poppins", sans-serif;
+            }
+
+            .footercontainer {
+                display: flex;
+                flex-direction: column;
+                padding: 5px 0; 
+                margin: 0;
+                width:100%;
+            }
+
+            .footerimage img{
+                width: 180px;
+                margin:0 auto;
+                padding-left: 0;
+                display:block;
+            }
+        </style>
+    </head>
+        <body>
+            <!--Main page section-->
+            <header>
+                <img src="images/flowers-removebg-preview.png" alt="bear" >
+                <ul class="navmenu">
+                    <li><a href="#Home">HOME</a></li>
+                    <li><a href="#about">ABOUT ME</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </header>
+            <section>
+            <section class="menu" id="Home">
+              <div class="homepage-container">
+                <div class="image-container">
+                    <img src="images/me4.png">
+                </div>
+                <div class="text-container">
+                    <p> Hi! I'm</p>
+                    <h1>Chelsea <br><span>Choo</span></h1>
+                    <p>BCS Student<br>First year semester 3 student who loves to bring ideas to life through code and creativity!
+                </div>
+              </div>
+            </section>
+              <!--About me section-->
+              <section class="aboutmesection" id="about">
+                <img src="images/me2.jpg" alt="picture of me">
+                <div class="aboutme">
+                    <h1>about me.</h1>
+                    <p>Hi! my name is Chelsea, and I am currently pursuing a Bachelor of science (Hons) in Computer Science at Sunway University. I am deeply passionate about web development, designing creative layouts and problem-solving through code. What drives me the most is the excitement of turning ideas into visually appealing and meaningful projects that may inspire others in the future.<br>
+                    Besides that, I love bringing ideas to life through interactive interfaces, ensuring a smooth, user-friendly, and enjoyable experience for every user. I am actively exploring opportunities where I can contribute my skills, continue learning, and grow in a collaborative, tech-driven environment. As I continue to progressively master and sharpen my skills in web development and programming, my goal is to create something that could strongly impact and contribute positively to the digital world.</p>
+                </div>
+            </section>
+        <!--Skills section-->
+        <section class="skills" id="skills">
+            <h1>Skills</h1>
+            <hr>
+            <div class="skillcontainer">
+                <div class="skillssection1">
+                <h3>Web Development Languages</h3>
+                    <div class="skillsitem">
+                        <div>                        
+                            <img src="images/html.png" alt="html logo">
+                            <p class="skillname">HTML</p>
+                        </div>
+                        <div>
+                            <img src="images/css.jpg" alt="css logo">
+                            <p class="skillname">CSS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skillssection2">
+                <h3>Programming Languages</h3>
+                    <div class="skillsitem">
+                        <div>
+                         <img src="images/python.png" alt="html logo">    
+                            <p class="skillname">Python</p>
+                        </div>
+                        <div>
+                         <img src="images/java.png" alt="html logo">
+                            <p class="skillname">Java</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skillssection3">
+                    <h3>Microsoft Office</h3>
+                        <div class="skillsitem">
+                        <div>
+                            <img src="images/excel.png" alt="html logo">
+                                <p class="skillname">Excel</p>
+                        </div>
+                        <div>
+                            <img src="images/words.png" alt="html logo">
+                                <p class="skillname">Words</p>
+                        </div>
+                        <div>
+                            <img src="images/powerpoint.png" alt="html logo">
+                                <p class="skillname">Powerpoint</p>
+                        </div>
+                        <div>
+                            <img src="images/access.png" alt="html logo">
+                                <p class="skillname">Access</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skillssection4">
+                <h3>Tools</h3>
+                    <div class="skillsitem">
+                        <div>
+                            <img src="images/vscode.png" alt="html logo">
+                                <p class="skillname">VScode</p>
+                        </div>
+                        <div>
+                            <img src="images/canva.png" alt="html logo">
+                                <p class="skillname">Canva</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <hr>
+        </section>
+    <!--Projects section-->
+        <!--Project header-->
+        <section class="projects" id="projects">
+                <h1>My Projects</h1>
+            <!--Project contents-->
+            <div class="projectcontainer">
+                    <div class="projectcontent">
+                        <div class="projectimage">
+                            <img src="images/excel screenshot.png" alt="screenshot of excel">
+                        </div>
+                        <div class="projectdesc">
+                            <p>Analysis on food preferences and dining habits</p>
+                            <h3>Using both quantitative and qualitative survey data, this analysis explores the food preferences and perceptions of MUFY students familiar with on-campus dining options. The data was analyzed using Microsoft Excel to identify key patterns, trends, and variations in students’ food choices and satisfaction levels.</h3>
+                            <div class="category">
+                                <p>Excel</p>
+                            </div>
+                            <a href="https://onedrive.live.com/personal/e6e0d4168c972271/_layouts/15/doc.aspx?resid=a6c15d2a-b885-4abe-bd27-83f7b723c102&cid=e6e0d4168c972271" target="_blank">View Project</a>
+                        </div>
+                    </div>                 
+                    <div class="projectcontent">
+                        <div class="projectimage">
+                            <img src="images/Screenshot 2025-11-12 002429.png"alt="screenshot of website">
+                        </div>
+                        <div class="projectdesc">
+                            <p>Bakery Shop Website</p>
+                            <h3>A simple and interactive website designed for a bakery shop where users can place orders conveniently online. The website highlights form handling, validation, and clean interface design using HTML and CSS.</h3>
+                        <div class="categorycontainer">
+                            <div class="category">
+                                <p>HTML</p>
+                            </div>
+                            <div class="category">
+                                <p>CSS</p>
+                            </div>
+                        </div>
+                            <a href="https://wigglywoggly.github.io/bakery-shop/" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+        </section>
+        <!--Contact section-->
+        <section class="contact" id="contact">
+            <div class="contactme">
+                <div class="contactdesc">
+                    <div class="decoration">
+                        <img src="images/stars-removebg-preview.png" alt="flower">
+                    </div>
+                    <p>Let's connect and <br><span><i>collaborate</i></span></p>
+                </div>
+                    <div class="contactcontents">
+                        <div class="contactdetails">
+                            <p><strong>PHONE</strong></p>
+                            <p>+60128170911</p>
+                        </div>
+                        <div class="contactdetails">
+                            <p><strong>EMAIL</strong></p>
+                            <p>chelsea.minshe@gmail.com</p>
+                        </div>
+                        <div class="contactdetails">
+                            <p><strong>SOCIALS</strong></p>
+                            <div class="socialicons">
+                                <a href="https://www.linkedin.com/in/chelsea-choo-981099366/" target="_blank" class="socialmedia-link">
+                                    <img src="images/Linkedin-outline-circle-pink-01.png" alt="LinkedIn" class="social-icon">
+                                </a>
+                                <a href="https://www.instagram.com/3helsea/" target="_blank" class="socialmedia-link">
+                                    <img src="images/instagram-circle-outline-pink-01.png" alt="Instagram" class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+        <!--Footer section-->
+        <section>
+            <div class="footercontainer">
+                <footer>
+                    <div class="footerimage">
+                        <img src="images/footer.png" alt="footer pic">
+                    </div>
+                        <p class="footer-copyright">&copy; 2025 Chelsea Choo. All rights reserved.</p>
+                </footer>
+            </div>
+            </section>
+        </section>
+    </body>
+</html>
