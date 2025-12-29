@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - Bells & Co.</title>
+   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Add this universal font rule to ensure ALL elements use Cormorant Garamond */
+    * {
+      font-family: "Cormorant Garamond", serif !important;
+    }
+
+    body {
+      font-family: "Cormorant Garamond", serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    /* Specifically target form elements which browsers often override */
+    input, button, select, textarea {
+      font-family: "Cormorant Garamond", serif !important;
+    }
+
+    /* Make sure the checkout button specifically uses the correct font */
+    .checkout-btn, input[type="submit"], button[type="submit"] {
+      width: 100%;
+      padding: 1rem;
+      background: #00d14d;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: "Cormorant Garamond", serif !important;
+      margin-top: 1.5rem;
+      transition: background 0.2s;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Rest of your existing CSS... */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-heading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .brand-heading img {
+      max-width: 100%;
+      height: 115px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .button-icons {
+      position: absolute;
+      right: 0;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .cart-badge {
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: #00d14d;
+      color: #ffffff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      min-width: 20px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #1f2937;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .icon-btn:hover {
+      color: #00d14d;
+    }
+
+    .icon-btn img {
+      height: 24px;
+      width: 24px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .nav-bar {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: black;
+      font-size: 15px;
+      padding: 15px 5px;
+    } 
+
+    .nav-bar a:hover {
+      color: #520015;
+    }
+
+    .searchbar {
+      display: flex;
+      align-items: center;
+      padding: 0rem 1.9rem;
+      margin: 1 1rem;
+    }
+
+    .searchinput {
+      border: none;
+      outline: none;
+      font-size: 1.1rem;
+      background: transparent;
+      width: 200px;
+    }
+
+    .accountinfo img {
+      max-width: 100%;
+      height: 30px;
+    }
+
+    .addtocart img {
+      max-width: 100%;
+      height: 50px;
+    }
+
+    .search-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .searchinput::placeholder {
+      color: #6b7280;
+    }
+
+    .search-button:hover {
+      color: #00d14d;
+    }
+
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+
+    .cart-container {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+    }
+
+    .cart-items-wrapper {
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.5rem;
+      border-bottom: 1px solid #e5e5e5;
+      transition: background-color 0.2s;
+      gap: 1.5rem;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item:hover {
+      background-color: #f9fafb;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-details h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .item-details p {
+      color: #6b7280;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #e5e5e5;
+      background: #ffffff;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .qty-btn:hover {
+      background: #f9fafb;
+      border-color: #00d14d;
+    }
+
+    .quantity-display {
+      min-width: 40px;
+      text-align: center;
+      font-weight: 600;
+      padding: 0.25rem;
+    }
+
+    .item-price-section {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+
+    .item-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #00d14d;
+    }
+
+    .item-unit-price {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .remove-btn {
+      background: transparent;
+      color: #dc2626;
+      border: 1px solid #dc2626;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .remove-btn:hover {
+      background: #dc2626;
+      color: #ffffff;
+    }
+
+    .cart-summary {
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 2rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+    }
+
+    .summary-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #1f2937;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .summary-row.total {
+      border-top: 2px solid #e5e5e5;
+      border-bottom: 2px solid #e5e5e5;
+      padding: 1rem 0;
+      color: #1f2937;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    .checkout-btn:hover {
+      background: #00a83d;
+    }
+
+    .checkout-btn:disabled {
+      background: #6b7280;
+      cursor: not-allowed;
+    }
+
+    .continue-shopping-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: transparent;
+      color: #1f2937;
+      border: 1px solid #1f2937;
+      padding: 0.75rem;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: all 0.2s;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .continue-shopping-btn:hover {
+      background: #1f2937;
+      color: #ffffff;
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #6b7280;
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+    }
+
+    .empty-cart-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .empty-cart h2 {
+      margin-bottom: 0.5rem;
+      color: #1f2937;
+      font-size: 1.5rem;
+    }
+
+            /*footer*/
+        footer {
+            padding: 8rem 0;
+            min-height: 500px;
+            position: relative;
+            font-family: 'Crimson Text', serif;
+
+            background-image: 
+            url('images/footerPattern.png'),
+            url('images/footerBG.svg');
+            background-position: 
+            top,
+            right;
+            background-size: 
+            auto 53px,
+            auto 50%;
+            background-repeat: 
+            repeat-x,
+            no-repeat;
+        }
+
+
+        .footer {
+            display: flex;
+            justify-content: flex-start; 
+            align-items: flex-start;
+            max-width: 1280px;
+            margin: 12 auto;
+            padding: 3rem 1rem 10rem 5rem; 
+            gap: 8rem; 
+            position: relative;
+            z-index: 2;
+        }
+
+        .column1, .column2, .column3, .column4 {
+            flex: 0 1 auto; 
+            font-size: 50px;
+
+        }
+
+        .footer ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer h4 {
+            font-family: 'Crimson Text', serif; 
+            font-size: 1.05rem; 
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: black;
+            transition: color 0.3s;
+            font-size: 0.95rem; 
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .footer a:hover {
+            color: #6a1e1e;
+        }
+
+        .column3 img {
+            height: auto;
+            width: 38px;
+            border-radius: 60px;
+            margin-top: 0.3rem;
+        }
+
+        .socialmediaicon ul {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.3rem;
+        }
+
+        .contact-item {
+            display: flex; 
+            white-space: nowrap; 
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .contact-item strong, .contact-item p {
+            font-size: 0.95rem; 
+            color: #000;
+            font-family: 'Crimson Text', serif; 
+        }
+
+        .contact-item strong {
+            font-weight: 600;
+            margin-right: 0.4rem;
+        }
+
+        .contact-item p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                background-image: url('images/footerPattern.png');
+                background-position: top;
+                background-size: auto 53px;
+                background-repeat: repeat-x;
+                padding-top: calc(53px + 3rem); 
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .footer {
+                gap: 4rem;
+                padding-left: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                background-size: 40%; 
+                background-position: bottom center;
+            }
+            
+            .footer {
+                flex-direction: column;
+                gap: 2.5rem;
+                padding: 3rem 1rem 4rem 1rem;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .contact-item {
+                justify-content: center;
+                white-space: normal;
+                flex-wrap: wrap;
+            }
+            
+            .contact-item strong {
+                margin-right: 0;
+                margin-bottom: 0.2rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                background-size: auto 40%;
+                padding: 2rem 0 5rem 0;
+                min-height: 250px;
+            }
+            
+            .footer {
+                gap: 2rem;
+                padding: 2rem 1rem 3rem 1rem;
+            }
+        }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand-heading">
+      <img src="images/bannerlogo.jpeg" alt="banner logo">
+      <div class="button-icons">
+        <a href="signup.html" class="accountinfo">
+          <img src="images/profile.png" alt="profile icon">
+        </a>
+        <a href="cart.html" class="addtocart">
+          <img src="images/bag.png" alt="add to bag icon">
+        </a>
+      </div>
+      <nav class="nav-bar">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="women.html" class="nav-link">WOMEN</a>
+        <a href="men.html" class="nav-link">MEN</a>
+        <a href="kids.html" class="nav-link">KIDS</a>
+        <div class="searchbar">
+          <input type="text" placeholder="Search..." name="search" class="searchinput">
+          <button class="search-button">🔍︎</button>
+        </div>
+      </nav>
+  </header>
+
+  <main>
+    <h1>Shopping Cart</h1>
+    <form id="cartForm" onsubmit="return validateCartForm();">
+      <div id="cartContent"></div>
+      <div id="cartSummary" style="display:none;">
+        <div class="cart-summary">
+          <div class="summary-title">Order Summary</div>
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span id="subtotal">RM0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping:</span>
+            <span id="shipping">RM0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (6%):</span>
+            <span id="tax">RM0.00</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span id="total">RM0.00</span>
+          </div>
+          <input type="submit" class="checkout-btn" value="Proceed to Checkout">
+          <a href="kids.html" class="continue-shopping-btn">Continue Shopping</a>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    // Shopping Cart Management System
+    class CartManager {
+      constructor() {
+        this.cart = this.loadCart();
+        this.initializeCart();
+      }
+
+      loadCart() {
+        try {
+          const savedCart = localStorage.getItem('bellsShoppingCart');
+          return savedCart ? JSON.parse(savedCart) : [];
+        } catch (error) {
+          console.error('Error loading cart:', error);
+          return [];
+        }
+      }
+
+      saveCart() {
+        try {
+          localStorage.setItem('bellsShoppingCart', JSON.stringify(this.cart));
+        } catch (error) {
+          console.error('Error saving cart:', error);
+        }
+      }
+
+
+      // Format currency in Malaysian Ringgit
+      formatCurrency(amount) {
+        return `RM${amount.toFixed(2)}`;
+      }
+
+      // Calculate order totals
+      calculateTotals() {
+        const subtotal = this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        const shipping = subtotal >= 200 ? 0 : 15; // Free shipping over RM200
+        const taxRate = 0.06; // 6% tax
+        const tax = subtotal * taxRate;
+        const total = subtotal + shipping + tax;
+
+        return {
+          subtotal,
+          shipping,
+          tax,
+          total
+        };
+      }
+
+      // Update item quantity
+      updateQuantity(productId, newQuantity) {
+        const item = this.cart.find(item => item.id === productId);
+        if (item) {
+          if (newQuantity <= 0) {
+            this.removeFromCart(productId);
+          } else {
+            item.quantity = newQuantity;
+            this.saveCart();
+            this.displayCart();
+            this.updateCartBadge();
+          }
+        }
+      }
+
+      // Remove item from cart
+      removeFromCart(productId) {
+        if (confirm("Are you sure you want to remove this item from your cart?")) {
+          this.cart = this.cart.filter(item => item.id !== productId);
+          this.saveCart();
+          this.displayCart();
+          this.updateCartBadge();
+        }
+      }
+
+      // Update cart badge
+      updateCartBadge() {
+        const totalItems = this.cart.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0);
+        const cartCount = document.getElementById('cartCount');
+        if (cartCount) {
+          cartCount.textContent = totalItems;
+          cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+        }
+      }
+
+      // Display cart contents
+      displayCart() {
+        const cartContent = document.getElementById("cartContent");
+        const cartSummary = document.getElementById("cartSummary");
+
+        if (this.cart.length === 0) {
+          cartContent.innerHTML = `
+            <div class="empty-cart">
+              <div class="empty-cart-icon">🛒</div>
+              <h2>Your cart is empty</h2>
+              <p>Start shopping to add items to your cart!</p>
+              <a href="index.html" class="continue-shopping-btn">Browse Our Collection</a>
+            </div>
+          `;
+          cartSummary.style.display = 'none';
+          return;
+        }
+
+        // Show cart summary
+        cartSummary.style.display = 'block';
+
+        // Calculate totals
+        const totals = this.calculateTotals();
+
+        // Generate cart items HTML
+        const cartItemsHTML = this.cart.map(item => {
+          const itemTotal = item.price * item.quantity;
+          return `
+            <div class="cart-item">
+              <div class="item-details">
+                <h3>${item.name}</h3>
+                <p>Bells & Co</p>
+                <div class="item-unit-price">${this.formatCurrency(item.price)} each</div>
+                <div class="quantity-controls">
+                  <button type="button" class="qty-btn" onclick="cartManager.updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                  <span class="quantity-display">${item.quantity}</span>
+                  <button type="button" class="qty-btn" onclick="cartManager.updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                </div>
+              </div>
+              <div class="item-price-section">
+                <div class="item-price">${this.formatCurrency(itemTotal)}</div>
+                <button type="button" class="remove-btn" onclick="cartManager.removeFromCart('${item.id}')">Remove</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        cartContent.innerHTML = `
+          <div class="cart-container">
+            <div class="cart-items-wrapper">
+              ${cartItemsHTML}
+            </div>
+          </div>
+        `;
+
+        // Update summary totals
+        document.getElementById('subtotal').textContent = this.formatCurrency(totals.subtotal);
+        document.getElementById('shipping').textContent = this.formatCurrency(totals.shipping);
+        document.getElementById('tax').textContent = this.formatCurrency(totals.tax);
+        document.getElementById('total').textContent = this.formatCurrency(totals.total);
+      }
+
+      // Initialize cart display
+      initializeCart() {
+        this.displayCart();
+        this.updateCartBadge();
+      }
+
+      // Get total item count
+      getItemCount() {
+        return this.cart.reduce((total, item) => total + item.quantity, 0);
+      }
+
+      // Clear cart (for checkout)
+      clearCart() {
+        this.cart = [];
+        this.saveCart();
+        this.displayCart();
+        this.updateCartBadge();
+      }
+    }
+
+    // Initialize cart manager
+    const cartManager = new CartManager();
+
+    // Form validation and checkout
+    function validateCartForm() {
+      if (cartManager.cart.length === 0) {
+        alert("Your cart is empty! Please add items before checking out.");
+        return false;
+      }
+      processCheckout();
+      return false;
+    }
+
+    function processCheckout() {
+      const totals = cartManager.calculateTotals();
+      const orderSummary = `
+Order Summary:
+Subtotal: ${cartManager.formatCurrency(totals.subtotal)}
+Shipping: ${cartManager.formatCurrency(totals.shipping)}
+Tax: ${cartManager.formatCurrency(totals.tax)}
+Total: ${cartManager.formatCurrency(totals.total)}
+
+Thank you for your order! Your items will be processed and shipped soon.
+      `;
+      
+      alert(orderSummary);
+      cartManager.clearCart();
+    }
+
+    // Search functionality
+    function setupSearch() {
+      const searchButton = document.querySelector('.search-button');
+      const searchInput = document.querySelector('.searchinput');
+
+      searchButton.addEventListener('click', function() {
+        const searchTerm = searchInput.value.trim();
+        if (searchTerm) {
+          // Redirect to kids page with search parameter
+          window.location.href = `kids.html?search=${encodeURIComponent(searchTerm)}`;
+        } else {
+          alert("Please enter a search term.");
+        }
+      });
+
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          searchButton.click();
+        }
+      });
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      setupSearch();
+      
+      // Auto-refresh cart display every 5 seconds to sync with other tabs
+      setInterval(() => {
+        const currentCart = cartManager.loadCart();
+        if (JSON.stringify(currentCart) !== JSON.stringify(cartManager.cart)) {
+          cartManager.cart = currentCart;
+          cartManager.displayCart();
+          cartManager.updateCartBadge();
+        }
+      }, 5000);
+    });
+
+    // Global functions for backward compatibility
+    window.addToCart = function(productId, productName, productPrice, quantity = 1) {
+      // This function is for compatibility - items should be added from kids page
+      console.log('Adding to cart from cart page - redirecting to home page');
+      window.location.href = 'index.html';
+    };
+  </script>
+</body>
+<footer>
+    <div class="container">
+        <div class="footer">
+            <div class="column1">
+                <h4>SERVICES</h4>
+                <ul>
+                    <li><a href="FAQs.html" target="_blank">FAQs</a></li>
+                    <li><a href="Termsandcondition.html" target="_blank">Terms and conditions</a></li>
+                    <li><a href="Deliveryandreturns.html" target="_blank">Delivery and returns</a></li>
+                </ul>
+            </div><div class="column2">  
+                <h4>ABOUT US</h4>
+                <ul>
+                    <li><a href="OurStory.html" target="_blank">Our Story</a></li>
+                    <li><a href="Meettheteam.html" target="_blank">Meet The Team</a></li>
+                    <li><a href="Joinus.html" target="_blank">Join Us</a></li>
+                </ul>
+            </div><div class="column3">  
+                <h4>FOLLOW US</h4>
+                <div class="socialmediaicon">
+                    <ul>
+                        <li><a href="https://instagram.com" target="_blank"><img src="images/instagram.avif" alt="instagram icon"></a></li>
+                        <li><a href="https://facebook.com" target="_blank"><img src="images/facebook.avif" alt="facebook icon"></a></li>
+                    </ul>
+                </div>
+            </div><div class="column4"> 
+                <h4>CONTACT</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Customer Service Hotline:</strong>
+                        <p>+6012 345 6789</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Business Email:</strong>
+                        <p>help@bellsco.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Business Hours:</strong>
+                        <p>Mon-Fri: 9AM-6PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>
