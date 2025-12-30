@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fatima - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -14,7 +12,7 @@
     }
 
     body {
-      font-family: "Poppins", sans-serif;
+      font-family: system-ui, -apple-system, sans-serif;
       background: linear-gradient(135deg, #fff5f8 0%, #ffe8f0 100%);
       color: #5a2a42;
       line-height: 1.6;
@@ -49,10 +47,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-    }
-
-    .logo i {
-      font-size: 28px;
     }
 
     .nav-links {
@@ -302,11 +296,6 @@
       align-items: center;
     }
 
-    .project h3 i {
-      margin-right: 10px;
-      color: #ff6b9d;
-    }
-
     footer {
       text-align: center;
       padding: 30px;
@@ -341,25 +330,20 @@
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
     }
 
     .contact-item {
       display: flex;
-      align-items: center;
-      gap: 12px;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
     }
 
-    .contact-item i {
-      width: 40px;
-      height: 40px;
-      background: #fff5f8;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .contact-label {
       color: #ff6b9d;
-      font-size: 18px;
+      font-weight: bold;
+      min-width: 70px;
     }
 
     .github-card {
@@ -393,6 +377,14 @@
       color: white;
       font-size: 32px;
       flex-shrink: 0;
+      overflow: hidden;
+      padding: 15px;
+    }
+
+    .github-icon-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .github-info {
@@ -428,28 +420,11 @@
       font-weight: 500;
     }
 
-    .github-meta-item i {
-      font-size: 16px;
-    }
-
-    .github-link-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: #ff6b9d;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      margin-top: 12px;
-    }
-
-    .github-link-btn:hover {
-      background: #8a446c;
-      transform: translateX(3px);
+    .github-card img {
+      width: 24px;   /* Exact small size */
+      height: 24px;
+      object-fit: contain;
+      flex-shrink: 0;
     }
 
     .skill-category {
@@ -464,11 +439,6 @@
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-
-    .skill-category h3 i {
-      color: #ff6b9d;
-      font-size: 18px;
     }
 
     .skill-icon-container {
@@ -529,6 +499,7 @@
       scroll-margin-top: 100px;
     }
 
+    /* Fixed social links styling to properly display and fit images */
     .social-links {
       display: flex;
       justify-content: center;
@@ -544,17 +515,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ff6b9d;
-      font-size: 22px;
       transition: all 0.3s ease;
       text-decoration: none;
+      overflow: hidden;
+      padding: 10px;
     }
 
     .social-link:hover {
-      transform: translateY(-5px);
-      background: #8a446c;
-      color: white;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
+
+    .social-link img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+    /* </CHANGE> */
 
     .pink-decoration {
       position: absolute;
@@ -662,12 +639,11 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="#home" class="logo">
-        <i class="fas fa-code"></i>
         <span>Fatima</span>
       </a>
 
       <button class="mobile-menu-btn" id="mobileMenuBtn">
-        <i class="fas fa-bars"></i>
+        <span></span>
       </button>
 
       <ul class="nav-links" id="navLinks">
@@ -693,8 +669,12 @@
         <p class="tagline">Passionate about building innovative solutions and creating engaging user experiences through code</p>
       </div>
       <div class="social-links">
-        <a href="www.linkedin.com/in/fatima-abdullah-24135667abc" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/lesgolesgo123" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/fatima-abdullah-24135667abc" class="social-link" target="_blank" title="LinkedIn">
+          <img src="images/linkedin.webp" alt="LinkedIn">
+        </a>
+        <a href="https://github.com/lesgolesgo123" class="social-link" target="_blank" title="GitHub">
+          <img src="images/github.webp" alt="GitHub">
+        </a>
       </div>
     </div>
   </header>
@@ -704,7 +684,7 @@
       <h2>Skills</h2>
       
       <div class="skill-category">
-        <h3><i class="fas fa-laptop-code"></i> Programming Languages</h3>
+        <h3>Programming Languages</h3>
         <div class="skill-icon-container">
           <div class="skill-icon">
             <img src="images/python.png" alt="Python">
@@ -726,7 +706,7 @@
       </div>
 
       <div class="skill-category">
-        <h3><i class="fas fa-file-alt"></i> Microsoft Office</h3>
+        <h3>Microsoft Office</h3>
         <div class="skill-icon-container">
           <div class="skill-icon">
             <img src="images/excel.png" alt="Excel">
@@ -748,7 +728,7 @@
       </div>
 
       <div class="skill-category">
-        <h3><i class="fas fa-code-branch"></i> Technical Skills</h3>
+        <h3>Technical Skills</h3>
         <div class="skill-tags">
           <span class="skill-tag">Web Development</span>
           <span class="skill-tag">Object-Oriented Programming</span>
@@ -758,7 +738,7 @@
       </div>
 
       <div class="skill-category">
-        <h3><i class="fas fa-lightbulb"></i> Soft Skills</h3>
+        <h3>Soft Skills</h3>
         <div class="skill-tags">
           <span class="skill-tag">Problem Solving</span>
           <span class="skill-tag">Logical Thinking</span>
@@ -768,20 +748,20 @@
       </div>
 
       <h2 id="contact">Contact</h2>
-      <div class="contact-info">
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <span>fatimaabdullah2006@gmail.com</span>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="contact-label">Email:</span>
+            <span>fatimaabdullah2006@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Contact:</span>
+            <span>+966571547776</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Location:</span>
+            <span>Sunway University, Kuala Lumpur, Malaysia</span>
+          </div>
         </div>
-        <div class="contact-item">
-          <i class="fas fa-phone"></i>
-          <span>+966571547776</span>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Sunway University, Kuala Lumpur, Malaysia</span>
-        </div>
-      </div>
     </aside>
 
     <section class="main">
@@ -797,7 +777,7 @@
 
         <div class="project">
           <div class="project-content">
-            <h3><i class="fas fa-user-check"></i> Student Registration System (Python)</h3>
+            <h3>Student Registration System (Python)</h3>
             <ul>
               <li>Developed a registration management system with emphasis on input validation and user-friendly interaction.</li>
               <li>Applied modular programming practices to ensure clarity and maintainability.</li>
@@ -808,7 +788,7 @@
 
         <div class="project">
           <div class="project-content">
-            <h3><i class="fas fa-gamepad"></i> Pokémon GA Ole Game (Java)</h3>
+            <h3>Pokémon GA Ole Game (Java)</h3>
             <ul>
               <li>Created a role-playing game utilizing object-oriented programming principles.</li>
               <li>Implemented inheritance and encapsulation to structure character classes and gameplay mechanics.</li>
@@ -817,14 +797,13 @@
           
             <a href="https://github.com/ShareefahB/OOPF" target="_blank" class="github-card">
               <div class="github-icon-box">
-                <i class="fab fa-github"></i>
+                <img src="images/github.webp" width="40" alt="GitHub">
               </div>
               <div class="github-info">
                 <h3>OOPF Repository</h3>
                 <p>Object-Oriented Programming Fundamentals - Pokémon Game Project</p>
                 <div class="github-meta">
                   <div class="github-meta-item">
-                    <i class="fas fa-external-link-alt"></i>
                     <span>Visit GitHub</span>
                   </div>
                 </div>
@@ -838,12 +817,12 @@
             <a href="https://www.youtube.com/watch?v=3Qh4ZVbAepI"><img src="images/Fdb.png" alt="Conference Database System"></a>
           </div>
           <div class="project-content">
-            <h3><i class="fas fa-database"></i> Conference Database System</h3>
+            <h3>Conference Database System</h3>
             <ul>
-              <li>Designed and implemented a comprehensive database system for managing conference registrations and schedules.</li>
-              <li>Created normalized database schemas with proper relationships between attendees, sessions, and speakers.</li>
-              <li>Developed SQL queries for data retrieval, updates, and reporting functionality.</li>
-              <li>Implemented data integrity constraints and validation rules to ensure accurate information management.</li>
+              <li>Designed and implemented a comprehensive database system for managing academic conferences.</li>
+              <li>Created normalized database schema with multiple related tables for attendees, sessions, and venues.</li>
+              <li>Implemented SQL queries for data retrieval, updates, and reporting functionality.</li>
+              <li>Developed user interface for easy data entry and management using Microsoft Access.</li>
             </ul>
           </div>
         </div>
@@ -864,10 +843,10 @@
         </div>
 
         <div class="project">
-          <div class="project-image">
-            <img src="images/Fwb.jpg" alt="Clothing Website">
-          </div>
-          <div class="project-content">
+            <div class="project-image">
+              <img src="images/Fwb.jpg" alt="Clothing Website">
+            </div>
+            <div class="project-content">
             <h3><i class="fas fa-shopping-bag"></i> Clothing Website</h3>
             <ul>
               <li>Developed a fully functional e-commerce website for browsing and purchasing clothing items.</li>
@@ -878,7 +857,7 @@
 
              <a href="https://github.com/lesgolesgo123/bells-co." target="_blank" class="github-card">
               <div class="github-icon-box">
-                <i class="fab fa-github"></i>
+                <img src="images/github.webp" width="40" alt="GitHub">
               </div>
               <div class="github-info">
                 <h3>Website Repository</h3>
@@ -893,13 +872,13 @@
             </a>
           </div>
         </div>
+
       </section>
     </section>
   </div>
 
   <footer>
-    <p>© 2025 Fatima Abdullah | Portfolio</p>
+    <p>&copy; 2025 Fatima Abdullah. All rights reserved.</p>
   </footer>
 </body>
 </html>
-
