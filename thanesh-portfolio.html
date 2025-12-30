@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +71,7 @@
             border-radius: 6px;
             transition: all 0.3s ease;
             font-size: 1rem;
-            white-space: nowrap; 
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -132,7 +133,7 @@
             text-align: center;
             transition: box-shadow 0.3s ease;
             border: 4px solid #333;
-            backdrop-filter: blur(5px); 
+            backdrop-filter: blur(5px);
         }
 
         .about-content:hover {
@@ -290,7 +291,7 @@
         }
 
         .contact-form {
-            background: rgba(129, 174, 74, 0.9); 
+            background: rgba(129, 174, 74, 0.9);
             color: #333;
             padding: 80px;
             border-radius: 15px;
@@ -298,7 +299,7 @@
             transition: box-shadow 0.3s ease;
             width: 100%;
             border: 4px solid #333;
-            backdrop-filter: blur(5px); 
+            backdrop-filter: blur(5px);
         }
 
         .contact-form:hover {
@@ -419,8 +420,8 @@
             
             .nav-links {
                 gap: 20px;
-                flex-wrap: nowrap; 
-                overflow-x: auto; 
+                flex-wrap: nowrap;
+                overflow-x: auto;
                 padding-bottom: 5px;
             }
             
@@ -445,8 +446,8 @@
             }
             
             .work-gallery {
-                grid-template-columns: 1fr;
-                max-width: 800px;
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 1200px;
                 margin: 0 auto 60px;
             }
             
@@ -482,17 +483,17 @@
             
             .nav-links {
                 gap: 12px;
-                flex-wrap: nowrap; 
-                justify-content: flex-start; 
-                overflow-x: auto; 
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                overflow-x: auto;
                 padding-bottom: 5px;
-                -webkit-overflow-scrolling: touch; 
+                -webkit-overflow-scrolling: touch;
             }
             
             .nav-links a {
                 font-size: 0.9rem;
                 padding: 6px 12px;
-                flex-shrink: 0; 
+                flex-shrink: 0;
             }
 
             .logo img {
@@ -523,6 +524,7 @@
                 width: 100%;
                 padding: 0;
                 gap: 30px;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .contact-form {
@@ -548,6 +550,14 @@
             
             .content-section {
                 padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .work-gallery {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto 60px;
             }
         }
 
@@ -777,7 +787,7 @@
                 </div>
                 <div class="work-item">
                     <div class="work-image">
-                        <a href="#" target="https://youtu.be/RhcrmAZIGn4">
+                        <a href="https://youtu.be/RhcrmAZIGn4" target="_blank">
                             <img src="images/brgr.png" alt="Restaurant Management System" class="project-image">
                         </a>
                     </div>
