@@ -46,23 +46,41 @@ This project was developed as part of the **Web Fundamentals (WEB1201 / WEB2014)
 ## Project Structure
 
 ├── index.html              # Main Landing Page (Hero video, New Arrivals, Best Sellers)
+
 ├── women.html              # Women's Collection Catalog
+
 ├── men.html                # Men's Collection Catalog
+
 ├── kids.html               # Children's Collection Catalog
+
 ├── cart.html               # Shopping Cart & Checkout System
+
 ├── login.html              # Member Login Page
+
 ├── signup.html             # Member Sign Up Page
+
 ├── contact.html            # Contact & Support Form
+
 ├── faqs.html               # Frequently Asked Questions
+
 ├── termsandcondition.html # Terms & Conditions Policy
+
 ├── deliveryandreturns.html# Shipping & Returns Information
+
 ├── OurStory.html           # Brand Story & Mission Statement
+
 ├── JoinUs.html             # Career Openings & Application Form
+
 ├── Meettheteam.html        # Team Member Showcase Page
+
 ├── chelsea-portfolio.html  # Developer Portfolio - Chelsea
+
 ├── fatima-portfolio.html   # Developer Portfolio - Fatima
+
 ├── thanesh-portfolio.html  # Developer Portfolio - Thanesh
+
 └── assets/                 # Images, Videos, Logos, and CSS stylesheets
+
 
 ## Contributors & Responsibilities
 
