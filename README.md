@@ -45,7 +45,6 @@ This project was developed as part of the **Web Fundamentals (WEB1201 / WEB2014)
 
 ## Project Structure
 
-```text
 ├── index.html              # Main Landing Page (Hero video, New Arrivals, Best Sellers)
 ├── women.html              # Women's Collection Catalog
 ├── men.html                # Men's Collection Catalog
@@ -66,27 +65,26 @@ This project was developed as part of the **Web Fundamentals (WEB1201 / WEB2014)
 └── assets/                 # Images, Videos, Logos, and CSS stylesheets
 
 ## Contributors & Responsibilities
-Fatima Abdullah as the Chief Technology Officer (CTO): Designed & implemented the **JavaScript Shopping Cart system**, **Sign Up & Log In pages** with dynamic form validation, and LocalStorage state logic.
 
-Chelsea Choo Minshe as the Chief Executive Officer (CEO): Designed & coded the **Main Home Page**, **Navigation Bar**, and foundational **Women's Collection catalog layout**.
-
-Thanesh Sridharan as the Chief Marketing Officer (CMO): Coded the **"Meet the Team" page**, **Footer ecosystem** (FAQs, Terms, Delivery, Contact form), and designed branding logos.
+* **Fatima Abdullah (Chief Technology Officer):** Designed & implemented the JavaScript Shopping Cart system, Sign Up & Log In pages with dynamic form validation, and LocalStorage state logic.
+* **Chelsea Choo Minshe (Chief Executive Officer):** Designed & coded the Main Home Page, Navigation Bar, and foundational Women's Collection catalog layout.
+* **Thanesh Sridharan (Chief Marketing Officer):** Coded the "Meet the Team" page, Footer ecosystem (FAQs, Terms, Delivery, Contact form), and designed branding logos.
 
 ## Getting Started
+
 ### Prerequisites
 All you need is a modern web browser (Google Chrome, Mozilla Firefox, Microsoft Edge, or Safari).
 
 ### Local Setup
 1. Clone the repository:
-```bash
-git clone https://github.com/your-username/bells-and-co.git
+   ```bash
+   git clone [https://github.com/your-username/bells-and-co.git](https://github.com/your-username/bells-and-co.git)
 
-2. Navigate to the project directory:
-```bash
-cd bells-and-co
-
-3. Open `index.html` in your web browser or run it using Live Server in VS Code.
+2. Navigate to Project directory
+   ```bash
+   cd bells-and-co
+   
+3. Open index.html in your web browser or run it using Live Server in VS Code.
 
 ## License
-
-This project was built for academic assessment purposes under the **Faculty of Engineering and Technology, Sunway University**. All rights reserved.
+This project was built for academic assessment purposes under the Faculty of Engineering and Technology, Sunway University. All rights reserved.
